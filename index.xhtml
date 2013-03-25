@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      
+      >
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        
+        <h:form>
+        
+       
+            <h:dataTable value="#{bean.listaPersona}" var="lista" >
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Nombre"></h:outputText>                        
+                    </f:facet>
+                    <h:outputText value="#{lista.nombre}"></h:outputText>                        
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Apellido"></h:outputText>                        
+                    </f:facet>
+                    <h:outputText value="#{lista.apellido}"></h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Edad"></h:outputText>                        
+                    </f:facet>
+                    <h:outputText value="#{lista.edad}"></h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Direccion"></h:outputText>                        
+                    </f:facet>
+                    <h:outputText value="#{lista.direccion}"></h:outputText>
+                </h:column>
+            </h:dataTable>
+            
+            
+            
+        
+        </h:form>  
+  </h:body>
+</html>
+
