@@ -1,14 +1,19 @@
 package com.android.hotoffer.activity;
 
+import java.util.ArrayList;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
-import android.widget.TextView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
-import com.android.hotoffer.to.Usuario;
 import com.example.hotoffer.R;
 
 public class ContactoActivity extends Activity {
+
+	private ListView listView;
+	private ArrayAdapter<String> adapter;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -17,9 +22,17 @@ public class ContactoActivity extends Activity {
 
 		TestSQLite lite = new TestSQLite(this);
 
-		if (lite.insertUser(new Usuario("Cesar", "Araya"))) {
+		listView = (ListView) findViewById(R.id.mainListView);
 
+		ArrayList<String> list = new ArrayList<String>();
+
+		for (int i = 0; i < 10; i++) {
+			list.add("Cesar");
 		}
+
+		adapter = new ArrayAdapter<String>(this, R.layout.simplerow, list);
+
+		listView.setAdapter(adapter);
 
 	}
 
