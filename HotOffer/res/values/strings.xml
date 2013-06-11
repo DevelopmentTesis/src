@@ -3,7 +3,5 @@
 
     <string name="app_name">HotOffer</string>
     <string name="action_settings">Configuración</string>
-    <string name="testVariable">Test Variable</string>
-    <string-array name="usuario"></string-array>
 
 </resources>

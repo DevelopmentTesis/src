@@ -20,7 +20,7 @@ public class ContactoActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.add_contacto);
 
-		TestSQLite lite = new TestSQLite(this);
+		//TestSQLite lite = new TestSQLite(this);
 
 		listView = (ListView) findViewById(R.id.mainListView);
 
