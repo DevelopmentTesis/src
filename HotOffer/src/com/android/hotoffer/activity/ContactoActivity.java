@@ -18,7 +18,7 @@ public class ContactoActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.add_contacto);
+		setContentView(R.layout.main_contacto);
 
 		//TestSQLite lite = new TestSQLite(this);
 
