@@ -8,6 +8,8 @@ import android.view.Menu;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.android.hotoffer.sqlite.ContactoSQLite;
+import com.android.hotoffer.to.Usuario;
 import com.example.hotoffer.R;
 
 public class ContactoActivity extends Activity {
@@ -20,17 +22,16 @@ public class ContactoActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main_contacto);
 
-		//TestSQLite lite = new TestSQLite(this);
+		ContactoSQLite lite = new ContactoSQLite(this);
 
 		listView = (ListView) findViewById(R.id.mainListView);
 
 		ArrayList<String> list = new ArrayList<String>();
+		lite.insertUser(new Usuario("Cesar", "Araya"));
+		lite.insertUser(new Usuario("Patricio", "Araya"));
 
-		for (int i = 0; i < 10; i++) {
-			list.add("Cesar");
-		}
-
-		adapter = new ArrayAdapter<String>(this, R.layout.simplerow, list);
+		adapter = new ArrayAdapter<String>(this, R.layout.simplerow,
+				lite.getLista());
 
 		listView.setAdapter(adapter);
 

@@ -1,14 +1,18 @@
-package com.android.hotoffer.activity;
+package com.android.hotoffer.sqlite;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import com.android.hotoffer.to.Usuario;
 
-public class TestSQLite extends SQLiteOpenHelper {
+public class ContactoSQLite extends SQLiteOpenHelper {
 
 	private final static String NAME_DB = "TEST_BD";
 	private final static Integer VERSION = 1;
@@ -17,7 +21,7 @@ public class TestSQLite extends SQLiteOpenHelper {
 
 	private final static String TB_USUARIO = "USUARIO";
 
-	public TestSQLite(Context context) {
+	public ContactoSQLite(Context context) {
 		super(context, NAME_DB, null, VERSION);
 	}
 
@@ -44,7 +48,7 @@ public class TestSQLite extends SQLiteOpenHelper {
 
 			return true;
 		} catch (Exception e) {
-			System.out.println("ERROR: " + e);
+			Log.w("Exception :", e);
 		} finally {
 			db.close();
 		}
@@ -52,28 +56,29 @@ public class TestSQLite extends SQLiteOpenHelper {
 		return false;
 	}
 
-	public Usuario getLista() {
+	public List<String> getLista() {
 
 		SQLiteDatabase db = this.getReadableDatabase();
-		Usuario usuario = new Usuario();
-
+		List<String> list = new ArrayList<String>();
 		Cursor cursor = db.query(TB_USUARIO, null, null, null, null, null,
 				null, null);
-
+		
 		try {
 
 			if (cursor.moveToFirst()) {
 
-				usuario.setNombre(cursor.getString(0));
+				while (cursor.moveToNext()) {
+					list.add(cursor.getString(0));
+
+				}
 			}
-
 		} catch (Exception e) {
-
+			Log.w("Exception :", e);
 		} finally {
 			db.close();
 		}
 
-		return usuario;
+		return list;
 	}
 
 }
