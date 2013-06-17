@@ -3,5 +3,10 @@
 
     <string name="app_name">HotOffer</string>
     <string name="action_settings">Configuración</string>
+    <string name="user">Usuario</string>
+    <string name="clave">Clave</string>
+    <string name="boton_init_sesion">Iniciar</string>
+    <string name="contacto_activity">Lista Contactos</string>
+    <string name="iniciar_sesion">Iniciar Sesion</string>
 
 </resources>
