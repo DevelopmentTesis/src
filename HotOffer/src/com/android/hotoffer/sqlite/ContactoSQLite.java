@@ -10,19 +10,16 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import com.android.hotoffer.constants.Constants;
 import com.android.hotoffer.to.Usuario;
 
 public class ContactoSQLite extends SQLiteOpenHelper {
 
-	private final static String NAME_DB = "TEST_BD";
-	private final static Integer VERSION = 1;
 	private final static String CREATE_TB_USUARIO = "CREATE TABLE USUARIO ( nombre  text, apellido text)";
 	private final static String DROP_TB_USUARIO = "DROP TABLE IF EXISTS USUARIO";
 
-	private final static String TB_USUARIO = "USUARIO";
-
 	public ContactoSQLite(Context context) {
-		super(context, NAME_DB, null, VERSION);
+		super(context, Constants.NAME_DB, null, Constants.VERSION);
 	}
 
 	@Override
@@ -44,7 +41,7 @@ public class ContactoSQLite extends SQLiteOpenHelper {
 			ContentValues values = new ContentValues();
 			values.put("nombre", us.getNombre());
 			values.put("apellido", us.getApellido());
-			db.insert(TB_USUARIO, null, values);
+			db.insert(Constants.TB_USUARIO, null, values);
 
 			return true;
 		} catch (Exception e) {
@@ -60,9 +57,9 @@ public class ContactoSQLite extends SQLiteOpenHelper {
 
 		SQLiteDatabase db = this.getReadableDatabase();
 		List<String> list = new ArrayList<String>();
-		Cursor cursor = db.query(TB_USUARIO, null, null, null, null, null,
-				null, null);
-		
+		Cursor cursor = db.query(Constants.TB_USUARIO, null, null, null, null,
+				null, null, null);
+
 		try {
 
 			if (cursor.moveToFirst()) {

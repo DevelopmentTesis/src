@@ -8,5 +8,7 @@
     <string name="boton_init_sesion">Iniciar</string>
     <string name="contacto_activity">Lista Contactos</string>
     <string name="iniciar_sesion">Iniciar Sesion</string>
+    <string name="agregar_contacto">Agregar</string>
+    <string name="recordar_cuenta">recordar</string>
 
 </resources>

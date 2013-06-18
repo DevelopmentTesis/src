@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:screenOrientation="portrait" >
 
     <EditText
         android:id="@+id/pass"
@@ -11,9 +12,8 @@
         android:layout_alignLeft="@+id/user"
         android:layout_below="@+id/user"
         android:layout_marginTop="49dp"
-        android:ems="10" >
-
-        
+        android:ems="10"
+        android:inputType="textPassword" >
     </EditText>
 
     <TextView
@@ -29,11 +29,18 @@
         android:id="@+id/btnInitSession"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/pass"
-        android:layout_below="@+id/pass"
-        android:layout_marginLeft="46dp"
-        android:layout_marginTop="28dp"
+        android:layout_alignRight="@+id/pass"
+        android:layout_below="@+id/checkRecordar"
         android:text="@string/boton_init_sesion" />
+
+    <CheckBox
+        android:id="@+id/checkRecordar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/usuario"
+        android:layout_below="@+id/pass"
+        android:layout_marginTop="36dp"
+        android:text="@string/recordar_cuenta" />
 
     <EditText
         android:id="@+id/user"
@@ -41,18 +48,17 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:layout_marginRight="28dp"
-        android:layout_marginTop="85dp"
-        android:ems="10">
-        <requestFocus />
-        </EditText>
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="66dp"
+        android:ems="10"
+        android:inputType="text" />
 
     <TextView
         android:id="@+id/usuario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/user"
-        android:layout_alignRight="@+id/clave"
+        android:layout_alignTop="@+id/user"
+        android:layout_toLeftOf="@+id/clave"
         android:text="@string/user" />
 
 </RelativeLayout>

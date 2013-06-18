@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import com.android.hotoffer.sqlite.ContactoSQLite;
@@ -22,11 +23,14 @@ public class ContactoActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main_contacto);
 
+		EditText text = (EditText) findViewById(R.id.buscarContacto);
+
 		ContactoSQLite lite = new ContactoSQLite(this);
 
 		listView = (ListView) findViewById(R.id.mainListView);
 
 		ArrayList<String> list = new ArrayList<String>();
+
 		lite.insertUser(new Usuario("Cesar", "Araya"));
 		lite.insertUser(new Usuario("Patricio", "Araya"));
 
