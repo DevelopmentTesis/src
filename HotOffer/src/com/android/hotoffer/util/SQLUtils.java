@@ -11,10 +11,9 @@ public class SQLUtils {
 			return false;
 		}
 
-		Cursor cursor = db
-				.rawQuery(
-						"SELECT COUNT(*) FROM sqlite_master WHERE type = ? AND name = ?",
-						new String[] { "table", table });
+		Cursor cursor = db.rawQuery(
+				"SELECT COUNT(*) FROM sqlite_master WHERE type = 'table' AND name ='"
+						+ table + "'", null);
 		if (!cursor.moveToFirst()) {
 			return false;
 		}
@@ -23,5 +22,4 @@ public class SQLUtils {
 		return count > 0;
 
 	}
-
 }

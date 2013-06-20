@@ -1,5 +1,12 @@
 package com.android.hotoffer.activity;
 
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.client.RestTemplate;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -10,25 +17,28 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 
+import com.android.hotoffer.rest.Client;
 import com.android.hotoffer.sqlite.RecordarAccesoSQLite;
+import com.android.hotoffer.to.Usuario;
 import com.example.hotoffer.R;
 
 public class AccesoActivity extends Activity implements OnClickListener {
-
-	private RecordarAccesoSQLite lite = null;
-
-	public AccesoActivity() {
-		lite = new RecordarAccesoSQLite(this);
-	}
 
 	@Override
 	protected void onCreate(Bundle bundle) {
 		super.onCreate(bundle);
 		setContentView(R.layout.init_session_hotoffer);
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
 		Button button = (Button) findViewById(R.id.btnInitSession);
-		button.setOnClickListener(this);
+		button.setOnClickListener(AccesoActivity.this);
+
+		Client response = new Client();
+
+		TextView view = (TextView) findViewById(R.id.testConecto);
+		view.setText(response.getDataService());
 
 	}
 
@@ -38,32 +48,27 @@ public class AccesoActivity extends Activity implements OnClickListener {
 		EditText pass = (EditText) findViewById(R.id.pass);
 		CheckBox checkBox = (CheckBox) findViewById(R.id.checkRecordar);
 
+		if (checkBox.isChecked()) {
+			if (save(user, pass)) {
+				Log.i("SAVE", "GUARDADO");
+			}
+		}
 		try {
 
-			if (checkBox.isChecked()) {
-				if (save(user, pass)) {
-					Log.i("SAVE", "GUARDADO");
-				}
-			}
+			Intent i = new Intent();
+			i.setClass(AccesoActivity.this, ContactoActivity.class);
+			startActivity(i);
 
-			Class<?> clazz = Class
-					.forName("com.android.hotoffer.activity.ContactoActivity");
-
-			iniciar(clazz);
-			// TODO VALIDAR ACCESO USUARIO
-
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
+		} catch (Exception e) {
+			Log.w("Exception", e);
 		}
+		// TODO VALIDAR ACCESO USUARIO
 
-	}
-
-	public void iniciar(Class<?> c) {
-		Intent i = new Intent(this, c);
-		startActivity(i);
 	}
 
 	public boolean save(EditText user, EditText pass) {
+		RecordarAccesoSQLite lite = new RecordarAccesoSQLite(
+				AccesoActivity.this);
 		boolean status = false;
 		if (user != null && pass != null) {
 			status = lite.saveData(user.getText().toString(), pass.getText()

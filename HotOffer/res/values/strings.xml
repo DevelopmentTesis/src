@@ -10,5 +10,6 @@
     <string name="iniciar_sesion">Iniciar Sesion</string>
     <string name="agregar_contacto">Agregar</string>
     <string name="recordar_cuenta">recordar</string>
+    <string name="test_conector"/>
 
 </resources>

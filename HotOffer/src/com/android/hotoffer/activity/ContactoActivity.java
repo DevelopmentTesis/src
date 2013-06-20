@@ -1,7 +1,5 @@
 package com.android.hotoffer.activity;
 
-import java.util.ArrayList;
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -25,14 +23,11 @@ public class ContactoActivity extends Activity {
 
 		EditText text = (EditText) findViewById(R.id.buscarContacto);
 
-		ContactoSQLite lite = new ContactoSQLite(this);
+		ContactoSQLite lite = new ContactoSQLite(ContactoActivity.this);
 
 		listView = (ListView) findViewById(R.id.mainListView);
 
-		ArrayList<String> list = new ArrayList<String>();
-
 		lite.insertUser(new Usuario("Cesar", "Araya"));
-		lite.insertUser(new Usuario("Patricio", "Araya"));
 
 		adapter = new ArrayAdapter<String>(this, R.layout.simplerow,
 				lite.getLista());

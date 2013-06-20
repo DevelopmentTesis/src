@@ -12,6 +12,7 @@ import android.util.Log;
 
 import com.android.hotoffer.constants.Constants;
 import com.android.hotoffer.to.Usuario;
+import com.android.hotoffer.util.SQLUtils;
 
 public class ContactoSQLite extends SQLiteOpenHelper {
 
@@ -41,9 +42,12 @@ public class ContactoSQLite extends SQLiteOpenHelper {
 			ContentValues values = new ContentValues();
 			values.put("nombre", us.getNombre());
 			values.put("apellido", us.getApellido());
-			db.insert(Constants.TB_USUARIO, null, values);
+			onCreate(db);
+			if (SQLUtils.isExistTable(db, Constants.TB_USUARIO)) {
+				db.insert(Constants.TB_USUARIO, null, values);
+				return true;
+			}
 
-			return true;
 		} catch (Exception e) {
 			Log.w("Exception :", e);
 		} finally {
@@ -57,18 +61,20 @@ public class ContactoSQLite extends SQLiteOpenHelper {
 
 		SQLiteDatabase db = this.getReadableDatabase();
 		List<String> list = new ArrayList<String>();
-		Cursor cursor = db.query(Constants.TB_USUARIO, null, null, null, null,
-				null, null, null);
 
 		try {
 
-			if (cursor.moveToFirst()) {
+			if (SQLUtils.isExistTable(db, Constants.TB_USUARIO)) {
+				Cursor cursor = db.query(Constants.TB_USUARIO, null, null,
+						null, null, null, null, null);
+				if (cursor.moveToFirst()) {
+					while (cursor.moveToNext()) {
+						list.add(cursor.getString(0));
 
-				while (cursor.moveToNext()) {
-					list.add(cursor.getString(0));
-
+					}
 				}
 			}
+
 		} catch (Exception e) {
 			Log.w("Exception :", e);
 		} finally {
