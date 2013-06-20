@@ -1,12 +1,5 @@
 package com.android.hotoffer.activity;
 
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.client.RestTemplate;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -17,11 +10,9 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import com.android.hotoffer.rest.Client;
 import com.android.hotoffer.sqlite.RecordarAccesoSQLite;
-import com.android.hotoffer.to.Usuario;
 import com.example.hotoffer.R;
 
 public class AccesoActivity extends Activity implements OnClickListener {
@@ -34,11 +25,6 @@ public class AccesoActivity extends Activity implements OnClickListener {
 
 		Button button = (Button) findViewById(R.id.btnInitSession);
 		button.setOnClickListener(AccesoActivity.this);
-
-		Client response = new Client();
-
-		TextView view = (TextView) findViewById(R.id.testConecto);
-		view.setText(response.getDataService());
 
 	}
 
@@ -57,6 +43,8 @@ public class AccesoActivity extends Activity implements OnClickListener {
 
 			Intent i = new Intent();
 			i.setClass(AccesoActivity.this, ContactoActivity.class);
+			Client response = new Client("Cesar");
+			i.putExtra("mensaje", response.getDataService());
 			startActivity(i);
 
 		} catch (Exception e) {

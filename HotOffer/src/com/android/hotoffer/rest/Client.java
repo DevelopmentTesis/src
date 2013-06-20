@@ -12,9 +12,16 @@ import com.android.hotoffer.to.Usuario;
 
 public class Client {
 
+	private String nombre;
+
+	public Client(String nombre) {
+		// TODO Auto-generated constructor stub
+		this.nombre = nombre;
+	}
+
 	public String getDataService() {
 
-		String url = "http://190.22.211.85:8080/testWSRest/rest/helloworld/saluda";
+		String url = "http://190.22.211.85:8080/testWSRest/rest/helloworld/saluda/";
 		HttpHeaders requestHeaders = new HttpHeaders();
 
 		requestHeaders.setContentType(MediaType.APPLICATION_JSON);
