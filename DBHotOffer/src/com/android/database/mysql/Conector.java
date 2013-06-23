@@ -23,7 +23,7 @@ public class Conector {
 		return conector;
 	}
 
-	public Connection getConnection() throws HotOfferSQLException {
+	public Connection getConnection() {
 
 		try {
 			InitialContext context = new InitialContext();
@@ -31,7 +31,7 @@ public class Conector {
 			con = dataSource.getConnection();
 
 		} catch (Exception e) {
-			throw new HotOfferSQLException("Error en Conector", e);
+			e.printStackTrace();
 		}
 		return con;
 	}

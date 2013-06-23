@@ -10,9 +10,11 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Toast;
 
-import com.android.hotoffer.rest.Client;
+import com.android.hotoffer.rest.ValidaAccesoClient;
 import com.android.hotoffer.sqlite.RecordarAccesoSQLite;
+import com.android.hotoffer.to.Usuario;
 import com.example.hotoffer.R;
 
 public class AccesoActivity extends Activity implements OnClickListener {
@@ -40,12 +42,18 @@ public class AccesoActivity extends Activity implements OnClickListener {
 			}
 		}
 		try {
-
-			Intent i = new Intent();
-			i.setClass(AccesoActivity.this, ContactoActivity.class);
-			Client response = new Client();
-			i.putExtra("mensaje", response.getDataService());
-			startActivity(i);
+			ValidaAccesoClient client = new ValidaAccesoClient();
+			boolean isOK = client.valida(new Usuario(user.getText().toString(),
+					pass.getText().toString()));
+			if (isOK) {
+				Intent i = new Intent();
+				i.setClass(AccesoActivity.this, ContactoActivity.class);
+				i.putExtra("mensaje", "Validado");
+				startActivity(i);
+			} else {
+				Toast toast = Toast.makeText(this, "Error de Validacion",Toast.LENGTH_LONG);
+				toast.show();
+			}
 
 		} catch (Exception e) {
 			Log.w("Exception", e);

@@ -14,5 +14,6 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/DBHotOffer"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ModelHotOffer"/>
+	<classpathentry kind="lib" path="/home/kerne/Escritorio/library/apache-log4j-1.2.17/log4j-1.2.17.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

@@ -9,6 +9,5 @@
 	<classpathentry exported="true" kind="lib" path="/home/kerne/Descargas/jackson-mapper-asl-1.7.3.jar"/>
 	<classpathentry exported="true" kind="lib" path="/home/kerne/Descargas/simple-xml-2.5.1.jar"/>
 	<classpathentry kind="lib" path="/home/kerne/Descargas/httpcore-4.1-alpha1.jar"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/ModelHotOffer"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

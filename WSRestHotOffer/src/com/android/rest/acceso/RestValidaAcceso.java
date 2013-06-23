@@ -1,5 +1,7 @@
 package com.android.rest.acceso;
 
+import java.sql.SQLException;
+
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.QueryParam;
@@ -11,12 +13,7 @@ public interface RestValidaAcceso {
 
 	@GET
 	@Path("/acceso")
-	Integer validaAcceso(@QueryParam("nombre") String nombre,
+	boolean validaAcceso(@QueryParam("nombre") String nombre,
 			@QueryParam("password") String password)
-			throws ValidaAccesoException;
-
-	@GET
-	@Path("/acceso")
-	String validaAcceso() throws ValidaAccesoException;
-
+			throws ValidaAccesoException, SQLException;
 }

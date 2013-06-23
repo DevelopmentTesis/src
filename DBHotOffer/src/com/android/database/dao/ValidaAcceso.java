@@ -1,10 +1,11 @@
 package com.android.database.dao;
 
-import com.android.database.exception.ValidaAccesoException;
+import java.sql.SQLException;
+
 import com.android.model.Usuario;
 
 public interface ValidaAcceso {
 
-	Integer validaAcceso(Usuario usuario) throws ValidaAccesoException;
+	boolean validaAcceso(Usuario usuario) throws SQLException;
 
 }

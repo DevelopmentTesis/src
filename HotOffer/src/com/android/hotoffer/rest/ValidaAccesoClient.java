@@ -7,13 +7,14 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
-import com.android.model.Usuario;
+import com.android.hotoffer.to.Usuario;
 
 public class ValidaAccesoClient {
 
-	public String valida(Usuario usuario) {
+	public boolean valida(Usuario usuario) {
 
-		String url = "http://192.168.1.8:8080/WSRestHotOffer/valida/acceso/";
+		String url = "http://192.168.1.8:8080/WSRestHotOffer/valida/acceso?nombre="
+				+ usuario.getNombre() + "&password=" + usuario.getApellido();
 		HttpHeaders requestHeaders = new HttpHeaders();
 
 		requestHeaders.setContentType(MediaType.APPLICATION_JSON);
@@ -25,8 +26,7 @@ public class ValidaAccesoClient {
 		ResponseEntity<String> response = restTemplate.exchange(url,
 				HttpMethod.GET, requestEntity, String.class);
 
-		return response.getBody();
+		return response.getBody() != null;
 
 	}
-
 }
