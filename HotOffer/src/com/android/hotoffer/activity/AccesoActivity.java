@@ -43,7 +43,7 @@ public class AccesoActivity extends Activity implements OnClickListener {
 
 			Intent i = new Intent();
 			i.setClass(AccesoActivity.this, ContactoActivity.class);
-			Client response = new Client("Cesar");
+			Client response = new Client();
 			i.putExtra("mensaje", response.getDataService());
 			startActivity(i);
 

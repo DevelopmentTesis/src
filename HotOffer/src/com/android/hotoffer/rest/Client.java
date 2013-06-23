@@ -1,5 +1,7 @@
 package com.android.hotoffer.rest;
 
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -12,27 +14,34 @@ import com.android.hotoffer.to.Usuario;
 
 public class Client {
 
-	private String nombre;
+	public Client() {
 
-	public Client(String nombre) {
-		// TODO Auto-generated constructor stub
-		this.nombre = nombre;
 	}
 
 	public String getDataService() {
 
-		String url = "http://192.168.1.8:8080/testWSRest/rest/helloworld/saluda/";
+		String url = "http://192.168.1.8:8080/WSRestHotOffer/valida/acceso/";
 		HttpHeaders requestHeaders = new HttpHeaders();
 
-		requestHeaders.setContentType(MediaType.APPLICATION_JSON);
-		Usuario usuario = new Usuario();
-		usuario.setNombre("cesar");
-		HttpEntity<Usuario> requestEntity = new HttpEntity<Usuario>(
-				requestHeaders);
-		RestTemplate restTemplate = new RestTemplate();
-		ResponseEntity<String> response = restTemplate.exchange(url,
-				HttpMethod.GET, requestEntity, String.class);
-		return response.getBody();
+		JSONObject dato = new JSONObject();
+
+		try {
+			dato.put("", "");
+			requestHeaders.setContentType(MediaType.APPLICATION_JSON);
+
+			RestTemplate restTemplate = new RestTemplate();
+
+			HttpEntity<Usuario> requestEntity = new HttpEntity<Usuario>(
+					requestHeaders);
+
+			ResponseEntity<String> response = restTemplate.exchange(url,
+					HttpMethod.GET, requestEntity, String.class);
+
+			return response.getBody();
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 }

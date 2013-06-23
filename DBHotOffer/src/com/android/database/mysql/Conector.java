@@ -1,9 +1,12 @@
 package com.android.database.mysql;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
+
+import com.android.database.exception.HotOfferSQLException;
 
 public class Conector {
 
@@ -20,7 +23,7 @@ public class Conector {
 		return conector;
 	}
 
-	public Connection getConnection() throws Exception {
+	public Connection getConnection() throws HotOfferSQLException {
 
 		try {
 			InitialContext context = new InitialContext();
@@ -28,10 +31,17 @@ public class Conector {
 			con = dataSource.getConnection();
 
 		} catch (Exception e) {
-			throw e;
+			throw new HotOfferSQLException("Error en Conector", e);
 		}
-
 		return con;
+	}
+
+	public void getClose() throws HotOfferSQLException {
+		try {
+			con.close();
+		} catch (SQLException e) {
+			throw new HotOfferSQLException(e);
+		}
 	}
 
 	private Conector() {
