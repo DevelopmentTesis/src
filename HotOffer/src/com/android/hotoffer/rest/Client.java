@@ -21,7 +21,7 @@ public class Client {
 
 	public String getDataService() {
 
-		String url = "http://190.22.211.85:8080/testWSRest/rest/helloworld/saluda/";
+		String url = "http://192.168.1.8:8080/testWSRest/rest/helloworld/saluda/";
 		HttpHeaders requestHeaders = new HttpHeaders();
 
 		requestHeaders.setContentType(MediaType.APPLICATION_JSON);
