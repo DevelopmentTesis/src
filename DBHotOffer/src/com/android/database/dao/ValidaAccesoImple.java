@@ -27,11 +27,7 @@ public class ValidaAccesoImple implements ValidaAcceso {
 			con.setAutoCommit(false);
 			call.setString(1, usuario.getNombre());
 			call.setString(2, usuario.getPassword());
-			call.registerOutParameter(3, Types.BOOLEAN);
-
-			System.out.println("USUARIO: " + usuario.getNombre());
-			System.out.println("PASSWORD: " + usuario.getPassword());
-
+			call.registerOutParameter(3, Types.INTEGER);
 			call.execute();
 
 			return call.getBoolean(3);
@@ -40,7 +36,7 @@ public class ValidaAccesoImple implements ValidaAcceso {
 			LOGGER.error("Expcetion: ", e);
 			con.rollback();
 		} finally {
-			LOGGER.error("CIERRE DE CONEXION BD");
+			LOGGER.error("CLOSE BD");
 			con.close();
 		}
 		return false;
