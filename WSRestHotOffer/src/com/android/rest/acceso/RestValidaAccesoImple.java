@@ -18,7 +18,7 @@ public class RestValidaAccesoImple implements RestValidaAcceso {
 	public boolean validaAcceso(String nombre, String password)
 			throws ValidaAccesoException, SQLException {
 
-		LOGGER.info("CALL WSRestValidaAcceso");
+		LOGGER.info("[::CALL WSRestValidaAcceso::]");
 
 		ValidaAcceso acceso = new ValidaAccesoImple();
 
