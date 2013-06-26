@@ -35,7 +35,7 @@ public class AccesoActivity extends Activity implements OnClickListener {
 		EditText user = (EditText) findViewById(R.id.user);
 		EditText pass = (EditText) findViewById(R.id.pass);
 		CheckBox checkBox = (CheckBox) findViewById(R.id.checkRecordar);
-
+		Toast toast;
 		if (checkBox.isChecked()) {
 			if (save(user, pass)) {
 				Log.i("SAVE", "GUARDADO");
@@ -51,12 +51,16 @@ public class AccesoActivity extends Activity implements OnClickListener {
 				i.putExtra("mensaje", "Validado");
 				startActivity(i);
 			} else {
-				Toast toast = Toast.makeText(this, "Error de Validacion",Toast.LENGTH_LONG);
+				toast = Toast.makeText(this, "Error de Validacion",
+						Toast.LENGTH_LONG);
 				toast.show();
 			}
 
 		} catch (Exception e) {
 			Log.w("Exception", e);
+			toast = Toast.makeText(this, "Error :" + e.getCause(),
+					Toast.LENGTH_LONG);
+			toast.show();
 		}
 		// TODO VALIDAR ACCESO USUARIO
 

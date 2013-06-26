@@ -41,7 +41,7 @@ public class ContactoSQLite extends SQLiteOpenHelper {
 
 			ContentValues values = new ContentValues();
 			values.put("nombre", us.getNombre());
-			values.put("apellido", us.getApellido());
+			values.put("apellido", us.getPassword());
 			onCreate(db);
 			if (SQLUtils.isExistTable(db, Constants.TB_USUARIO)) {
 				db.insert(Constants.TB_USUARIO, null, values);

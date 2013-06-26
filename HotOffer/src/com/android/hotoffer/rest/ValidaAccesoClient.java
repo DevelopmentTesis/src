@@ -14,7 +14,7 @@ public class ValidaAccesoClient {
 	public boolean valida(Usuario usuario) {
 
 		String url = "http://192.168.1.8:8080/WSRestHotOffer/valida/acceso?nombre="
-				+ usuario.getNombre() + "&password=" + usuario.getApellido();
+				+ usuario.getNombre() + "&password=" + usuario.getPassword();
 		HttpHeaders requestHeaders = new HttpHeaders();
 
 		requestHeaders.setContentType(MediaType.APPLICATION_JSON);
@@ -23,10 +23,10 @@ public class ValidaAccesoClient {
 		HttpEntity<Usuario> requestEntity = new HttpEntity<Usuario>(
 				requestHeaders);
 
-		ResponseEntity<String> response = restTemplate.exchange(url,
-				HttpMethod.GET, requestEntity, String.class);
+		ResponseEntity<Boolean> response = restTemplate.exchange(url,
+				HttpMethod.GET, requestEntity, Boolean.class);
 
-		return response.getBody() != null;
+		return response.getBody();
 
 	}
 }

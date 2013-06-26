@@ -7,28 +7,40 @@
     <uses-sdk
         android:minSdkVersion="8"
         android:targetSdkVersion="17" />
-     <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:allowBackup="true"
         android:icon="@drawable/fuego"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
-        <activity android:name="com.android.hotoffer.activity.MainHotOffer" android:label="@string/app_name">
+        android:theme="@style/AppTheme"
+        android:debuggable="true"
+         >
+        <activity
+            android:name="com.android.hotoffer.activity.MainHotOffer"
+            android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name="com.android.hotoffer.activity.AccesoActivity"
-            android:label="@string/iniciar_sesion">
+            android:label="@string/iniciar_sesion" >
         </activity>
         <activity
             android:name="com.android.hotoffer.activity.ContactoActivity"
             android:label="@string/contacto_activity" >
         </activity>
-        
+
+        <uses-library android:name="com.google.android.maps" android:required="true" />
+
+        <activity android:name="com.android.hotoffer.activity.EjemploMaps" >
+        </activity>
     </application>
 
 </manifest>
