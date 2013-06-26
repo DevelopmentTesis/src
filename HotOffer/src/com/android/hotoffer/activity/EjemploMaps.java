@@ -1,30 +1,18 @@
 package com.android.hotoffer.activity;
 
+
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 
-import com.example.hotoffer.R;
-import com.google.android.maps.MapActivity;
-import com.google.android.maps.MapView;
+import com.android.hotoffer.R;
 
-public class EjemploMaps extends MapActivity {
-
-	private MapView mapa = null;
+public class EjemploMaps extends FragmentActivity {
 
 	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
+	public void onCreate(Bundle arg0) {
+		// TODO Auto-generated method stub
+		super.onCreate(arg0);
 		setContentView(R.layout.mapa);
-
-		// Obtenemos una referencia al control MapView
-		mapa = (MapView) findViewById(R.id.mapa);
-
-		// Mostramos los controles de zoom sobre el mapa
-		mapa.setBuiltInZoomControls(true);
-	}
-
-	@Override
-	protected boolean isRouteDisplayed() {
-		return false;
 	}
 
 }

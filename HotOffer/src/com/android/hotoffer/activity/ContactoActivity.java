@@ -7,9 +7,10 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.android.hotoffer.R;
 import com.android.hotoffer.sqlite.ContactoSQLite;
 import com.android.hotoffer.to.Usuario;
-import com.example.hotoffer.R;
+
 
 public class ContactoActivity extends Activity {
 

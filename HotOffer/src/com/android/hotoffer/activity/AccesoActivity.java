@@ -12,10 +12,11 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.android.hotoffer.R;
 import com.android.hotoffer.rest.ValidaAccesoClient;
 import com.android.hotoffer.sqlite.RecordarAccesoSQLite;
 import com.android.hotoffer.to.Usuario;
-import com.example.hotoffer.R;
+
 
 public class AccesoActivity extends Activity implements OnClickListener {
 

@@ -1,10 +1,12 @@
 package com.android.hotoffer.activity;
 
+import com.android.hotoffer.R;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.example.hotoffer.R;
+
 
 public class MainHotOffer extends Activity {
 
