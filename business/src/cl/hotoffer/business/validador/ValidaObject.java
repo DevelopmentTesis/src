@@ -22,9 +22,6 @@ public class ValidaObject {
 	public static void validate(Object object) throws JAXBException,
 			SAXException, IOException {
 
-		System.out.println(object.getClass().getSimpleName());
-		System.out.println(object.getClass());
-		
 		JAXBContext jc = JAXBContext.newInstance(object.getClass());
 		JAXBSource source = new JAXBSource(jc, object);
 
