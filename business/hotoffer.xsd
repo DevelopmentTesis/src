@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://cl.hotoffer/hotoffer"
+	xmlns:tns="http://cl.hotoffer/hotoffer" elementFormDefault="qualified">
+
+	<complexType name="Usuario">
+		<sequence>
+			<element name="nombre" minOccurs="1" maxOccurs="1">
+				<simpleType>
+					<restriction base="string" />
+				</simpleType>
+			</element>
+			<element name="password" type="string" minOccurs="1"
+				maxOccurs="1"></element>
+		</sequence>
+	</complexType>
+
+	<element name="Usuario" type="tns:Usuario"></element>
+
+	<complexType name="Persona">
+		<sequence>
+			<element name="nombre" type="string"></element>
+			<element name="apellido" type="string"></element>
+			<element name="fechaNacimiento" type="string"></element>
+			<element name="sexo" type="string"></element>
+			<element name="pais" type="string"></element>
+			<element name="ciudad" type="string"></element>
+		</sequence>
+	</complexType>
+
+	<element name="Persona" type="tns:Persona"></element>
+
+	<complexType name="Publicacion">
+		<sequence>
+			<element name="idTipoPublicacion" type="int" minOccurs="1"
+				maxOccurs="1"></element>
+			<element name="idUsuario" type="int" minOccurs="1" maxOccurs="1"></element>
+			<element name="comentario" type="string" minOccurs="1"
+				maxOccurs="1"></element>
+			<element name="precio" type="string" minOccurs="1" maxOccurs="1"></element>
+			<element name="tienda" type="string" minOccurs="0" maxOccurs="1"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="Geolocalizacion">
+		<sequence>
+			<element name="cordLatitud" type="int" minOccurs="1"
+				maxOccurs="1"></element>
+			<element name="cordLonguitud" type="int" minOccurs="1"
+				maxOccurs="1"></element>
+		</sequence>
+	</complexType>
+
+	<element name="Geolocalizacion" type="tns:Geolocalizacion" />
+
+	<element name="Publicacion" type="tns:Publicacion"></element>
+</schema>
