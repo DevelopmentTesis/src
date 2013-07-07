@@ -4,15 +4,19 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 import javax.naming.InitialContext;
+import javax.naming.NamingException;
 import javax.sql.DataSource;
 
-import com.android.database.exception.HotOfferSQLException;
+import org.apache.log4j.Logger;
+
+import cl.hotoffer.exception.HotOfferSQLException;
 
 public class Conector {
 
+	private static final Logger LOGGER = Logger.getLogger(Conector.class);
 	private static final String JDNI = "java:jboss/datasources/HotOffer";
 	private static Conector conector = null;
-	private Connection con;
+	private static Connection con;
 
 	public static Conector getInstance() {
 		synchronized (Conector.class) {
@@ -26,13 +30,20 @@ public class Conector {
 	public Connection getConnection() {
 
 		try {
+
+			LOGGER.info("DATASOURCE : " + JDNI);
+
 			InitialContext context = new InitialContext();
 			DataSource dataSource = (DataSource) context.lookup(JDNI);
+
 			con = dataSource.getConnection();
 
-		} catch (Exception e) {
-			e.printStackTrace();
+		} catch (SQLException e) {
+			LOGGER.error("SQLException : " + e);
+		} catch (NamingException e) {
+			LOGGER.error("NamingException  : " + e);
 		}
+
 		return con;
 	}
 

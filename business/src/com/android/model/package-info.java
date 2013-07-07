@@ -6,4 +6,5 @@
 //
 
 @javax.xml.bind.annotation.XmlSchema(namespace = "http://cl.hotoffer/hotoffer", elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
-package cl.hotoffer.business.jaxb;
+//package cl.hotoffer.business.jaxb;
+package com.android.model;

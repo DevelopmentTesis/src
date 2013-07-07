@@ -5,7 +5,7 @@
 // Generado el: 2013.07.06 a las 03:43:51 PM CLT 
 //
 
-package cl.hotoffer.business.jaxb;
+package com.android.model;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;

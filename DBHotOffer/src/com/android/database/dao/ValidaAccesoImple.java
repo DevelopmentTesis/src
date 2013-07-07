@@ -1,11 +1,13 @@
 package com.android.database.dao;
 
 import java.sql.CallableStatement;
-import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Types;
 
 import org.apache.log4j.Logger;
+
+import cl.hotoffer.business.validador.ValidaObject;
+import cl.hotoffer.exception.BusinessException;
 
 import com.android.database.mysql.Conector;
 import com.android.model.Usuario;
@@ -16,29 +18,34 @@ public class ValidaAccesoImple implements ValidaAcceso {
 			.getLogger(ValidaAccesoImple.class);
 
 	@Override
-	public boolean validaAcceso(Usuario usuario) throws SQLException {
+	public boolean validaAcceso(Usuario usuario) throws BusinessException,
+			SQLException {
 
-		Connection con = Conector.getInstance().getConnection();
 		CallableStatement call = null;
 		try {
 			String procedure = "{call sp_validaUsuario(?,?,?)}";
 			LOGGER.info("CALL PROCEDURE sp_validaUsuario(?,?,?)");
-			call = con.prepareCall(procedure);
-			con.setAutoCommit(false);
+
+			call = Conector.getInstance().getConnection()
+					.prepareCall(procedure);
+			Conector.getInstance().getConnection().setAutoCommit(false);
 			call.setString(1, usuario.getNombre());
 			call.setString(2, usuario.getPassword());
-			call.registerOutParameter(3, Types.INTEGER);
+			call.registerOutParameter(3, Types.BOOLEAN);
+
+			new ValidaObject().validate(usuario);
+
 			call.execute();
 
 			return call.getBoolean(3);
 
-		} catch (Exception e) {
+		} catch (SQLException e) {
 			LOGGER.error("Expcetion: ", e);
-			con.rollback();
+			Conector.getInstance().getConnection().rollback();
+			throw new BusinessException(e);
 		} finally {
-			LOGGER.error("CLOSE BD");
-			con.close();
+			Conector.getInstance().getClose();
 		}
-		return false;
+
 	}
 }
