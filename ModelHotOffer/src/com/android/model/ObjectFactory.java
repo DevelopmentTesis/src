@@ -6,7 +6,7 @@
 //
 
 
-package cl.hotoffer.business.jaxb;
+package com.android.model;
 
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlElementDecl;

@@ -53,4 +53,13 @@
 	<element name="Geolocalizacion" type="tns:Geolocalizacion" />
 
 	<element name="Publicacion" type="tns:Publicacion"></element>
+
+	<complexType name="TipoPublicacion">
+		<sequence>
+			<element name="idPublicacion" type="int"></element>
+			<element name="descripcion" type="string"></element>
+		</sequence>
+	</complexType>
+
+	<element name="TipoPublicacion" type="tns:TipoPublicacion"></element>
 </schema>

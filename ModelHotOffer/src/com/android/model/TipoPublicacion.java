@@ -16,22 +16,17 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para Usuario complex type.
+ * <p>Clase Java para TipoPublicacion complex type.
  * 
  * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
- * &lt;complexType name="Usuario">
+ * &lt;complexType name="TipoPublicacion">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="nombre">
- *           &lt;simpleType>
- *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *             &lt;/restriction>
- *           &lt;/simpleType>
- *         &lt;/element>
- *         &lt;element name="password" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="idPublicacion" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="descripcion" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -41,64 +36,55 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Usuario", propOrder = {
-    "nombre",
-    "password"
+@XmlType(name = "TipoPublicacion", propOrder = {
+    "idPublicacion",
+    "descripcion"
 })
-@XmlRootElement
-public class Usuario {
+@XmlRootElement(name="TipoPublicacion")
+public class TipoPublicacion {
 
+    protected int idPublicacion;
     @XmlElement(required = true)
-    protected String nombre;
-    @XmlElement(required = true)
-    protected String password;
+    protected String descripcion;
 
     /**
-     * Obtiene el valor de la propiedad nombre.
+     * Obtiene el valor de la propiedad idPublicacion.
+     * 
+     */
+    public int getIdPublicacion() {
+        return idPublicacion;
+    }
+
+    /**
+     * Define el valor de la propiedad idPublicacion.
+     * 
+     */
+    public void setIdPublicacion(int value) {
+        this.idPublicacion = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad descripcion.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getNombre() {
-        return nombre;
+    public String getDescripcion() {
+        return descripcion;
     }
 
     /**
-     * Define el valor de la propiedad nombre.
+     * Define el valor de la propiedad descripcion.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setNombre(String value) {
-        this.nombre = value;
-    }
-
-    /**
-     * Obtiene el valor de la propiedad password.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getPassword() {
-        return password;
-    }
-
-    /**
-     * Define el valor de la propiedad password.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setPassword(String value) {
-        this.password = value;
+    public void setDescripcion(String value) {
+        this.descripcion = value;
     }
 
 }

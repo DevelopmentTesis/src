@@ -2,7 +2,7 @@
 // Este archivo ha sido generado por la arquitectura JavaTM para la implantación de la referencia de enlace (JAXB) XML v2.2.7 
 // Visite <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Todas las modificaciones realizadas en este archivo se perderán si se vuelve a compilar el esquema de origen. 
-// Generado el: 2013.07.06 a las 03:43:51 PM CLT 
+// Generado el: 2013.07.07 a las 09:21:30 PM CLT 
 //
 
 
@@ -11,6 +11,7 @@ package com.android.model;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -47,6 +48,7 @@ import javax.xml.bind.annotation.XmlType;
     "pais",
     "ciudad"
 })
+@XmlRootElement
 public class Persona {
 
     @XmlElement(required = true)
