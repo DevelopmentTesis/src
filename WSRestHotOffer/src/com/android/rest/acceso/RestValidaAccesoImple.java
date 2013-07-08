@@ -15,13 +15,13 @@ public class RestValidaAccesoImple implements RestValidaAcceso {
 	private static final Logger LOGGER = Logger
 			.getLogger(RestValidaAccesoImple.class);
 
+	private ValidaAcceso acceso = new ValidaAccesoImple();
+
 	@Override
 	public boolean validaAcceso(String nombre, String password)
 			throws SQLException, BusinessException {
 
 		LOGGER.info("[::CALL WSRestValidaAcceso::]");
-
-		ValidaAcceso acceso = new ValidaAccesoImple();
 
 		Usuario usuario = new Usuario();
 		usuario.setNombre(nombre);
