@@ -2,9 +2,8 @@
 // Este archivo ha sido generado por la arquitectura JavaTM para la implantación de la referencia de enlace (JAXB) XML v2.2.7 
 // Visite <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Todas las modificaciones realizadas en este archivo se perderán si se vuelve a compilar el esquema de origen. 
-// Generado el: 2013.07.07 a las 09:21:30 PM CLT 
+// Generado el: 2013.07.07 a las 09:57:13 PM CLT 
 //
-
 
 package com.android.model;
 
@@ -14,11 +13,13 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Clase Java para Persona complex type.
+ * <p>
+ * Clase Java para Persona complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>
+ * El siguiente fragmento de esquema especifica el contenido que se espera que
+ * haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="Persona">
@@ -31,6 +32,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="sexo" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="pais" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="ciudad" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="Usuario" type="{http://cl.hotoffer/hotoffer}Usuario"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -40,172 +42,171 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Persona", propOrder = {
-    "nombre",
-    "apellido",
-    "fechaNacimiento",
-    "sexo",
-    "pais",
-    "ciudad"
-})
-@XmlRootElement
+@XmlType(name = "Persona", propOrder = { "nombre", "apellido",
+		"fechaNacimiento", "sexo", "pais", "ciudad", "usuario" })
+@XmlRootElement(name = "Persona")
 public class Persona {
 
-    @XmlElement(required = true)
-    protected String nombre;
-    @XmlElement(required = true)
-    protected String apellido;
-    @XmlElement(required = true)
-    protected String fechaNacimiento;
-    @XmlElement(required = true)
-    protected String sexo;
-    @XmlElement(required = true)
-    protected String pais;
-    @XmlElement(required = true)
-    protected String ciudad;
+	@XmlElement(required = true)
+	protected String nombre;
+	@XmlElement(required = true)
+	protected String apellido;
+	@XmlElement(required = true)
+	protected String fechaNacimiento;
+	@XmlElement(required = true)
+	protected String sexo;
+	@XmlElement(required = true)
+	protected String pais;
+	@XmlElement(required = true)
+	protected String ciudad;
+	@XmlElement(name = "Usuario", required = true)
+	protected Usuario usuario;
 
-    /**
-     * Obtiene el valor de la propiedad nombre.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getNombre() {
-        return nombre;
-    }
+	/**
+	 * Obtiene el valor de la propiedad nombre.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getNombre() {
+		return nombre;
+	}
 
-    /**
-     * Define el valor de la propiedad nombre.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setNombre(String value) {
-        this.nombre = value;
-    }
+	/**
+	 * Define el valor de la propiedad nombre.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setNombre(String value) {
+		this.nombre = value;
+	}
 
-    /**
-     * Obtiene el valor de la propiedad apellido.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getApellido() {
-        return apellido;
-    }
+	/**
+	 * Obtiene el valor de la propiedad apellido.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getApellido() {
+		return apellido;
+	}
 
-    /**
-     * Define el valor de la propiedad apellido.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setApellido(String value) {
-        this.apellido = value;
-    }
+	/**
+	 * Define el valor de la propiedad apellido.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setApellido(String value) {
+		this.apellido = value;
+	}
 
-    /**
-     * Obtiene el valor de la propiedad fechaNacimiento.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getFechaNacimiento() {
-        return fechaNacimiento;
-    }
+	/**
+	 * Obtiene el valor de la propiedad fechaNacimiento.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getFechaNacimiento() {
+		return fechaNacimiento;
+	}
 
-    /**
-     * Define el valor de la propiedad fechaNacimiento.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setFechaNacimiento(String value) {
-        this.fechaNacimiento = value;
-    }
+	/**
+	 * Define el valor de la propiedad fechaNacimiento.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setFechaNacimiento(String value) {
+		this.fechaNacimiento = value;
+	}
 
-    /**
-     * Obtiene el valor de la propiedad sexo.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getSexo() {
-        return sexo;
-    }
+	/**
+	 * Obtiene el valor de la propiedad sexo.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getSexo() {
+		return sexo;
+	}
 
-    /**
-     * Define el valor de la propiedad sexo.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setSexo(String value) {
-        this.sexo = value;
-    }
+	/**
+	 * Define el valor de la propiedad sexo.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setSexo(String value) {
+		this.sexo = value;
+	}
 
-    /**
-     * Obtiene el valor de la propiedad pais.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getPais() {
-        return pais;
-    }
+	/**
+	 * Obtiene el valor de la propiedad pais.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getPais() {
+		return pais;
+	}
 
-    /**
-     * Define el valor de la propiedad pais.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setPais(String value) {
-        this.pais = value;
-    }
+	/**
+	 * Define el valor de la propiedad pais.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setPais(String value) {
+		this.pais = value;
+	}
 
-    /**
-     * Obtiene el valor de la propiedad ciudad.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getCiudad() {
-        return ciudad;
-    }
+	/**
+	 * Obtiene el valor de la propiedad ciudad.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getCiudad() {
+		return ciudad;
+	}
 
-    /**
-     * Define el valor de la propiedad ciudad.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setCiudad(String value) {
-        this.ciudad = value;
-    }
+	/**
+	 * Define el valor de la propiedad ciudad.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setCiudad(String value) {
+		this.ciudad = value;
+	}
+
+	/**
+	 * Obtiene el valor de la propiedad usuario.
+	 * 
+	 * @return possible object is {@link Usuario }
+	 * 
+	 */
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	/**
+	 * Define el valor de la propiedad usuario.
+	 * 
+	 * @param value
+	 *            allowed object is {@link Usuario }
+	 * 
+	 */
+	public void setUsuario(Usuario value) {
+		this.usuario = value;
+	}
 
 }

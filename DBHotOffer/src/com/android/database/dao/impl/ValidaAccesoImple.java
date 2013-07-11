@@ -1,4 +1,4 @@
-package com.android.database.dao;
+package com.android.database.dao.impl;
 
 import java.sql.CallableStatement;
 import java.sql.SQLException;
@@ -9,6 +9,7 @@ import org.apache.log4j.Logger;
 import cl.hotoffer.business.validador.ValidaObject;
 import cl.hotoffer.exception.BusinessException;
 
+import com.android.database.dao.ValidaAcceso;
 import com.android.database.mysql.Conector;
 import com.android.model.Usuario;
 

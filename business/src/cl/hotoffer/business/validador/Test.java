@@ -2,7 +2,8 @@ package cl.hotoffer.business.validador;
 
 import cl.hotoffer.exception.BusinessException;
 
-import com.android.model.TipoPublicacion;
+import com.android.model.Persona;
+import com.android.model.Usuario;
 
 public class Test {
 
@@ -12,12 +13,23 @@ public class Test {
 	 */
 	public static void main(String[] args) throws BusinessException {
 
-		TipoPublicacion tipoPublicacion = new TipoPublicacion();
+		Persona persona = new Persona();
+		
+		persona.setApellido("");
+		persona.setCiudad("");
+		persona.setFechaNacimiento("");
+		persona.setNombre("");
+		persona.setPais("");
+		persona.setSexo("");
+		
+		Usuario usuario = new Usuario();
+		
+		usuario.setNombre("");
+		usuario.setPassword("");
+		persona.setUsuario(usuario);
+		
 
-		tipoPublicacion.setIdPublicacion(1);
-		tipoPublicacion.setDescripcion("asdasd");
-
-		new ValidaObject().validate(tipoPublicacion);
+		new ValidaObject().validate(persona);
 
 	}
 

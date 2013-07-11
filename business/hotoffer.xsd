@@ -24,6 +24,7 @@
 			<element name="sexo" type="string"></element>
 			<element name="pais" type="string"></element>
 			<element name="ciudad" type="string"></element>
+			<element name="Usuario" type="tns:Usuario"></element>
 		</sequence>
 	</complexType>
 

@@ -7,7 +7,7 @@ import org.apache.log4j.Logger;
 import cl.hotoffer.exception.BusinessException;
 
 import com.android.database.dao.ValidaAcceso;
-import com.android.database.dao.ValidaAccesoImple;
+import com.android.database.dao.impl.ValidaAccesoImple;
 import com.android.model.Usuario;
 
 public class RestValidaAccesoImple implements RestValidaAcceso {
