@@ -24,7 +24,7 @@ public class Test {
 
 		Usuario usuario = new Usuario();
 
-		usuario.setNombre("");
+		usuario.setNombre("PELAOOOO GAYYY");
 		usuario.setPassword("");
 		persona.setUsuario(usuario);
 
