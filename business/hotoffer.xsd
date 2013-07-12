@@ -4,10 +4,7 @@
 
 	<complexType name="Usuario">
 		<sequence>
-			<element name="nombre" minOccurs="1" maxOccurs="1">
-				<simpleType>
-					<restriction base="string" />
-				</simpleType>
+			<element name="nombre" minOccurs="1" maxOccurs="1" type="string">
 			</element>
 			<element name="password" type="string" minOccurs="1"
 				maxOccurs="1"></element>

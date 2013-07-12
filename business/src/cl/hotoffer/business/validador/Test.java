@@ -14,20 +14,19 @@ public class Test {
 	public static void main(String[] args) throws BusinessException {
 
 		Persona persona = new Persona();
-		
+
 		persona.setApellido("");
 		persona.setCiudad("");
 		persona.setFechaNacimiento("");
 		persona.setNombre("");
 		persona.setPais("");
 		persona.setSexo("");
-		
+
 		Usuario usuario = new Usuario();
-		
+
 		usuario.setNombre("");
 		usuario.setPassword("");
 		persona.setUsuario(usuario);
-		
 
 		new ValidaObject().validate(persona);
 
