@@ -2,16 +2,17 @@ package test;
 
 import static org.junit.Assert.assertNotNull;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import cl.hotoffer.exception.ValidaAccesoException;
+
 import com.android.database.dao.UsuarioDAO;
+import com.android.database.dao.ValidaAcceso;
 import com.android.model.Usuario;
 
 public class TestCase {
@@ -40,13 +41,18 @@ public class TestCase {
 	@Test
 	public void validaUsuario() {
 
-		UsuarioDAO dao = new UsuarioDAO();
+		ValidaAcceso dao = new UsuarioDAO();
 
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("nombre", "kerne");
-		map.put("password", "kerne");
+		Usuario usuario = new Usuario();
+		usuario.setNombre("kerne");
+		usuario.setPassword("kerne");
 
-		Assert.assertTrue(dao.isUsuario(map));
+		try {
+			Assert.assertTrue(dao.validaAcceso(usuario));
+		} catch (ValidaAccesoException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
 

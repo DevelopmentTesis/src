@@ -1,20 +1,25 @@
 package com.android.database.dao;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.log4j.Logger;
 
-import com.android.database.mysql.MyBatisConnectionFactory;
+import cl.hotoffer.exception.ValidaAccesoException;
+
+import com.android.database.mysql.ConnectionFactory;
 import com.android.model.Usuario;
 
-public class UsuarioDAO {
+public class UsuarioDAO implements ValidaAcceso {
 
+	private static final Logger LOGGER = Logger.getLogger(UsuarioDAO.class);
 	private SqlSessionFactory sqlSessionFactory = null;
 
 	public UsuarioDAO() {
-		sqlSessionFactory = MyBatisConnectionFactory.getSqlSessionFactory();
+		sqlSessionFactory = ConnectionFactory.getSqlSessionFactory();
 	}
 
 	@SuppressWarnings("unchecked")
@@ -79,22 +84,27 @@ public class UsuarioDAO {
 		}
 	}
 
-	public boolean isUsuario(Map<String, Object> map) {
+	@Override
+	public boolean validaAcceso(Usuario usuario) throws ValidaAccesoException {
 
+		LOGGER.info("VALIDA ACCESO USUARIO");
 		SqlSession session = sqlSessionFactory.openSession();
-
 		try {
 
+			UsuarioDAO dao = new UsuarioDAO();
+
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("nombre", usuario.getNombre());
+			map.put("password", usuario.getPassword());
+
 			session.selectOne("Usuario.spValidaUsuario", map);
-			
 			return (Boolean) map.get("resultado");
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			throw new ValidaAccesoException(e);
 		} finally {
 			session.close();
 		}
-		return false;
 
 	}
 }

@@ -5,7 +5,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import com.android.rest.acceso.RestValidaAccesoImple;
-import com.android.rest.creacion.RestCrearUsuarioImpl;
 
 public class Application extends javax.ws.rs.core.Application {
 
@@ -13,7 +12,7 @@ public class Application extends javax.ws.rs.core.Application {
 
 	public Application() {
 		classes.add(RestValidaAccesoImple.class);
-		classes.add(RestCrearUsuarioImpl.class);
+		// classes.add(RestCrearUsuarioImpl.class);
 	}
 
 	@Override
@@ -23,7 +22,7 @@ public class Application extends javax.ws.rs.core.Application {
 
 	@Override
 	public Set<Object> getSingletons() {
-		return Collections.EMPTY_SET;
+		return Collections.emptySet();
 	}
 
 }

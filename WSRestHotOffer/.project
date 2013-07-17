@@ -5,8 +5,8 @@
 	<projects>
 		<project>ModelHotOffer</project>
 		<project>DBHotOffer</project>
-		<project>common</project>
 		<project>business</project>
+		<project>common</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

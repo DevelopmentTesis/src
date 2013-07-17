@@ -3,16 +3,17 @@
     <wb-module deploy-name="WSRestHotOffer">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/srcTest"/>
         <dependent-module archiveName="ModelHotOffer.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ModelHotOffer/ModelHotOffer">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <dependent-module archiveName="DBHotOffer.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/DBHotOffer/DBHotOffer">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="common.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/common/common">
+        <dependent-module archiveName="business.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/business/business">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="business.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/business/business">
+        <dependent-module archiveName="common.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/common/common">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <property name="context-root" value="WSRestHotOffer"/>

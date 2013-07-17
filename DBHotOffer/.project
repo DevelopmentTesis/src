@@ -3,6 +3,8 @@
 	<name>DBHotOffer</name>
 	<comment></comment>
 	<projects>
+		<project>ModelHotOffer</project>
+		<project>business</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

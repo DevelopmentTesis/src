@@ -3,5 +3,11 @@
     <wb-module deploy-name="DBHotOffer">
         <wb-resource deploy-path="/" source-path="/src"/>
         <wb-resource deploy-path="/" source-path="/test"/>
+        <dependent-module archiveName="ModelHotOffer.jar" deploy-path="/" handle="module:/resource/ModelHotOffer/ModelHotOffer">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="business.jar" deploy-path="/" handle="module:/resource/business/business">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
     </wb-module>
 </project-modules>

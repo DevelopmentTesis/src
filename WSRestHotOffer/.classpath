@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="srcTest"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.6.0_38">
 		<attributes>
 			<attribute name="owner.project.facets" value="java"/>
@@ -13,9 +14,12 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/DBHotOffer"/>
-	<classpathentry kind="lib" path="/home/kerne/Escritorio/library/apache-log4j-1.2.17/log4j-1.2.17.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/business"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/common"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ModelHotOffer"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="lib" path="/home/kerne/jboss-as-7.1.0.Final/standalone/lib/common.jar"/>
+	<classpathentry kind="lib" path="/home/kerne/Escritorio/TESIS/libreria/log4j-1.2.17.jar"/>
+	<classpathentry kind="lib" path="/home/kerne/jboss-as-7.1.0.Final/standalone/lib/mybatis-3.0.3.jar"/>
+	<classpathentry kind="lib" path="/home/kerne/jboss-as-7.1.0.Final/standalone/lib/ext/ibatis-common-2.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
