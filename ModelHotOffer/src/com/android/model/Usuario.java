@@ -92,5 +92,4 @@ public class Usuario {
 	public void setPassword(String value) {
 		this.password = value;
 	}
-
 }

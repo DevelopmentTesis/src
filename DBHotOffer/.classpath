@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="test"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.6.0_38">
 		<attributes>
@@ -12,5 +13,7 @@
 	<classpathentry kind="lib" path="/common/lib/mysql-connector-java-5.1.22-bin.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ModelHotOffer"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/business"/>
+	<classpathentry kind="lib" path="/home/kerne/Escritorio/TESIS/libreria/mybatis-3.0.3.jar"/>
+	<classpathentry kind="lib" path="/home/kerne/Escritorio/TESIS/libreria/junit-4.8.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
