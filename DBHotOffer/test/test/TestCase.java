@@ -2,54 +2,31 @@ package test;
 
 import static org.junit.Assert.assertNotNull;
 
-import java.util.List;
-
-import org.junit.AfterClass;
 import org.junit.Assert;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
-import cl.hotoffer.exception.ValidaAccesoException;
+import cl.hotoffer.exception.UsuarioException;
 
 import com.android.database.dao.UsuarioDAO;
-import com.android.database.dao.ValidaAcceso;
+import com.android.database.dao.impl.UsuarioDaoImpl;
+import com.android.model.Persona;
 import com.android.model.Usuario;
 
 public class TestCase {
 
-	private static UsuarioDAO usuarioDAO;
-
-	@BeforeClass
-	public static void befor() {
-		usuarioDAO = new UsuarioDAO();
-	}
-
-	@AfterClass
-	public static void runAfterClass() {
-		usuarioDAO = null;
-	}
-
-	@Test
-	public void select() {
-
-		List<Usuario> list = usuarioDAO.selectAll();
-
-		assertNotNull("LISTA", list);
-
-	}
-
 	@Test
 	public void validaUsuario() {
 
-		ValidaAcceso dao = new UsuarioDAO();
+		UsuarioDAO dao = new UsuarioDaoImpl();
 
 		Usuario usuario = new Usuario();
-		usuario.setNombre("kerne");
-		usuario.setPassword("kerne");
+		usuario.setNombre("AASDA");
+		usuario.setPassword("test");
 
 		try {
 			Assert.assertTrue(dao.validaAcceso(usuario));
-		} catch (ValidaAccesoException e) {
+				
+		} catch (UsuarioException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -57,8 +34,35 @@ public class TestCase {
 	}
 
 	@Test
-	public void selectKey() {
-		UsuarioDAO dao = new UsuarioDAO();
+	public void insert() {
+
+		UsuarioDAO dao = new UsuarioDaoImpl();
+		try {
+			Persona persona = new Persona();
+			persona.setNombre("test1");
+			persona.setApellido("test1");
+			persona.setFechaNacimiento("1988-06-02");
+			persona.setPais(1);
+			persona.setCiudad(1);
+			persona.setSexo("M");
+			persona.setTipoUsuario(0);
+
+			Usuario usuario = new Usuario();
+			usuario.setNombre("prueba2");
+			usuario.setPassword("prueba");
+			persona.setUsuario(usuario);
+
+			dao.insert(persona);
+		} catch (UsuarioException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+	@Test
+	public void selectKey() throws UsuarioException {
+		UsuarioDaoImpl dao = new UsuarioDaoImpl();
 		assertNotNull(dao.selectById(2));
 
 	}

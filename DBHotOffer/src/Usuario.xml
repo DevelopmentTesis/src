@@ -24,23 +24,35 @@
 		ID_USUARIO = #{id};
 	</delete>
 
-	<insert id="insert" parameterType="Usuario">
-		INSERT INTO USUARIO (ID_USUARIO, NOMBRE,
-		PASSWORD,ID_TIPO_USUARIO,USER_TOKEN)
-		VALUES (#{nombre}, #{password},
-		#{id_tipo_usuario}, #{user_token});
-		<selectKey keyProperty="id" resultType="int" order="AFTER">
-			select
-			last_insert_id() as id
-		</selectKey>
+	<parameterMap type="Usuario" id="User">
+		<parameter property="nombre" javaType="java.lang.String" />
+		<parameter property="password" javaType="java.lang.String" />
+	</parameterMap>
+
+	<insert id="sp_creaPersona" 
+		statementType="CALLABLE">
+		{call
+		sp_creaPersona(
+		#{nombre,jdbcType=VARCHAR,mode=IN},
+		#{apellido,jdbcType=VARCHAR, mode=IN},
+		#{fechaNacimiento,jdbcType=DATE, mode=IN},
+		#{sexo,jdbcType=VARCHAR,mode=IN},
+		#{pais,jdbcType=VARCHAR, mode=IN},
+		#{ciudad,jdbcType=VARCHAR, mode=IN},
+		#{usuario.nombre,jdbcType=VARCHAR,mode=IN},
+		#{usuario.password,jdbcType=VARCHAR, mode=IN},
+		#{tipoUsuario,jdbcType=VARCHAR, mode=IN}		
+		)}
 	</insert>
 
 	<!-- Call Procedure -->
-	<select id="spValidaUsuario" statementType="CALLABLE" resultType="boolean" >
+	<select id="spValidaUsuario" statementType="CALLABLE"
+		resultType="boolean">
 		{call
 		sp_validaUsuario(
 		#{nombre,jdbcType=VARCHAR,mode=IN},
-		#{password,jdbcType=VARCHAR, mode=IN},
+		#{password,jdbcType=VARCHAR,
+		mode=IN},
 		#{resultado,jdbcType=BOOLEAN,mode=OUT}
 		)}
 	</select>

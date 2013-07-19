@@ -1,6 +1,5 @@
 package com.android.database.mysql;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.Reader;
 
@@ -11,31 +10,36 @@ import org.apache.log4j.Logger;
 
 public class ConnectionFactory {
 
-	private static SqlSessionFactory sqlSessionFactory;
+	private static SqlSessionFactory session;
 	private static final Logger LOGGER = Logger
 			.getLogger(ConnectionFactory.class);
 
-	public static SqlSessionFactory getSqlSessionFactory() {
+	private ConnectionFactory() {
 
+	}
+
+	public static ConnectionFactory getInstance() {
+		synchronized (ConnectionFactory.class) {
+			return new ConnectionFactory();
+		}
+	}
+
+	public SqlSessionFactory getSqlSessionFactory() {
+
+		String resource = "ibatisConfig.xml";
+		LOGGER.info("RESOURCE :" + resource);
+		Reader reader;
 		try {
+			reader = Resources.getResourceAsReader(resource);
 
-			String resource = "ibatisConfig.xml";
-			LOGGER.info("RESOURCE :" + resource);
-			Reader reader = Resources.getResourceAsReader(resource);
-
-			if (sqlSessionFactory == null) {
-				sqlSessionFactory = new SqlSessionFactoryBuilder()
-						.build(reader);
+			if (session == null) {
+				session = new SqlSessionFactoryBuilder().build(reader);
 			}
+		} catch (IOException e) {
+			LOGGER.error(e);
 		}
 
-		catch (FileNotFoundException e) {
-			LOGGER.info("FileNotFoundException :" + e);
-		} catch (IOException io) {
-			LOGGER.info("IOException :" + io);
-		}
-
-		return sqlSessionFactory;
+		return session;
 	}
 
 }

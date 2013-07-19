@@ -5,6 +5,7 @@
 	<projects>
 		<project>ModelHotOffer</project>
 		<project>business</project>
+		<project>common</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

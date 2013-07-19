@@ -1,110 +1,67 @@
 package com.android.database.dao;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
-import org.apache.log4j.Logger;
+import cl.hotoffer.exception.UsuarioException;
 
-import cl.hotoffer.exception.ValidaAccesoException;
-
-import com.android.database.mysql.ConnectionFactory;
+import com.android.model.Persona;
 import com.android.model.Usuario;
 
-public class UsuarioDAO implements ValidaAcceso {
+/**
+ * 
+ * @author César Araya Acosta
+ * 
+ */
+public interface UsuarioDAO {
 
-	private static final Logger LOGGER = Logger.getLogger(UsuarioDAO.class);
-	private SqlSessionFactory sqlSessionFactory = null;
+	/**
+	 * Metodo que permite Valida Acceso de Usuario
+	 * 
+	 * @param usuario
+	 * @return
+	 * @throws UsuarioException
+	 */
+	boolean validaAcceso(Usuario usuario) throws UsuarioException;
 
-	public UsuarioDAO() {
-		sqlSessionFactory = ConnectionFactory.getSqlSessionFactory();
-	}
+	/**
+	 * Metodo que permite seleccionar todos los usuario registrados
+	 * 
+	 * @return List<Usuario>
+	 * @throws UsuarioException
+	 */
+	List<Usuario> selectAll() throws UsuarioException;
 
-	@SuppressWarnings("unchecked")
-	public List<Usuario> selectAll() {
+	/**
+	 * Metodo que permite seleccionar usuario por id
+	 * 
+	 * @param id
+	 * @return Usuario
+	 * @throws UsuarioException
+	 */
+	Usuario selectById(int id) throws UsuarioException;
 
-		SqlSession session = sqlSessionFactory.openSession();
+	/**
+	 * Metodo que permite actualizar regitro de usuario
+	 * 
+	 * @param usuario
+	 * @throws UsuarioException
+	 */
+	void update(Persona persona) throws UsuarioException;
 
-		try {
-			List<Usuario> list = session.selectList("Usuario.getAll");
-			return list;
-		} finally {
-			session.close();
-		}
-	}
+	/**
+	 * Metodo que permite crear registro de Persona
+	 * 
+	 * @param usuario
+	 * @throws UsuarioException
+	 */
+	void insert(Persona persona) throws UsuarioException;
 
-	public Usuario selectById(int id) {
+	/**
+	 * Metodo que permite eliminar Persona
+	 * 
+	 * @param usuario
+	 * @throws UsuarioException
+	 */
+	public void delete(int id) throws UsuarioException;
 
-		SqlSession session = sqlSessionFactory.openSession();
-
-		try {
-			Usuario contact = (Usuario) session
-					.selectOne("Usuario.getById", id);
-			return contact;
-		} finally {
-			session.close();
-		}
-	}
-
-	public void update(Usuario contact) {
-
-		SqlSession session = sqlSessionFactory.openSession();
-
-		try {
-			session.update("Usuario.update", contact);
-			session.commit();
-		} finally {
-			session.close();
-		}
-	}
-
-	public void insert(Usuario contact) {
-
-		SqlSession session = sqlSessionFactory.openSession();
-
-		try {
-			session.insert("Usuario.insert", contact);
-			session.commit();
-		} finally {
-			session.close();
-		}
-	}
-
-	public void delete(int id) {
-
-		SqlSession session = sqlSessionFactory.openSession();
-
-		try {
-			session.delete("Usuario.deleteById", id);
-			session.commit();
-		} finally {
-			session.close();
-		}
-	}
-
-	@Override
-	public boolean validaAcceso(Usuario usuario) throws ValidaAccesoException {
-
-		LOGGER.info("VALIDA ACCESO USUARIO");
-		SqlSession session = sqlSessionFactory.openSession();
-		try {
-
-			UsuarioDAO dao = new UsuarioDAO();
-
-			Map<String, Object> map = new HashMap<String, Object>();
-			map.put("nombre", usuario.getNombre());
-			map.put("password", usuario.getPassword());
-
-			session.selectOne("Usuario.spValidaUsuario", map);
-			return (Boolean) map.get("resultado");
-
-		} catch (Exception e) {
-			throw new ValidaAccesoException(e);
-		} finally {
-			session.close();
-		}
-
-	}
 }

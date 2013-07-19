@@ -2,7 +2,7 @@
 // Este archivo ha sido generado por la arquitectura JavaTM para la implantación de la referencia de enlace (JAXB) XML v2.2.7 
 // Visite <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Todas las modificaciones realizadas en este archivo se perderán si se vuelve a compilar el esquema de origen. 
-// Generado el: 2013.07.07 a las 09:57:13 PM CLT 
+// Generado el: 2013.07.18 a las 07:23:33 PM CLT 
 //
 
 package com.android.model;
@@ -30,9 +30,10 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="apellido" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="fechaNacimiento" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="sexo" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="pais" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="ciudad" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="pais" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="ciudad" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="Usuario" type="{http://cl.hotoffer/hotoffer}Usuario"/>
+ *         &lt;element name="tipoUsuario" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -43,7 +44,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Persona", propOrder = { "nombre", "apellido",
-		"fechaNacimiento", "sexo", "pais", "ciudad", "usuario" })
+		"fechaNacimiento", "sexo", "pais", "ciudad", "usuario", "tipoUsuario" })
 @XmlRootElement(name = "Persona")
 public class Persona {
 
@@ -55,12 +56,11 @@ public class Persona {
 	protected String fechaNacimiento;
 	@XmlElement(required = true)
 	protected String sexo;
-	@XmlElement(required = true)
-	protected String pais;
-	@XmlElement(required = true)
-	protected String ciudad;
+	protected int pais;
+	protected int ciudad;
 	@XmlElement(name = "Usuario", required = true)
 	protected Usuario usuario;
+	protected int tipoUsuario;
 
 	/**
 	 * Obtiene el valor de la propiedad nombre.
@@ -149,42 +149,32 @@ public class Persona {
 	/**
 	 * Obtiene el valor de la propiedad pais.
 	 * 
-	 * @return possible object is {@link String }
-	 * 
 	 */
-	public String getPais() {
+	public int getPais() {
 		return pais;
 	}
 
 	/**
 	 * Define el valor de la propiedad pais.
 	 * 
-	 * @param value
-	 *            allowed object is {@link String }
-	 * 
 	 */
-	public void setPais(String value) {
+	public void setPais(int value) {
 		this.pais = value;
 	}
 
 	/**
 	 * Obtiene el valor de la propiedad ciudad.
 	 * 
-	 * @return possible object is {@link String }
-	 * 
 	 */
-	public String getCiudad() {
+	public int getCiudad() {
 		return ciudad;
 	}
 
 	/**
 	 * Define el valor de la propiedad ciudad.
 	 * 
-	 * @param value
-	 *            allowed object is {@link String }
-	 * 
 	 */
-	public void setCiudad(String value) {
+	public void setCiudad(int value) {
 		this.ciudad = value;
 	}
 
@@ -207,6 +197,22 @@ public class Persona {
 	 */
 	public void setUsuario(Usuario value) {
 		this.usuario = value;
+	}
+
+	/**
+	 * Obtiene el valor de la propiedad tipoUsuario.
+	 * 
+	 */
+	public int getTipoUsuario() {
+		return tipoUsuario;
+	}
+
+	/**
+	 * Define el valor de la propiedad tipoUsuario.
+	 * 
+	 */
+	public void setTipoUsuario(int value) {
+		this.tipoUsuario = value;
 	}
 
 }

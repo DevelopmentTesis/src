@@ -19,9 +19,10 @@
 			<element name="apellido" type="string"></element>
 			<element name="fechaNacimiento" type="string"></element>
 			<element name="sexo" type="string"></element>
-			<element name="pais" type="string"></element>
-			<element name="ciudad" type="string"></element>
-			<element name="Usuario" type="tns:Usuario"></element>
+			<element name="pais" type="int"></element>
+			<element name="ciudad" type="int"></element>
+			<element name="Usuario" type="tns:Usuario" maxOccurs="1" minOccurs="1"></element>
+			<element name="tipoUsuario" type="int"></element>
 		</sequence>
 	</complexType>
 

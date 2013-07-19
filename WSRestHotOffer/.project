@@ -4,9 +4,9 @@
 	<comment></comment>
 	<projects>
 		<project>ModelHotOffer</project>
-		<project>DBHotOffer</project>
-		<project>business</project>
 		<project>common</project>
+		<project>business</project>
+		<project>DBHotOffer</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

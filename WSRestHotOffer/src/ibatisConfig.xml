@@ -7,6 +7,7 @@
 
 	<typeAliases>
 		<typeAlias alias="Usuario" type="com.android.model.Usuario" />
+		<typeAlias alias="Persona" type="com.android.model.Persona" />
 	</typeAliases>
 
 	<environments default="development">

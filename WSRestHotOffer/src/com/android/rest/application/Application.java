@@ -1,18 +1,22 @@
 package com.android.rest.application;
 
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
-import com.android.rest.acceso.RestValidaAccesoImple;
+import org.apache.log4j.Logger;
+
+import com.android.rest.acceso.RestServiceImpl;
 
 public class Application extends javax.ws.rs.core.Application {
 
+	private static final Logger LOGGER = Logger.getLogger(Application.class);
 	private Set<Class<?>> classes = new HashSet<Class<?>>();
+	private Set<Object> singletons = new HashSet<Object>();
 
 	public Application() {
-		classes.add(RestValidaAccesoImple.class);
-		// classes.add(RestCrearUsuarioImpl.class);
+		LOGGER.info("init application");
+		this.classes.add(RestServiceImpl.class);
+
 	}
 
 	@Override
@@ -22,7 +26,7 @@ public class Application extends javax.ws.rs.core.Application {
 
 	@Override
 	public Set<Object> getSingletons() {
-		return Collections.emptySet();
+		return singletons;
 	}
 
 }

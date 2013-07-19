@@ -16,15 +16,15 @@ public class Test {
 		Persona persona = new Persona();
 
 		persona.setApellido("");
-		persona.setCiudad("");
-		persona.setFechaNacimiento("");
+
+	
 		persona.setNombre("");
-		persona.setPais("");
+	
 		persona.setSexo("");
 
 		Usuario usuario = new Usuario();
 
-		usuario.setNombre("PELAOOOO GAYYY");
+		usuario.setNombre("");
 		usuario.setPassword("");
 		persona.setUsuario(usuario);
 
