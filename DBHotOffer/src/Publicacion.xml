@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Publicacion">
+
+    <resultMap id="result" type="Publicacion">
+		<result property="idTipoPublicacion" column="ID_TIPO_PUBLICACION" />
+		<result property="usuario.idUsuario" column="ID_USUARIO" />
+		<result property="usuario.nombre" column="NOMBRE" />
+		<result property="comentario" column="COMENTARIO" />
+		<result property="precio" column="PRECIO" />
+		<result property="tienda" column="TIENDA" />
+		<result property="fechaPublicacion" column="FECHA_PUBLICACION" />
+		<result property="geolocalizacion.cordLatitud" column="LATITUD" />
+		<result property="geolocalizacion.cordLonguitud" column="LONGUITUD" />
+	</resultMap>
+
+
+	<select id="getPublicaciones" statementType="CALLABLE" resultMap="result">
+		{call sp_publicaciones()}
+	</select>
+
+</mapper>

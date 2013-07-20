@@ -15,7 +15,7 @@ public class MainHotOffer extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main_hotoffer);
 		// Intent intent = new Intent(MainHotOffer.this, AccesoActivity.class);
-		Intent intent = new Intent(MainHotOffer.this, EjemploMaps.class);
+		Intent intent = new Intent(MainHotOffer.this, MainActivity.class);
 		startActivity(intent);
 	}
 }

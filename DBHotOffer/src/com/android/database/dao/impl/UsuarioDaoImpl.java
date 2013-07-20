@@ -11,8 +11,8 @@ import org.apache.log4j.Logger;
 import cl.hotoffer.business.validador.ValidaObject;
 import cl.hotoffer.exception.UsuarioException;
 
+import com.android.database.conector.ConnectionFactory;
 import com.android.database.dao.UsuarioDAO;
-import com.android.database.mysql.ConnectionFactory;
 import com.android.model.Persona;
 import com.android.model.Usuario;
 
@@ -113,7 +113,7 @@ public class UsuarioDaoImpl implements UsuarioDAO {
 		LOGGER.info("VALIDA ACCESO USUARIO");
 		SqlSession session = sqlSessionFactory.openSession();
 		try {
-			new ValidaObject().validate(usuario);
+//			new ValidaObject().validate(usuario);
 
 			Map<String, Object> map = new HashMap<String, Object>();
 			map.put("nombre", usuario.getNombre());

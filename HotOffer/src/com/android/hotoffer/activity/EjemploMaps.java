@@ -1,18 +1,36 @@
 package com.android.hotoffer.activity;
 
+import com.android.hotoffer.R;
+import com.google.android.maps.MapActivity;
+import com.google.android.maps.MapView;
+import com.google.android.maps.MapView.LayoutParams;
 
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.widget.LinearLayout;
 
-import com.android.hotoffer.R;
+public class EjemploMaps extends MapActivity {
+	MapView mapView;
 
-public class EjemploMaps extends FragmentActivity {
-
+	/** Called when the activity is first created. */
 	@Override
-	public void onCreate(Bundle arg0) {
-		// TODO Auto-generated method stub
-		super.onCreate(arg0);
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
 		setContentView(R.layout.mapa);
+
+		mapView = (MapView) findViewById(R.id.zoom);
+		LinearLayout zoomLayout = (LinearLayout) findViewById(R.id.zoom);
+		View zoomView = mapView.getZoomControls();
+
+		zoomLayout.addView(zoomView, new LinearLayout.LayoutParams(
+				LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+		mapView.displayZoomControls(true);
+
 	}
 
+	@Override
+	protected boolean isRouteDisplayed() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }
