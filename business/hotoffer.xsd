@@ -36,6 +36,7 @@
 			<element name="idTipoPublicacion" type="int" minOccurs="1"
 				maxOccurs="1">
 			</element>
+			<element name="descrTipo" type="string"></element>
 			<element name="Usuario" type="tns:Usuario" minOccurs="1"
 				maxOccurs="1">
 			</element>

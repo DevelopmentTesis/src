@@ -2,7 +2,7 @@
 // Este archivo ha sido generado por la arquitectura JavaTM para la implantación de la referencia de enlace (JAXB) XML v2.2.7 
 // Visite <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Todas las modificaciones realizadas en este archivo se perderán si se vuelve a compilar el esquema de origen. 
-// Generado el: 2013.07.20 a las 01:28:21 AM CLT 
+// Generado el: 2013.07.20 a las 11:45:21 PM CLT 
 //
 
 
@@ -25,6 +25,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="idTipoPublicacion" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="descrTipo" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="Usuario" type="{http://cl.hotoffer/hotoffer}Usuario"/>
  *         &lt;element name="comentario" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="precio" type="{http://www.w3.org/2001/XMLSchema}string"/>
@@ -42,6 +43,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Publicacion", propOrder = {
     "idTipoPublicacion",
+    "descrTipo",
     "usuario",
     "comentario",
     "precio",
@@ -52,6 +54,8 @@ import javax.xml.bind.annotation.XmlType;
 public class Publicacion {
 
     protected int idTipoPublicacion;
+    @XmlElement(required = true)
+    protected String descrTipo;
     @XmlElement(name = "Usuario", required = true)
     protected Usuario usuario;
     @XmlElement(required = true)
@@ -78,6 +82,30 @@ public class Publicacion {
      */
     public void setIdTipoPublicacion(int value) {
         this.idTipoPublicacion = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad descrTipo.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getDescrTipo() {
+        return descrTipo;
+    }
+
+    /**
+     * Define el valor de la propiedad descrTipo.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setDescrTipo(String value) {
+        this.descrTipo = value;
     }
 
     /**

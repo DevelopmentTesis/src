@@ -8,8 +8,7 @@
 	<typeAliases>
 		<typeAlias alias="Usuario" type="com.android.model.Usuario" />
 		<typeAlias alias="Persona" type="com.android.model.Persona" />
-		<typeAlias alias="Publicacion" type="com.android.model.Publicacion" />
-		<typeAlias alias="PublicacionTO" type="com.android.database.dao.to.PublicacionTO" />
+		<typeAlias alias="Publicacion" type="com.android.model.Publicacion" />		
 	</typeAliases>
 
 	<environments default="development">

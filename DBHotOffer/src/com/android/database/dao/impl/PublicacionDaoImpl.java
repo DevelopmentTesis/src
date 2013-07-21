@@ -24,11 +24,6 @@ public class PublicacionDaoImpl implements PublicacionDAO {
 	}
 
 	@Override
-	public void publicar(Publicacion publicacion) throws BusinessException {
-
-	}
-
-	@Override
 	public List<Publicacion> getPublicacion() throws BusinessException {
 
 		SqlSession session = sqlSessionFactory.openSession();
@@ -38,6 +33,15 @@ public class PublicacionDaoImpl implements PublicacionDAO {
 				.selectList("Publicacion.getPublicaciones");
 
 		return list;
+	}
+
+	@Override
+	public void guardarPublicacion(Publicacion publicacion)
+			throws BusinessException {
+		SqlSession session = sqlSessionFactory.openSession();
+
+		session.insert("Publicacion.guardarPublicacion", publicacion);
+
 	}
 
 }
