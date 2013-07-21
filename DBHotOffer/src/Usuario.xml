@@ -6,12 +6,13 @@
 <mapper namespace="Usuario">
 
 	<resultMap id="result" type="Usuario">
+		<result property="idUsuario" column="ID_USUARIO" />
 		<result property="nombre" column="NOMBRE" />
 		<result property="password" column="PASSWORD" />
 	</resultMap>
 
 	<select id="getAll" resultMap="result">
-		SELECT * FROM USUARIO
+		SELECT idUsuario, nombre, password FROM USUARIO;
 	</select>
 
 	<select id="getById" parameterType="int" resultMap="result">
@@ -24,24 +25,19 @@
 		ID_USUARIO = #{id};
 	</delete>
 
-	<parameterMap type="Usuario" id="User">
-		<parameter property="nombre" javaType="java.lang.String" />
-		<parameter property="password" javaType="java.lang.String" />
-	</parameterMap>
-
-	<insert id="sp_creaPersona" 
-		statementType="CALLABLE">
+	<insert id="sp_creaPersona" statementType="CALLABLE">
 		{call
 		sp_creaPersona(
 		#{nombre,jdbcType=VARCHAR,mode=IN},
-		#{apellido,jdbcType=VARCHAR, mode=IN},
+		#{apellido,jdbcType=VARCHAR,
+		mode=IN},
 		#{fechaNacimiento,jdbcType=DATE, mode=IN},
 		#{sexo,jdbcType=VARCHAR,mode=IN},
 		#{pais,jdbcType=VARCHAR, mode=IN},
 		#{ciudad,jdbcType=VARCHAR, mode=IN},
 		#{usuario.nombre,jdbcType=VARCHAR,mode=IN},
 		#{usuario.password,jdbcType=VARCHAR, mode=IN},
-		#{tipoUsuario,jdbcType=VARCHAR, mode=IN}		
+		#{tipoUsuario,jdbcType=VARCHAR, mode=IN}
 		)}
 	</insert>
 

@@ -26,8 +26,7 @@ public class ValidaObject {
 
 			JAXBSource source = new JAXBSource(jc, object);
 
-			SchemaFactory sf = SchemaFactory
-					.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
+			SchemaFactory sf = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
 			LOGGER.info("ABRIR ARCHIVO : hotoffer.xsd");
 			Schema schema = sf.newSchema(new File("hotoffer.xsd"));
 

@@ -24,24 +24,19 @@
 		ID_USUARIO = #{id};
 	</delete>
 
-	<parameterMap type="Usuario" id="User">
-		<parameter property="nombre" javaType="java.lang.String" />
-		<parameter property="password" javaType="java.lang.String" />
-	</parameterMap>
-
-	<insert id="sp_creaPersona" 
-		statementType="CALLABLE">
+	<insert id="sp_creaPersona" statementType="CALLABLE">
 		{call
 		sp_creaPersona(
 		#{nombre,jdbcType=VARCHAR,mode=IN},
-		#{apellido,jdbcType=VARCHAR, mode=IN},
+		#{apellido,jdbcType=VARCHAR,
+		mode=IN},
 		#{fechaNacimiento,jdbcType=DATE, mode=IN},
 		#{sexo,jdbcType=VARCHAR,mode=IN},
 		#{pais,jdbcType=VARCHAR, mode=IN},
 		#{ciudad,jdbcType=VARCHAR, mode=IN},
 		#{usuario.nombre,jdbcType=VARCHAR,mode=IN},
 		#{usuario.password,jdbcType=VARCHAR, mode=IN},
-		#{tipoUsuario,jdbcType=VARCHAR, mode=IN}		
+		#{tipoUsuario,jdbcType=VARCHAR, mode=IN}
 		)}
 	</insert>
 

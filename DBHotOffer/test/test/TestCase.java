@@ -2,10 +2,14 @@ package test;
 
 import static org.junit.Assert.assertNotNull;
 
+import java.math.BigInteger;
+
 import org.junit.Assert;
 import org.junit.Test;
 
+import cl.hotoffer.business.validador.ValidaObject;
 import cl.hotoffer.exception.BusinessException;
+import cl.hotoffer.exception.PublicacionException;
 import cl.hotoffer.exception.UsuarioException;
 
 import com.android.database.dao.PublicacionDAO;
@@ -20,21 +24,18 @@ import com.android.model.Usuario;
 public class TestCase {
 
 	@Test
-	public void validaUsuario() {
+	public void validaUsuario() throws BusinessException, UsuarioException {
 
 		UsuarioDAO dao = new UsuarioDaoImpl();
 
 		Usuario usuario = new Usuario();
+		usuario.setIdUsuario(BigInteger.ONE);
 		usuario.setNombre("kerne");
 		usuario.setPassword("kerne");
 
-		try {
-			Assert.assertTrue(dao.validaAcceso(usuario));
+		new ValidaObject().validate(usuario);
 
-		} catch (UsuarioException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		Assert.assertTrue(dao.validaAcceso(usuario));
 
 	}
 
@@ -84,23 +85,21 @@ public class TestCase {
 	}
 
 	@Test
-	public void getPublicaciones() throws BusinessException {
+	public void getPublicaciones() throws PublicacionException {
 
 		PublicacionDAO dao = new PublicacionDaoImpl();
-
-		for (Publicacion p : dao.getPublicacion()) {
-			System.out.println(p.getUsuario().getNombre());
-		}
+		assertNotNull(dao.getPublicacion());
 
 	}
 
 	@Test
-	public void guardarPublicacion() throws BusinessException {
+	public void guardarPublicacion() throws PublicacionException {
 
 		PublicacionDAO dao = new PublicacionDaoImpl();
+
 		Publicacion pub = new Publicacion();
 		Usuario usuario = new Usuario();
-		usuario.setIdUsuario(1);
+
 		pub.setUsuario(usuario);
 		pub.setIdTipoPublicacion(1);
 
@@ -109,9 +108,9 @@ public class TestCase {
 		geo.setCordLonguitud(23123123);
 		pub.setGeolocalizacion(geo);
 
-		pub.setComentario("PRUEBA PUBLICACION");
+		pub.setComentario("OFERTA");
 		pub.setPrecio("12312");
-		pub.setTienda("TIENDA");
+		pub.setTienda("JAJAJAJJAJAJA");
 
 		dao.guardarPublicacion(pub);
 

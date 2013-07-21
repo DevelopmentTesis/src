@@ -8,7 +8,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.log4j.Logger;
 
-import cl.hotoffer.business.validador.ValidaObject;
 import cl.hotoffer.exception.UsuarioException;
 
 import com.android.database.conector.ConnectionFactory;
@@ -81,7 +80,9 @@ public class UsuarioDaoImpl implements UsuarioDAO {
 		SqlSession session = sqlSessionFactory.openSession();
 
 		try {
+			LOGGER.info("STORE PROCEDURE sp_creaPersona");
 			session.insert("Usuario.sp_creaPersona", persona);
+			LOGGER.info("COMMIT");
 			session.commit();
 		} catch (Exception e) {
 			LOGGER.error(e);
@@ -113,7 +114,6 @@ public class UsuarioDaoImpl implements UsuarioDAO {
 		LOGGER.info("VALIDA ACCESO USUARIO");
 		SqlSession session = sqlSessionFactory.openSession();
 		try {
-//			new ValidaObject().validate(usuario);
 
 			Map<String, Object> map = new HashMap<String, Object>();
 			map.put("nombre", usuario.getNombre());

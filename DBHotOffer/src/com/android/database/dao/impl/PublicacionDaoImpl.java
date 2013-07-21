@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.log4j.Logger;
 
 import cl.hotoffer.exception.BusinessException;
+import cl.hotoffer.exception.PublicacionException;
 
 import com.android.database.conector.ConnectionFactory;
 import com.android.database.dao.PublicacionDAO;
@@ -23,24 +24,36 @@ public class PublicacionDaoImpl implements PublicacionDAO {
 				.getSqlSessionFactory();
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public List<Publicacion> getPublicacion() throws BusinessException {
+	public List<Publicacion> getPublicacion() throws PublicacionException {
 
-		SqlSession session = sqlSessionFactory.openSession();
+		LOGGER.info("OBTENER PUBLICACIONES ");
+		List<Publicacion> list = null;
+		try {
 
-		@SuppressWarnings("unchecked")
-		List<Publicacion> list = session
-				.selectList("Publicacion.getPublicaciones");
+			SqlSession session = sqlSessionFactory.openSession();
+
+			list = session.selectList("Publicacion.getPublicaciones");
+		} catch (Exception e) {
+			throw new PublicacionException("EXCEPTION :", e);
+		}
 
 		return list;
 	}
 
 	@Override
 	public void guardarPublicacion(Publicacion publicacion)
-			throws BusinessException {
-		SqlSession session = sqlSessionFactory.openSession();
+			throws PublicacionException
+			 {
 
-		session.insert("Publicacion.guardarPublicacion", publicacion);
+		try {
+			SqlSession session = sqlSessionFactory.openSession();
+
+			session.insert("Publicacion.guardarPublicacion", publicacion);
+		} catch (Exception e) {
+			throw new PublicacionException(e);
+		}
 
 	}
 

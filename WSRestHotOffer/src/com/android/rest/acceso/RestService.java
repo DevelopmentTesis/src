@@ -13,7 +13,8 @@ public interface RestService {
 	@GET
 	@Path("/valida/acceso")
 	boolean validaAcceso(@QueryParam("nombre") String nombre,
-			@QueryParam("password") String password) throws UsuarioException;
+			@QueryParam("password") String password) throws UsuarioException,
+			BusinessException;
 
 	@GET
 	@Path("/crear/acceso")

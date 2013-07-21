@@ -2,7 +2,6 @@ package com.android.rest.acceso;
 
 import org.apache.log4j.Logger;
 
-import cl.hotoffer.business.validador.ValidaObject;
 import cl.hotoffer.exception.BusinessException;
 import cl.hotoffer.exception.UsuarioException;
 
@@ -18,39 +17,37 @@ public class RestServiceImpl implements RestService {
 
 	private UsuarioDAO acceso = new UsuarioDaoImpl();
 
-	@Override
 	public boolean validaAcceso(String nombre, String password)
-			throws UsuarioException {
+			throws UsuarioException, BusinessException {
 
 		LOGGER.info("[::CALL WSRestValidaAcceso::]");
-
 		Usuario usuario = new Usuario();
+
 		usuario.setNombre(nombre);
 		usuario.setPassword(password);
 
 		return acceso.validaAcceso(usuario);
+
 	}
 
 	public String crearAcceso(String nombre, String apellido, String fechaN,
 			String sexo, Integer pais, Integer ciudad, String user, String pass)
 			throws UsuarioException, BusinessException {
 
+		LOGGER.info("CREAR PERSONA");
 		Persona persona = new Persona();
 		persona.setNombre(nombre);
 		persona.setApellido(apellido);
 		persona.setFechaNacimiento(fechaN);
 		persona.setSexo(sexo);
-		persona.setPais(pais);	
-		persona.setCiudad(ciudad);		
-		persona.setTipoUsuario(0);
-		
+		persona.setPais(pais);
+		persona.setCiudad(ciudad);
+		persona.setTipoUsuario(1);
 		Usuario usuario = new Usuario();
 		usuario.setNombre(user);
 		usuario.setPassword(pass);
 
 		persona.setUsuario(usuario);
-
-		new ValidaObject().validate(persona);
 
 		acceso.insert(persona);
 
