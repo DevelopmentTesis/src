@@ -5,19 +5,21 @@
 // Generado el: 2013.07.20 a las 11:45:21 PM CLT 
 //
 
-
 package com.android.model;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Clase Java para Usuario complex type.
+ * <p>
+ * Clase Java para Usuario complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>
+ * El siguiente fragmento de esquema especifica el contenido que se espera que
+ * haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="Usuario">
@@ -36,81 +38,72 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Usuario", propOrder = {
-    "idUsuario",
-    "nombre",
-    "password"
-})
+@XmlType(name = "Usuario", propOrder = { "idUsuario", "nombre", "password" })
+@XmlRootElement(name = "Usuario")
 public class Usuario {
 
-    protected int idUsuario;
-    @XmlElement(required = true)
-    protected String nombre;
-    @XmlElement(required = true)
-    protected String password;
+	protected int idUsuario;
+	@XmlElement(required = true)
+	protected String nombre;
+	@XmlElement(required = true)
+	protected String password;
 
-    /**
-     * Obtiene el valor de la propiedad idUsuario.
-     * 
-     */
-    public int getIdUsuario() {
-        return idUsuario;
-    }
+	/**
+	 * Obtiene el valor de la propiedad idUsuario.
+	 * 
+	 */
+	public int getIdUsuario() {
+		return idUsuario;
+	}
 
-    /**
-     * Define el valor de la propiedad idUsuario.
-     * 
-     */
-    public void setIdUsuario(int value) {
-        this.idUsuario = value;
-    }
+	/**
+	 * Define el valor de la propiedad idUsuario.
+	 * 
+	 */
+	public void setIdUsuario(int value) {
+		this.idUsuario = value;
+	}
 
-    /**
-     * Obtiene el valor de la propiedad nombre.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getNombre() {
-        return nombre;
-    }
+	/**
+	 * Obtiene el valor de la propiedad nombre.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getNombre() {
+		return nombre;
+	}
 
-    /**
-     * Define el valor de la propiedad nombre.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setNombre(String value) {
-        this.nombre = value;
-    }
+	/**
+	 * Define el valor de la propiedad nombre.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setNombre(String value) {
+		this.nombre = value;
+	}
 
-    /**
-     * Obtiene el valor de la propiedad password.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getPassword() {
-        return password;
-    }
+	/**
+	 * Obtiene el valor de la propiedad password.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getPassword() {
+		return password;
+	}
 
-    /**
-     * Define el valor de la propiedad password.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setPassword(String value) {
-        this.password = value;
-    }
+	/**
+	 * Define el valor de la propiedad password.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setPassword(String value) {
+		this.password = value;
+	}
 
 }
