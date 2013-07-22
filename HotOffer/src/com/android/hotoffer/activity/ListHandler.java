@@ -1,6 +1,6 @@
 package com.android.hotoffer.activity;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,17 +8,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
+import com.android.hotoffer.to.Publicacion;
+
 public abstract class ListHandler extends BaseAdapter {
 
-	private ArrayList<?> entradas;
+	private List<Publicacion> entradas;
 	private int R_layout_IdView;
 	private Context contexto;
 
 	public ListHandler(Context contexto, int R_layout_IdView,
-			ArrayList<?> entradas) {
+			List<Publicacion> list) {
 		super();
 		this.contexto = contexto;
-		this.entradas = entradas;
+		this.entradas = list;
 		this.R_layout_IdView = R_layout_IdView;
 	}
 
