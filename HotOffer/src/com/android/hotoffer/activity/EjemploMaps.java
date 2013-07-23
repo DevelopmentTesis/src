@@ -2,15 +2,21 @@ package com.android.hotoffer.activity;
 
 import com.android.hotoffer.R;
 import com.google.android.maps.MapActivity;
+import com.google.android.maps.MapController;
 import com.google.android.maps.MapView;
 import com.google.android.maps.MapView.LayoutParams;
 
+import android.content.Context;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
 
 public class EjemploMaps extends MapActivity {
-	MapView mapView;
+	private MapView mapView;
+	private MapController mapController;
+	private LocationManager locationManager;
+	
 
 	/** Called when the activity is first created. */
 	@Override
@@ -19,12 +25,20 @@ public class EjemploMaps extends MapActivity {
 		setContentView(R.layout.mapa);
 
 		mapView = (MapView) findViewById(R.id.zoom);
-		LinearLayout zoomLayout = (LinearLayout) findViewById(R.id.zoom);
-		View zoomView = mapView.getZoomControls();
-
-		zoomLayout.addView(zoomView, new LinearLayout.LayoutParams(
-				LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-		mapView.displayZoomControls(true);
+		mapView.setBuiltInZoomControls(true);
+		mapView.setSatellite(true);
+		mapView.setStreetView(false);
+		mapView.setTraffic(false);
+		mapController = mapView.getController();
+		mapController.setZoom(14);
+		locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+		locationManager.requestLocationUpdates(locationManager.GPS_PROVIDER, 0, 0, new GeoUpdateHandler());
+//		LinearLayout zoomLayout = (LinearLayout) findViewById(R.id.zoom);
+//		View zoomView = mapView.getZoomControls();
+//
+//		zoomLayout.addView(zoomView, new LinearLayout.LayoutParams(
+//				LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+//		mapView.displayZoomControls(true);
 
 	}
 
