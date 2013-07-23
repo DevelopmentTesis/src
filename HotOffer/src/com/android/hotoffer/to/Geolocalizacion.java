@@ -5,6 +5,12 @@ public class Geolocalizacion {
 	private int cordLatitud;
 	private int cordLonguitud;
 
+	public Geolocalizacion(int cordLatitud, int cordLonguitud) {
+		super();
+		this.cordLatitud = cordLatitud;
+		this.cordLonguitud = cordLonguitud;
+	}
+
 	public Geolocalizacion() {
 		// TODO Auto-generated constructor stub
 	}

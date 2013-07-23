@@ -1,19 +1,19 @@
 package com.android.hotoffer.activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.hotoffer.R;
 import com.android.hotoffer.rest.PublicacionClient;
 import com.android.hotoffer.to.Publicacion;
 
-public class MainActivity extends Activity {
+public class ListaPublicacionActivity extends Activity {
 
 	private ListView lista;
 
@@ -31,16 +31,22 @@ public class MainActivity extends Activity {
 			public void onEntrada(Object entrada, View view) {
 				if (entrada != null) {
 					TextView texto_superior_entrada = (TextView) view
-							.findViewById(R.id.textView_superior);
+							.findViewById(R.id.usuario);
 					if (texto_superior_entrada != null)
 						texto_superior_entrada.setText(((Publicacion) entrada)
-								.getComentario());
+								.getUsuario().getNombre());
 
 					TextView texto_inferior_entrada = (TextView) view
-							.findViewById(R.id.textView_inferior);
+							.findViewById(R.id.fecha);
 					if (texto_inferior_entrada != null)
 						texto_inferior_entrada.setText(((Publicacion) entrada)
-								.getDescrTipo());
+								.getFechaPublicacion());
+
+					TextView comentario = (TextView) view
+							.findViewById(R.id.comentario);
+					if (comentario != null)
+						comentario.setText(((Publicacion) entrada)
+								.getComentario());
 					//
 					// ImageView imagen_entrada = (ImageView) view
 					// .findViewById(R.id.imageView_imagen);
@@ -56,12 +62,21 @@ public class MainActivity extends Activity {
 			@Override
 			public void onItemClick(AdapterView<?> pariente, View view,
 					int posicion, long id) {
-				String elegido = (String) pariente.getItemAtPosition(posicion);
+				Publicacion elegido = (Publicacion) pariente
+						.getItemAtPosition(posicion);
 
-				CharSequence texto = "Seleccionado: " + elegido;
-				Toast toast = Toast.makeText(MainActivity.this, texto,
-						Toast.LENGTH_LONG);
-				toast.show();
+				// CharSequence texto = "Seleccionado: " +
+				// elegido.getComentario();
+
+				Intent intent = new Intent();
+				intent.setClass(ListaPublicacionActivity.this,
+						DetallePublicActivity.class);
+				intent.putExtra("tienda", elegido.getTienda());
+				startActivity(intent);
+
+				// Toast toast = Toast.makeText(MainActivity.this,
+				// texto,Toast.LENGTH_LONG);
+				// toast.show();
 			}
 		});
 

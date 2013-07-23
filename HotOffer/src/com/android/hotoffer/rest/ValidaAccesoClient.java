@@ -1,32 +1,33 @@
 package com.android.hotoffer.rest;
 
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.client.RestTemplate;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.ResponseHandler;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.BasicResponseHandler;
+import org.apache.http.impl.client.DefaultHttpClient;
 
 import com.android.hotoffer.to.Usuario;
 
 public class ValidaAccesoClient {
 
-	public boolean valida(Usuario usuario) {
+	public Boolean valida(Usuario usuario) {
 
-		String url = "http://192.168.1.8:8080/WSRestHotOffer/valida/acceso?nombre="
+		String url = "http://192.168.1.4:8080/WSRestHotOffer/service/valida/acceso?nombre="
 				+ usuario.getNombre() + "&password=" + usuario.getPassword();
-		HttpHeaders requestHeaders = new HttpHeaders();
+		String result = null;
+		HttpClient httpclient = new DefaultHttpClient();
+		HttpGet request = new HttpGet(url);
 
-		requestHeaders.setContentType(MediaType.APPLICATION_JSON);
+		try {
+			ResponseHandler<String> handler = new BasicResponseHandler();
 
-		RestTemplate restTemplate = new RestTemplate();
-		HttpEntity<Usuario> requestEntity = new HttpEntity<Usuario>(
-				requestHeaders);
+			result = httpclient.execute(request, handler);
 
-		ResponseEntity<Boolean> response = restTemplate.exchange(url,
-				HttpMethod.GET, requestEntity, Boolean.class);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
-		return response.getBody();
+		return Boolean.valueOf(result);
 
 	}
 }

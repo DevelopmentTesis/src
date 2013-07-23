@@ -15,6 +15,12 @@ import com.android.database.dao.UsuarioDAO;
 import com.android.model.Persona;
 import com.android.model.Usuario;
 
+/**
+ * Clase implementadora de Interfaces UsuarioDAO
+ * 
+ * @author César Patricio Araya Acosta
+ * 
+ */
 public class UsuarioDaoImpl implements UsuarioDAO {
 
 	private static final Logger LOGGER = Logger.getLogger(UsuarioDaoImpl.class);

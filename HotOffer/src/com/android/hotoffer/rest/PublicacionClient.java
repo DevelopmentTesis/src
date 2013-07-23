@@ -11,10 +11,10 @@ import org.apache.http.protocol.HTTP;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.xml.sax.XMLReader;
 
+import com.android.hotoffer.to.Geolocalizacion;
 import com.android.hotoffer.to.Publicacion;
-import com.google.android.gms.internal.p;
+import com.android.hotoffer.to.Usuario;
 
 public class PublicacionClient {
 
@@ -23,7 +23,7 @@ public class PublicacionClient {
 		String url = "http://192.168.1.4:8080/WSRestHotOffer/service/publicacion/obtener/";
 		HttpGet get = new HttpGet(url);
 
-		get.setHeader("content-type", "application/xml");
+		get.setHeader("content-type", "application/json");
 		List<Publicacion> publi = new ArrayList<Publicacion>();
 		try {
 			HttpResponse resp = httpClient.execute(get);
@@ -32,13 +32,28 @@ public class PublicacionClient {
 					.toString(resp.getEntity(), HTTP.UTF_8);
 
 			JSONArray array = new JSONArray(reString);
-			String string;
+
 			Publicacion publicacion = null;
 			for (int i = 0; i < array.length(); i++) {
+
 				publicacion = new Publicacion();
-				JSONObject jsonObject = array.getJSONObject(i);
-				publicacion.setComentario(jsonObject.getString("comentario"));
-				publicacion.setDescrTipo(jsonObject.getString("descrTipo"));
+				JSONObject json = array.getJSONObject(i);
+				publicacion.setIdTipoPublicacion(json
+						.getInt("idTipoPublicacion"));
+				publicacion.setComentario(json.getString("comentario"));
+				publicacion.setDescrTipo(json.getString("descrTipo"));
+				publicacion.setTienda(json.getString("tienda"));
+				publicacion.setPrecio(json.getString("precio"));
+				publicacion.setFechaPublicacion(json
+						.getString("fechaPublicacion"));
+
+				JSONObject usuario = json.getJSONObject("usuario");
+				publicacion.setUsuario(new Usuario(usuario.getString("nombre"),
+						null));
+
+				JSONObject geo = json.getJSONObject("geolocalizacion");
+				publicacion.setGeolocalizacion(new Geolocalizacion(geo
+						.getInt("cordLatitud"), geo.getInt("cordLonguitud")));
 
 				publi.add(publicacion);
 			}

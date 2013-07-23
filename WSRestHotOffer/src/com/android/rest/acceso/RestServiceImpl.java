@@ -28,7 +28,6 @@ public class RestServiceImpl implements RestService {
 
 		LOGGER.info("[::CALL WSRestValidaAcceso::]");
 		Usuario usuario = new Usuario();
-
 		usuario.setNombre(nombre);
 		usuario.setPassword(password);
 
@@ -36,7 +35,7 @@ public class RestServiceImpl implements RestService {
 
 	}
 
-	public String crearAcceso(String nombre, String apellido, String fechaN,
+	public void crearAcceso(String nombre, String apellido, String fechaN,
 			String sexo, Integer pais, Integer ciudad, String user, String pass)
 			throws UsuarioException, BusinessException {
 
@@ -56,8 +55,6 @@ public class RestServiceImpl implements RestService {
 		persona.setUsuario(usuario);
 
 		acceso.insert(persona);
-
-		return null;
 	}
 
 	public List<Publicacion> getPublicaciones() throws BusinessException,

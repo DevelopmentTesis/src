@@ -8,22 +8,34 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.apache.log4j.Logger;
 
+/**
+ * Clase encargada de abrir Conexion a Base de Datos a través de Ibatis
+ * 
+ * @author César Patricio Araya Acosta
+ * 
+ */
 public class ConnectionFactory {
 
 	private static SqlSessionFactory session;
 	private static final Logger LOGGER = Logger
 			.getLogger(ConnectionFactory.class);
 
-	private ConnectionFactory() {
-
-	}
-
+	/**
+	 * 
+	 * @return ConnectionFactory
+	 */
 	public static ConnectionFactory getInstance() {
 		synchronized (ConnectionFactory.class) {
 			return new ConnectionFactory();
 		}
 	}
 
+	/**
+	 * Metodo encargado de leer archivo ibatisConfig.xml para abrir session en
+	 * base de datos
+	 * 
+	 * @return SqlSessionFactory
+	 */
 	public SqlSessionFactory getSqlSessionFactory() {
 
 		String resource = "ibatisConfig.xml";
@@ -38,8 +50,9 @@ public class ConnectionFactory {
 		} catch (IOException e) {
 			LOGGER.error(e);
 		}
-
 		return session;
 	}
 
+	private ConnectionFactory() {
+	}
 }

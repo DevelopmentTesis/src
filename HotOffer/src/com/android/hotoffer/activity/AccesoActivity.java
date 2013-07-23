@@ -48,8 +48,8 @@ public class AccesoActivity extends Activity implements OnClickListener {
 					pass.getText().toString()));
 			if (isOK) {
 				Intent i = new Intent();
-				i.setClass(AccesoActivity.this, ContactoActivity.class);
-				i.putExtra("mensaje", "Validado");
+				i.setClass(AccesoActivity.this, ListaPublicacionActivity.class);
+				// i.putExtra("mensaje", "Validado");
 				startActivity(i);
 			} else {
 				toast = Toast.makeText(this, "Error de Validacion",

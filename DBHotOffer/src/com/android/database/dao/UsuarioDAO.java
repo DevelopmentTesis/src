@@ -8,8 +8,9 @@ import com.android.model.Persona;
 import com.android.model.Usuario;
 
 /**
+ * Interface UsuarioDAO, expone metodo que interactuan con la base de datos
  * 
- * @author César Araya Acosta
+ * @author César Patricio Araya Acosta
  * 
  */
 public interface UsuarioDAO {

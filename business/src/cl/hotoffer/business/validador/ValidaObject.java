@@ -13,10 +13,22 @@ import org.apache.log4j.Logger;
 
 import cl.hotoffer.exception.BusinessException;
 
+/**
+ * Clase que permite validar Objetos del Modelo HotOffer
+ * 
+ * @author César Patricio Araya Acosta
+ * 
+ */
 public class ValidaObject {
 
 	private static final Logger LOGGER = Logger.getLogger(ValidaObject.class);
 
+	/**
+	 * Metodo Valida estructura de Objeto según reglas de negocio
+	 * 
+	 * @param object
+	 * @throws BusinessException
+	 */
 	public void validate(Object object) throws BusinessException {
 
 		JAXBContext jc;
@@ -26,7 +38,8 @@ public class ValidaObject {
 
 			JAXBSource source = new JAXBSource(jc, object);
 
-			SchemaFactory sf = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
+			SchemaFactory sf = SchemaFactory
+					.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
 			LOGGER.info("ABRIR ARCHIVO : hotoffer.xsd");
 			Schema schema = sf.newSchema(new File("hotoffer.xsd"));
 

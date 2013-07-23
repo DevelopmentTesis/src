@@ -6,13 +6,18 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.log4j.Logger;
 
-import cl.hotoffer.exception.BusinessException;
 import cl.hotoffer.exception.PublicacionException;
 
 import com.android.database.conector.ConnectionFactory;
 import com.android.database.dao.PublicacionDAO;
 import com.android.model.Publicacion;
 
+/**
+ * Clase implementadora de Interfaces PublicacionDAO
+ * 
+ * @author César Patricio Araya Acosta
+ * 
+ */
 public class PublicacionDaoImpl implements PublicacionDAO {
 
 	private static final Logger LOGGER = Logger
@@ -30,13 +35,15 @@ public class PublicacionDaoImpl implements PublicacionDAO {
 
 		LOGGER.info("OBTENER PUBLICACIONES ");
 		List<Publicacion> list = null;
+		SqlSession session = sqlSessionFactory.openSession();
 		try {
-
-			SqlSession session = sqlSessionFactory.openSession();
 
 			list = session.selectList("Publicacion.getPublicaciones");
 		} catch (Exception e) {
 			throw new PublicacionException("EXCEPTION :", e);
+		} finally {
+			LOGGER.info("CONEXION CERRADA");
+			session.close();
 		}
 
 		return list;
@@ -44,15 +51,17 @@ public class PublicacionDaoImpl implements PublicacionDAO {
 
 	@Override
 	public void guardarPublicacion(Publicacion publicacion)
-			throws PublicacionException
-			 {
-
+			throws PublicacionException {
+		SqlSession session = sqlSessionFactory.openSession();
 		try {
-			SqlSession session = sqlSessionFactory.openSession();
 
 			session.insert("Publicacion.guardarPublicacion", publicacion);
 		} catch (Exception e) {
+			LOGGER.info("EXCEPCTION :" + e);
 			throw new PublicacionException(e);
+		} finally {
+			LOGGER.info("CONEXION CERRADA");
+			session.close();
 		}
 
 	}
