@@ -62,7 +62,8 @@
             android:name="com.android.hotoffer.activity.EjemploMaps"
             android:theme="@android:style/Theme.NoTitleBar" >
         </activity>
-        <activity android:name=".activity.MainActivity"></activity>
+        <activity android:name=".activity.DetallePublicActivity"></activity>
+        <activity android:name=".activity.ListaPublicacionActivity"></activity>
     </application>
 
 </manifest>
