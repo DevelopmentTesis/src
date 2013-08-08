@@ -5,18 +5,20 @@
 // Generado el: 2013.07.21 a las 06:19:49 PM CLT 
 //
 
-
 package com.android.model;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Clase Java para Geolocalizacion complex type.
+ * <p>
+ * Clase Java para Geolocalizacion complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>
+ * El siguiente fragmento de esquema especifica el contenido que se espera que
+ * haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="Geolocalizacion">
@@ -34,45 +36,43 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Geolocalizacion", propOrder = {
-    "cordLatitud",
-    "cordLonguitud"
-})
+@XmlType(name = "Geolocalizacion", propOrder = { "cordLatitud", "cordLonguitud" })
+@XmlRootElement(name = "Geolocalizacion")
 public class Geolocalizacion {
 
-    protected int cordLatitud;
-    protected int cordLonguitud;
+	protected int cordLatitud;
+	protected int cordLonguitud;
 
-    /**
-     * Obtiene el valor de la propiedad cordLatitud.
-     * 
-     */
-    public int getCordLatitud() {
-        return cordLatitud;
-    }
+	/**
+	 * Obtiene el valor de la propiedad cordLatitud.
+	 * 
+	 */
+	public int getCordLatitud() {
+		return cordLatitud;
+	}
 
-    /**
-     * Define el valor de la propiedad cordLatitud.
-     * 
-     */
-    public void setCordLatitud(int value) {
-        this.cordLatitud = value;
-    }
+	/**
+	 * Define el valor de la propiedad cordLatitud.
+	 * 
+	 */
+	public void setCordLatitud(int value) {
+		this.cordLatitud = value;
+	}
 
-    /**
-     * Obtiene el valor de la propiedad cordLonguitud.
-     * 
-     */
-    public int getCordLonguitud() {
-        return cordLonguitud;
-    }
+	/**
+	 * Obtiene el valor de la propiedad cordLonguitud.
+	 * 
+	 */
+	public int getCordLonguitud() {
+		return cordLonguitud;
+	}
 
-    /**
-     * Define el valor de la propiedad cordLonguitud.
-     * 
-     */
-    public void setCordLonguitud(int value) {
-        this.cordLonguitud = value;
-    }
+	/**
+	 * Define el valor de la propiedad cordLonguitud.
+	 * 
+	 */
+	public void setCordLonguitud(int value) {
+		this.cordLonguitud = value;
+	}
 
 }
