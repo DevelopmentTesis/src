@@ -1,0 +1,24 @@
+    <resources>
+        <color name="gris">#808080</color>
+        <color name="amarillo">#FFFF00</color>
+        <color name="azul">#0000FF</color>
+        <color name="rojo">#FF0000</color>
+        <color name="verde">#00FF00</color>
+        <color name="celeste">#33B5E5</color>
+        <color name="lila">#AA66CC</color>
+        <color name="verde_1">#99CC00</color>
+        <color name="naranjo">#FFBB33</color>
+        <color name="rosa">#FF4444</color>
+        <color name="rojo_1">#CC0000</color>
+        <color name="naranjo_2">#FF8800</color>
+        <color name="verde_2">#669900</color>
+        <color name="lila_1">#9933CC</color>
+        <color name="celeste_1">#0099CC</color>
+        <color name="negro">#000000</color>
+        <color name="celeste_2">#99CCFF</color>
+        <color name="gris_1">#B0B0B0</color>
+        <color name="gris_2">#E0E0E0</color>
+        <color name="Cranberry">#9F000F</color>
+        
+         
+    </resources>

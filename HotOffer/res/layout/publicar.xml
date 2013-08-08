@@ -1,0 +1,54 @@
+   
+<TabHost xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@android:id/tabhost"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/verde" >
+
+   <LinearLayout
+       android:orientation="vertical"
+       android:layout_width="fill_parent"
+       android:layout_height="fill_parent">
+
+       <TabWidget
+           android:id="@android:id/tabs"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:background="@color/naranjo" >
+
+       </TabWidget>
+
+       <FrameLayout
+          android:id="@android:id/tabcontent"
+          android:layout_width="fill_parent"
+          android:layout_height="fill_parent">
+          <LinearLayout
+             android:id="@+id/Anuncio" 
+             android:orientation="vertical"
+             android:layout_height="wrap_content"
+             android:layout_width="fill_parent">
+             
+
+             <TextView
+                 android:layout_width="fill_parent"
+                 android:layout_height="372dp"
+                 android:text="venta de libros " />
+
+             <EditText
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"/>
+          </LinearLayout>
+          <TextView
+             android:id="@+id/Valor"
+             android:layout_width="fill_parent"
+             android:layout_height="fill_parent"
+             android:text="esto es otra pestaña" />
+          
+          <TextView 
+              android:id="@+id/Categoria"
+             android:layout_width="fill_parent"
+             android:layout_height="fill_parent"
+             android:text="esto es la tercera pestaña" />
+       </FrameLayout>
+   </LinearLayout>
+</TabHost>

@@ -11,5 +11,6 @@
     <string name="agregar_contacto">Agregar</string>
     <string name="recordar_cuenta">recordar</string>
     <string name="test_conector"/>
+    <string name="registrarse">Registrarse</string>
 
 </resources>
