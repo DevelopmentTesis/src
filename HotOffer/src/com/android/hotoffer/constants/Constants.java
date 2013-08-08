@@ -8,6 +8,7 @@ public class Constants {
 	/*
 	 * CONSTANTES TABLAS
 	 */
+	
 
 	public final static String TB_USUARIO = "USUARIO";
 	public final static String TB_RECORDAR = "RECORDAR";
