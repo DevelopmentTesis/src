@@ -6,7 +6,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.widget.TextView;
 
-public class DetallePublicActivity extends Activity {
+public class DetallePublicidad extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

@@ -20,7 +20,7 @@ public class PublicacionClient {
 
 	public List<Publicacion> obtenerPublicaciones() {
 		HttpClient httpClient = new DefaultHttpClient();
-		String url = "http://192.168.1.4:8080/WSRestHotOffer/service/publicacion/obtener/";
+		String url = "http://192.168.1.5:8080/WSRestHotOffer/service/publicacion/obtener/";
 		HttpGet get = new HttpGet(url);
 
 		get.setHeader("content-type", "application/json");

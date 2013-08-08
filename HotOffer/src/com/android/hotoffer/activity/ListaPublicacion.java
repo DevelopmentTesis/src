@@ -13,7 +13,7 @@ import com.android.hotoffer.R;
 import com.android.hotoffer.rest.PublicacionClient;
 import com.android.hotoffer.to.Publicacion;
 
-public class ListaPublicacionActivity extends Activity {
+public class ListaPublicacion extends Activity {
 
 	private ListView lista;
 
@@ -30,16 +30,15 @@ public class ListaPublicacionActivity extends Activity {
 			@Override
 			public void onEntrada(Object entrada, View view) {
 				if (entrada != null) {
-					TextView texto_superior_entrada = (TextView) view
+					TextView usuario = (TextView) view
 							.findViewById(R.id.usuario);
-					if (texto_superior_entrada != null)
-						texto_superior_entrada.setText(((Publicacion) entrada)
-								.getUsuario().getNombre());
+					if (usuario != null)
+						usuario.setText(((Publicacion) entrada).getUsuario()
+								.getNombre());
 
-					TextView texto_inferior_entrada = (TextView) view
-							.findViewById(R.id.fecha);
-					if (texto_inferior_entrada != null)
-						texto_inferior_entrada.setText(((Publicacion) entrada)
+					TextView fecha = (TextView) view.findViewById(R.id.fecha);
+					if (fecha != null)
+						fecha.setText(((Publicacion) entrada)
 								.getFechaPublicacion());
 
 					TextView comentario = (TextView) view
@@ -65,21 +64,12 @@ public class ListaPublicacionActivity extends Activity {
 				Publicacion elegido = (Publicacion) pariente
 						.getItemAtPosition(posicion);
 
-				// CharSequence texto = "Seleccionado: " +
-				// elegido.getComentario();
-
 				Intent intent = new Intent();
-				intent.setClass(ListaPublicacionActivity.this,
-						DetallePublicActivity.class);
+				intent.setClass(ListaPublicacion.this, DetallePublicidad.class);
 				intent.putExtra("tienda", elegido.getTienda());
 				startActivity(intent);
 
-				// Toast toast = Toast.makeText(MainActivity.this,
-				// texto,Toast.LENGTH_LONG);
-				// toast.show();
 			}
 		});
-
 	}
-
 }
