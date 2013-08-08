@@ -17,6 +17,7 @@
         android:layout_alignParentLeft="true"
         android:text="Acepto politicas de seguridad y condiciones de servicio"
         android:textSize="@dimen/pequeno" />
+    
 
     <EditText
         android:id="@+id/editText2"
