@@ -46,20 +46,21 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.android.hotoffer.activity.AccesoActivity"
+            android:name="com.android.hotoffer.activity.Acceso"
             android:label="@string/iniciar_sesion" >
         </activity>
         <activity
-            android:name="com.android.hotoffer.activity.ContactoActivity"
+            android:name="com.android.hotoffer.activity.Contacto"
             android:label="@string/contacto_activity" >
         </activity><uses-library
             android:name="com.google.android.maps"
             android:required="true" />
 
         
-        <activity android:name=".activity.DetallePublicActivity"></activity>
-        <activity android:name=".activity.ListaPublicacionActivity"></activity>
+        <activity android:name=".activity.DetallePublicidad"></activity>
+        <activity android:name=".activity.ListaPublicacion"></activity>
         <activity android:name=".activity.EjemploMaps"></activity>
+        <activity android:name=".activity.Registrarse"></activity>
     </application>
 
 </manifest>
