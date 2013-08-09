@@ -8,15 +8,14 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import com.android.hotoffer.constants.Constants;
-import com.android.hotoffer.to.Recordar;
 import com.android.hotoffer.util.SQLUtils;
 
-public class RecordarAccesoSQLite extends SQLiteOpenHelper {
+public class RecordarAcceso extends SQLiteOpenHelper {
 
 	private static final String CREATE_TB_ACCESO = "CREATE TABLE RECORDAR (user  TEXT, pass TEXT)";
 	private final static String DROP_TB_ACCESO = "DROP TABLE IF EXISTS RECORDAR";
 
-	public RecordarAccesoSQLite(Context context) {
+	public RecordarAcceso(Context context) {
 		super(context, Constants.NAME_DB, null, Constants.VERSION);
 	}
 
@@ -57,25 +56,18 @@ public class RecordarAccesoSQLite extends SQLiteOpenHelper {
 		return false;
 	}
 
-	public Recordar selRecordar() {
+	public boolean selRecordar() {
 
 		SQLiteDatabase db = this.getReadableDatabase();
 
 		Cursor cursor = db.query(Constants.TB_RECORDAR, null, null, null, null,
 				null, null);
-		Recordar recordar = null;
 
 		try {
 
 			if (cursor.moveToFirst()) {
-				recordar = new Recordar();
 				while (cursor.moveToNext()) {
-					Log.i("User", cursor.getString(0));
-					Log.i("Pass", cursor.getString(1));
-
-					recordar.setUser(cursor.getString(0));
-					recordar.setPass(cursor.getString(1));
-
+					return true;
 				}
 			}
 		} catch (Exception e) {
@@ -83,7 +75,6 @@ public class RecordarAccesoSQLite extends SQLiteOpenHelper {
 		} finally {
 			db.close();
 		}
-
-		return recordar;
+		return false;
 	}
 }
