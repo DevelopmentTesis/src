@@ -1,6 +1,7 @@
 package com.android.hotoffer.activity;
 
 import com.android.hotoffer.R;
+import com.android.hotoffer.sqlite.RecordarAcceso;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -12,7 +13,14 @@ public class MainHotOffer extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main_hotoffer);
-		Intent intent = new Intent(MainHotOffer.this, Acceso.class);
+		Intent intent = null;
+		RecordarAcceso acceso = new RecordarAcceso(this);
+
+		if (acceso.selRecordar()) {
+			intent = new Intent(this, ListaPublicacion.class);
+		} else {
+			intent = new Intent(this, Acceso.class);
+		}
 		startActivity(intent);
 	}
 }

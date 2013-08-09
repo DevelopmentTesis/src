@@ -14,7 +14,7 @@ import android.widget.Toast;
 
 import com.android.hotoffer.R;
 import com.android.hotoffer.rest.ValidaAccesoClient;
-import com.android.hotoffer.sqlite.RecordarAccesoSQLite;
+import com.android.hotoffer.sqlite.RecordarAcceso;
 import com.android.hotoffer.to.Usuario;
 
 public class Acceso extends Activity {
@@ -79,7 +79,7 @@ public class Acceso extends Activity {
 	}
 
 	public boolean save(EditText user, EditText pass) {
-		RecordarAccesoSQLite lite = new RecordarAccesoSQLite(Acceso.this);
+		RecordarAcceso lite = new RecordarAcceso(Acceso.this);
 		boolean status = false;
 		if (user != null && pass != null) {
 			status = lite.saveData(user.getText().toString(), pass.getText()
