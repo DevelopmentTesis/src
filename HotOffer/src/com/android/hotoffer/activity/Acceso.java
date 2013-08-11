@@ -16,6 +16,7 @@ import com.android.hotoffer.R;
 import com.android.hotoffer.rest.ValidaAccesoClient;
 import com.android.hotoffer.sqlite.RecordarAcceso;
 import com.android.hotoffer.to.Usuario;
+import com.android.hotoffer.util.ProcessActivity;
 
 public class Acceso extends Activity {
 
@@ -32,27 +33,30 @@ public class Acceso extends Activity {
 
 			@Override
 			public void onClick(View v) {
-				EditText user = (EditText) findViewById(R.id.nom);
-				EditText pass = (EditText) findViewById(R.id.pass);
-				Intent i = new Intent();
+				final EditText user = (EditText) findViewById(R.id.nom);
+				final EditText pass = (EditText) findViewById(R.id.pass);
+				final Intent i = new Intent();
 				Toast toast;
-
-				if (save(user, pass)) {
-					Log.i("SAVE", "GUARDADO");
-				}
+				final ProcessActivity process = new ProcessActivity(Acceso.this);
+				process.onPreExecute();
 
 				try {
-					ValidaAccesoClient client = new ValidaAccesoClient();
-					boolean isOK = client.valida(new Usuario(user.getText()
-							.toString(), pass.getText().toString()));
-					if (isOK) {
-						i.setClass(Acceso.this, ListaPublicacion.class);
-						startActivity(i);
-					} else {
-						toast = Toast.makeText(Acceso.this,
-								"Error de Validacion", Toast.LENGTH_LONG);
-						toast.show();
-					}
+
+					new Thread(new Runnable() {
+						public void run() {
+							ValidaAccesoClient client = new ValidaAccesoClient();
+							boolean isOK = client.valida(new Usuario(user
+									.getText().toString(), pass.getText()
+									.toString()));
+							if (isOK) {
+								i.setClass(Acceso.this, ListaPublicacion.class);
+								startActivity(i);
+								process.onPostExecute("Fin Proceso");
+							} else {
+								process.onPostExecute("Fin Proceso");
+							}
+						}
+					}).start();
 
 				} catch (Exception e) {
 					Log.w("Exception", e);
@@ -60,7 +64,6 @@ public class Acceso extends Activity {
 							"Error :" + e.getCause(), Toast.LENGTH_LONG);
 					toast.show();
 				}
-
 			}
 		});
 
@@ -87,4 +90,5 @@ public class Acceso extends Activity {
 		}
 		return status;
 	}
+
 }
