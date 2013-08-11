@@ -1,5 +1,7 @@
 package com.android.hotoffer.activity;
 
+import java.util.List;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -21,6 +23,7 @@ import com.android.hotoffer.to.Publicacion;
 public class ListaPublicacion extends Activity {
 
 	private static final int ID_DIALOG = 1;
+	private PublicacionClient client = new PublicacionClient();
 	private ListView lista;
 
 	@Override
@@ -28,11 +31,28 @@ public class ListaPublicacion extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.listado);
 
-		PublicacionClient client = new PublicacionClient();
-
 		lista = (ListView) findViewById(R.id.ListView_listado);
-		lista.setAdapter(new ListHandler(this, R.layout.entrada, client
-				.obtenerPublicaciones()) {
+
+		cargarLista(client.obtenerPublicaciones());
+
+		lista.setOnItemClickListener(new OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> pariente, View view,
+					int posicion, long id) {
+				Publicacion elegido = (Publicacion) pariente
+						.getItemAtPosition(posicion);
+
+				Intent intent = new Intent();
+				intent.setClass(ListaPublicacion.this, DetallePublicidad.class);
+				intent.putExtra("tienda", elegido.getTienda());
+				startActivity(intent);
+
+			}
+		});
+	}
+
+	public void cargarLista(List<Publicacion> p) {
+		lista.setAdapter(new ListHandler(this, R.layout.entrada, p) {
 			@Override
 			public void onEntrada(Object entrada, View view) {
 				if (entrada != null) {
@@ -62,21 +82,33 @@ public class ListaPublicacion extends Activity {
 				}
 			}
 		});
+	}
 
-		lista.setOnItemClickListener(new OnItemClickListener() {
-			@Override
-			public void onItemClick(AdapterView<?> pariente, View view,
-					int posicion, long id) {
-				Publicacion elegido = (Publicacion) pariente
-						.getItemAtPosition(posicion);
+	@Override
+	protected Dialog onCreateDialog(int id) {
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		Dialog dialog = new Dialog(this);
 
-				Intent intent = new Intent();
-				intent.setClass(ListaPublicacion.this, DetallePublicidad.class);
-				intent.putExtra("tienda", elegido.getTienda());
-				startActivity(intent);
+		switch (id) {
+		case ID_DIALOG:
 
-			}
-		});
+			final String[] items = { "Computación", "Vestuario", "Comida",
+					"Literatura" };
+			builder.setTitle("Buscar Publicaciones por :");
+			builder.setSingleChoiceItems(items, -1,
+					new DialogInterface.OnClickListener() {
+						public void onClick(DialogInterface dialog, int item) {
+							int pos = item + 1;
+							cargarLista(client.buscarPublicaciones(String
+									.valueOf(pos)));
+							dialog.dismiss();
+						}
+					});
+			dialog = builder.create();
+			break;
+
+		}
+		return dialog;
 	}
 
 	@Override
@@ -103,33 +135,6 @@ public class ListaPublicacion extends Activity {
 			return super.onOptionsItemSelected(item);
 		}
 		return false;
-	}
-
-	@Override
-	protected Dialog onCreateDialog(int id) {
-		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		Dialog dialog = null;
-
-		switch (id) {
-		case ID_DIALOG:
-
-			View child = getLayoutInflater().inflate(R.layout.tipo_publicacion,
-					null);
-
-			builder.setTitle("Buscar Publicaciones por :");
-			builder.setView(child);
-			builder.setPositiveButton("Buscar",
-					new DialogInterface.OnClickListener() {
-						public void onClick(DialogInterface dialogo1, int id) {
-
-						}
-					});
-
-			dialog = builder.create();
-			break;
-
-		}
-		return dialog;
 	}
 
 }
