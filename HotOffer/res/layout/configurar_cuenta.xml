@@ -17,50 +17,10 @@
         android:layout_alignParentLeft="true"
         android:text="Acepto politicas de seguridad y condiciones de servicio"
         android:textSize="@dimen/pequeno" />
-    
-
-    <EditText
-        android:id="@+id/editText2"
-        android:layout_width="230dp"
-        android:layout_height="30dp"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/textView3"
-        android:layout_margin="10dp"
-        android:layout_marginTop="5dp"
-        android:layout_toRightOf="@+id/textView5"
-        android:background="@color/gris"
-        android:scrollbarSize="300dp" />
-
-    <EditText
-        android:id="@+id/editText1"
-        android:layout_width="232dp"
-        android:layout_height="30dp"
-        android:layout_alignLeft="@+id/textView5"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/textView1"
-        android:layout_margin="10dp"
-        android:background="@color/gris"
-        android:textColor="@color/gris"
-        android:textColorHint="@color/gris_1"
-        android:textColorLink="@color/gris" >
-
-        <requestFocus />
-    </EditText>
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
-        android:text="Datos Personales"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <Button
         android:id="@+id/button1"
         android:layout_width="300dp"
-      
         android:layout_height="wrap_content"
         android:layout_above="@+id/checkBox1"
         android:layout_centerHorizontal="true"
@@ -80,48 +40,6 @@
         android:textSize="@dimen/medio" />
 
     <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/editText1"
-        android:layout_below="@+id/textView2"
-        android:layout_marginTop="26dp"
-        android:text="Nombre:"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textColor="@color/negro"
-        android:textSize="@dimen/medio" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView1"
-        android:layout_centerVertical="true"
-        android:text="Sexo:"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textSize="@dimen/medio" />
-
-    <RadioButton
-        android:id="@+id/radioButton1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/textView2"
-        android:layout_centerVertical="true"
-        android:text="Mujer"
-        android:textColor="@color/negro"
-        android:textSize="@dimen/medio" />
-
-    <RadioButton
-        android:id="@+id/radioButton2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_toRightOf="@+id/radioButton1"
-        android:text="Hombre"
-        android:textColor="@color/negro"
-        android:textSize="@dimen/medio" />
-
-    <TextView
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -130,25 +48,110 @@
         android:layout_toLeftOf="@+id/textView2"
         android:text="TextView" />
 
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView3"
+        android:layout_below="@+id/textView2"
+        android:text="Nombre:"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@color/negro"
+        android:textSize="@dimen/medio" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="Datos Personales"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
     <EditText
-        android:id="@+id/EditText01"
+        android:id="@+id/editText2"
         android:layout_width="230dp"
         android:layout_height="30dp"
-        android:layout_above="@+id/button1"
-        android:layout_alignLeft="@+id/textView4"
-        android:layout_alignRight="@+id/button1"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/textView3"
         android:layout_margin="10dp"
         android:background="@color/gris"
         android:ems="10"
-        android:scrollbarSize="300dp" />
+        android:scrollbarSize="300dp" >
 
-    <CheckedTextView
-        android:id="@+id/checkedTextView1"
+        <requestFocus />
+    </EditText>
+
+    <RadioButton
+        android:id="@+id/radioButton1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/EditText01"
-        android:layout_marginBottom="21dp"
+        android:layout_below="@+id/editText2"
+        android:layout_toRightOf="@+id/textView3"
+        android:text="Mujer"
+        android:textColor="@color/negro"
+        android:textSize="@dimen/medio" />
+
+    <RadioButton
+        android:id="@+id/radioButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/radioButton1"
+        android:layout_alignBottom="@+id/radioButton1"
+        android:layout_marginLeft="22dp"
+        android:layout_toRightOf="@+id/radioButton1"
+        android:text="Hombre"
+        android:textColor="@color/negro"
+        android:textSize="@dimen/medio" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/radioButton1"
+        android:layout_alignBottom="@+id/radioButton1"
+        android:layout_alignLeft="@+id/textView3"
+        android:text="Sexo:"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textSize="@dimen/medio" />
+
+    <TextView
+        android:id="@+id/tvDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <EditText
+        android:id="@+id/editText1"
+        android:layout_width="232dp"
+        android:layout_height="30dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/textView1"
+        android:layout_margin="10dp"
+        android:background="@color/gris"
+        android:ems="10"
+        android:textColor="@color/gris"
+        android:textColorHint="@color/gris_1"
+        android:textColorLink="@color/gris" />
+
+    <Button
+        android:id="@+id/btnChangeDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editText2"
+        android:layout_centerVertical="true"
         android:layout_toLeftOf="@+id/radioButton2"
-        android:text="CheckedTextView" />
+        android:text="Fecha" />
+
+    <!-- <DatePicker -->
+    <!-- android:id="@+id/dpResult" -->
+    <!-- android:layout_width="wrap_content" -->
+    <!-- android:layout_height="wrap_content" -->
+    <!-- android:layout_above="@+id/button1" -->
+    <!-- android:layout_alignLeft="@+id/btnChangeDate" -->
+    <!-- android:layout_marginBottom="41dp" /> -->
 
 </RelativeLayout>
