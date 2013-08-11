@@ -13,6 +13,7 @@ import cl.hotoffer.exception.PublicacionException;
 import cl.hotoffer.exception.UsuarioException;
 
 import com.android.model.Publicacion;
+import com.android.model.Usuario;
 
 /**
  * Interface RestService Expone cada metodo de los servicios Rest consumidos por
@@ -64,6 +65,19 @@ public interface RestService {
 			throws UsuarioException, BusinessException;
 
 	/**
+	 * Buscar usuario según nombre
+	 * 
+	 * @return
+	 * @throws UsuarioException
+	 * @throws BusinessException
+	 */
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/buscar/usuario")
+	List<Usuario> buscarUsuario(@QueryParam("nombre") String nombre)
+			throws UsuarioException, BusinessException;
+
+	/**
 	 * Metodo que permite obtener todas las publicaciones del sistema
 	 * 
 	 * @return List<Publicacion> Estructura JSON
@@ -75,5 +89,17 @@ public interface RestService {
 	@Path("/publicacion/obtener")
 	List<Publicacion> getPublicaciones() throws BusinessException,
 			PublicacionException;
+
+	/**
+	 * 
+	 * @return
+	 * @throws BusinessException
+	 * @throws PublicacionException
+	 */
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/publicacion/buscar")
+	List<Publicacion> buscarPublicaciones(@QueryParam("id") int id)
+			throws BusinessException, PublicacionException;
 
 }

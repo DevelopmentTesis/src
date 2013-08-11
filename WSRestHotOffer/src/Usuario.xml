@@ -6,17 +6,18 @@
 <mapper namespace="Usuario">
 
 	<resultMap id="result" type="Usuario">
+		<result property="idUsuario" column="ID_USUARIO" />
 		<result property="nombre" column="NOMBRE" />
 		<result property="password" column="PASSWORD" />
 	</resultMap>
 
 	<select id="getAll" resultMap="result">
-		SELECT * FROM USUARIO
+		SELECT ID_USUARIO, nombre,
+		password FROM USUARIO;
 	</select>
 
-	<select id="getById" parameterType="int" resultMap="result">
-		SELECT * FROM
-		USUARIO WHERE ID_USUARIO = #{id}
+	<select id="getByName" resultMap="result">
+		{call sp_buscarUsuario(#{nombre})}
 	</select>
 
 	<delete id="deleteById" parameterType="int">
@@ -36,7 +37,8 @@
 		#{ciudad,jdbcType=VARCHAR, mode=IN},
 		#{usuario.nombre,jdbcType=VARCHAR,mode=IN},
 		#{usuario.password,jdbcType=VARCHAR, mode=IN},
-		#{tipoUsuario,jdbcType=VARCHAR, mode=IN}
+		#{tipoUsuario,jdbcType=VARCHAR, mode=IN},
+		#{usuario.idUsuario,jdbcType=INTEGER,javaType=INTEGER ,mode=OUT}
 		)}
 	</insert>
 
@@ -46,8 +48,7 @@
 		{call
 		sp_validaUsuario(
 		#{nombre,jdbcType=VARCHAR,mode=IN},
-		#{password,jdbcType=VARCHAR,
-		mode=IN},
+		#{password,jdbcType=VARCHAR,mode=IN},
 		#{resultado,jdbcType=BOOLEAN,mode=OUT}
 		)}
 	</select>

@@ -32,7 +32,6 @@ public class RestServiceImpl implements RestService {
 		usuario.setPassword(password);
 
 		return acceso.validaAcceso(usuario);
-
 	}
 
 	public void crearAcceso(String nombre, String apellido, String fechaN,
@@ -63,6 +62,20 @@ public class RestServiceImpl implements RestService {
 		PublicacionDAO dao = new PublicacionDaoImpl();
 
 		return dao.getPublicacion();
+	}
+
+	public List<Publicacion> buscarPublicaciones(int id)
+			throws BusinessException, PublicacionException {
+		PublicacionDAO dao = new PublicacionDaoImpl();
+		return dao.buscarPublicaciones(id);
+	}
+
+	@Override
+	public List<Usuario> buscarUsuario(String nombre) throws UsuarioException,
+			BusinessException {
+
+		UsuarioDAO dao = new UsuarioDaoImpl();
+		return dao.selectByName(nombre);
 	}
 
 }
