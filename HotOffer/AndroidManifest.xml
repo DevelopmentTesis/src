@@ -61,6 +61,7 @@
         <activity android:name=".activity.ListaPublicacion"></activity>
         <activity android:name=".activity.EjemploMaps"></activity>
         <activity android:name=".activity.Registrarse"></activity>
+        <activity android:name=".activity.MyAndroidApp"></activity>
     </application>
 
 </manifest>
