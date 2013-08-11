@@ -70,7 +70,7 @@ public class Acceso extends Activity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				Intent i = new Intent();
-				i.setClass(Acceso.this, MyAndroidApp.class);
+				i.setClass(Acceso.this, Registrarse.class);
 				startActivity(i);
 
 			}
