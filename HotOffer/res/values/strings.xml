@@ -12,5 +12,7 @@
     <string name="recordar_cuenta">recordar</string>
     <string name="test_conector"/>
     <string name="registrarse">Registrarse</string>
+    <string name="IN_USUARIO">Usuario</string>
+    <string name="IN_CLAVE">Contraseña</string>
 
 </resources>
