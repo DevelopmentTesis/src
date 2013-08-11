@@ -1,8 +1,13 @@
 package com.android.hotoffer.activity;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -15,6 +20,7 @@ import com.android.hotoffer.to.Publicacion;
 
 public class ListaPublicacion extends Activity {
 
+	private static final int ID_DIALOG = 1;
 	private ListView lista;
 
 	@Override
@@ -72,4 +78,58 @@ public class ListaPublicacion extends Activity {
 			}
 		});
 	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// TODO Auto-generated method stub
+
+		getMenuInflater().inflate(R.menu.menu_hotoffer, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// TODO Auto-generated method stub
+
+		switch (item.getItemId()) {
+		case R.id.Buscar:
+			showDialog(ID_DIALOG);
+			break;
+		case R.id.Publicar:
+
+			break;
+
+		default:
+			return super.onOptionsItemSelected(item);
+		}
+		return false;
+	}
+
+	@Override
+	protected Dialog onCreateDialog(int id) {
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		Dialog dialog = null;
+
+		switch (id) {
+		case ID_DIALOG:
+
+			View child = getLayoutInflater().inflate(R.layout.tipo_publicacion,
+					null);
+
+			builder.setTitle("Buscar Publicaciones por :");
+			builder.setView(child);
+			builder.setPositiveButton("Buscar",
+					new DialogInterface.OnClickListener() {
+						public void onClick(DialogInterface dialogo1, int id) {
+
+						}
+					});
+
+			dialog = builder.create();
+			break;
+
+		}
+		return dialog;
+	}
+
 }
