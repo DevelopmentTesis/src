@@ -48,13 +48,12 @@ public class UsuarioDaoImpl implements UsuarioDAO {
 	}
 
 	@Override
-	public Usuario selectById(int id) throws UsuarioException {
+	public List<Usuario> selectByName(String name) throws UsuarioException {
 
 		SqlSession session = sqlSessionFactory.openSession();
-
+		List<Usuario> contact;
 		try {
-			Usuario contact = (Usuario) session
-					.selectOne("Usuario.getById", id);
+			contact = session.selectList("Usuario.getByName", name);
 			return contact;
 		} catch (Exception e) {
 			LOGGER.error(e);
@@ -81,7 +80,7 @@ public class UsuarioDaoImpl implements UsuarioDAO {
 	}
 
 	@Override
-	public void insert(Persona persona) throws UsuarioException {
+	public Integer insert(Persona persona) throws UsuarioException {
 
 		SqlSession session = sqlSessionFactory.openSession();
 
@@ -90,6 +89,10 @@ public class UsuarioDaoImpl implements UsuarioDAO {
 			session.insert("Usuario.sp_creaPersona", persona);
 			LOGGER.info("COMMIT");
 			session.commit();
+			String a = persona.getUsuario().getIdUsuario().toString();
+			Integer id = new Integer(a);
+
+			return id;
 		} catch (Exception e) {
 			LOGGER.error(e);
 			throw new UsuarioException(e);
@@ -126,7 +129,6 @@ public class UsuarioDaoImpl implements UsuarioDAO {
 			map.put("password", usuario.getPassword());
 			LOGGER.info("[CALL Usuario.spValidaUsuario]");
 			session.selectOne("Usuario.spValidaUsuario", map);
-			session.commit();
 			return (Boolean) map.get("resultado");
 
 		} catch (Exception e) {

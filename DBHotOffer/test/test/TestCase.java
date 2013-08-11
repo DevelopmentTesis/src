@@ -2,7 +2,7 @@ package test;
 
 import static org.junit.Assert.assertNotNull;
 
-import java.math.BigInteger;
+import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -29,7 +29,7 @@ public class TestCase {
 		UsuarioDAO dao = new UsuarioDaoImpl();
 
 		Usuario usuario = new Usuario();
-		usuario.setIdUsuario(BigInteger.ONE);
+		// usuario.setIdUsuario();
 		usuario.setNombre("kerne");
 		usuario.setPassword("kerne");
 
@@ -55,8 +55,8 @@ public class TestCase {
 		UsuarioDAO dao = new UsuarioDaoImpl();
 		try {
 			Persona persona = new Persona();
-			persona.setNombre("test2");
-			persona.setApellido("test1");
+			persona.setNombre("cesar");
+			persona.setApellido("araya");
 			persona.setFechaNacimiento("19880602");
 			persona.setPais(1);
 			persona.setCiudad(1);
@@ -64,11 +64,11 @@ public class TestCase {
 			persona.setTipoUsuario(1);
 
 			Usuario usuario = new Usuario();
-			usuario.setNombre("prueba");
-			usuario.setPassword("prueba");
+			usuario.setNombre("kerne");
+			usuario.setPassword("kerne");
 			persona.setUsuario(usuario);
 
-			dao.insert(persona);
+			System.out.println(dao.insert(persona));
 
 		} catch (UsuarioException e) {
 			// TODO Auto-generated catch block
@@ -80,7 +80,11 @@ public class TestCase {
 	@Test
 	public void selectKey() throws UsuarioException {
 		UsuarioDaoImpl dao = new UsuarioDaoImpl();
-		assertNotNull(dao.selectById(2));
+		List<Usuario> usuario = dao.selectByName("s");
+
+		for (Usuario usuario2 : usuario) {
+			System.out.println(usuario2.getNombre());
+		}
 
 	}
 
@@ -99,7 +103,7 @@ public class TestCase {
 
 		Publicacion pub = new Publicacion();
 		Usuario usuario = new Usuario();
-
+		usuario.setIdUsuario(new Integer(1));
 		pub.setUsuario(usuario);
 		pub.setIdTipoPublicacion(1);
 
@@ -113,6 +117,20 @@ public class TestCase {
 		pub.setTienda("JAJAJAJJAJAJA");
 
 		dao.guardarPublicacion(pub);
+
+	}
+
+	@Test
+	public void buscarPublicaciones() {
+
+		PublicacionDAO dao = new PublicacionDaoImpl();
+
+		try {
+			assertNotNull(dao.buscarPublicaciones(2));
+		} catch (PublicacionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
 

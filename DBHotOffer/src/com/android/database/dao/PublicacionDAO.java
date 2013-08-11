@@ -22,6 +22,9 @@ public interface PublicacionDAO {
 	 */
 	public List<Publicacion> getPublicacion() throws PublicacionException;
 
+	public List<Publicacion> buscarPublicaciones(int id)
+			throws PublicacionException;
+
 	/**
 	 * Metodo que permite guardar publicacion en BD
 	 * 

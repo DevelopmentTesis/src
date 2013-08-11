@@ -39,7 +39,7 @@ public interface UsuarioDAO {
 	 * @return Usuario
 	 * @throws UsuarioException
 	 */
-	Usuario selectById(int id) throws UsuarioException;
+	List<Usuario> selectByName(String name) throws UsuarioException;
 
 	/**
 	 * Metodo que permite actualizar regitro de usuario
@@ -50,12 +50,13 @@ public interface UsuarioDAO {
 	void update(Persona persona) throws UsuarioException;
 
 	/**
-	 * Metodo que permite crear registro de Persona
+	 * * Metodo que permite crear registro de Persona
 	 * 
-	 * @param usuario
+	 * @param persona
+	 * @return Integer id
 	 * @throws UsuarioException
 	 */
-	void insert(Persona persona) throws UsuarioException;
+	Integer insert(Persona persona) throws UsuarioException;
 
 	/**
 	 * Metodo que permite eliminar Persona

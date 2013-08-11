@@ -66,4 +66,21 @@ public class PublicacionDaoImpl implements PublicacionDAO {
 
 	}
 
+	@Override
+	public List<Publicacion> buscarPublicaciones(int id)
+			throws PublicacionException {
+		SqlSession session = sqlSessionFactory.openSession();
+		List<Publicacion> list = null;
+
+		try {
+			list = session.selectList("Publicacion.buscarPublicaciones", id);
+		} catch (Exception e) {
+			throw new PublicacionException("Error Buscar Publicaciones", e);
+		} finally {
+			session.close();
+		}
+
+		return list;
+	}
+
 }
