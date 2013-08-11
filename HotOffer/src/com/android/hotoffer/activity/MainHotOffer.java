@@ -12,7 +12,7 @@ public class MainHotOffer extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main_hotoffer);
-		Intent intent = new Intent(MainHotOffer.this, Acceso.class);
+		Intent intent = new Intent(this, Acceso.class);
 		startActivity(intent);
 	}
 }
