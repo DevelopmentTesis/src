@@ -19,6 +19,7 @@ import com.android.database.dao.impl.UsuarioDaoImpl;
 import com.android.model.Geolocalizacion;
 import com.android.model.Persona;
 import com.android.model.Publicacion;
+import com.android.model.TipoPublicacion;
 import com.android.model.Usuario;
 
 public class TestCase {
@@ -93,6 +94,17 @@ public class TestCase {
 
 		PublicacionDAO dao = new PublicacionDaoImpl();
 		assertNotNull(dao.getPublicacion());
+
+	}
+
+	@Test
+	public void getTipoPublicaciones() throws PublicacionException {
+
+		PublicacionDAO dao = new PublicacionDaoImpl();
+
+		for (TipoPublicacion t : dao.tiposPublicaciones()) {
+			System.out.println(t.getDescripcion());
+		}
 
 	}
 
