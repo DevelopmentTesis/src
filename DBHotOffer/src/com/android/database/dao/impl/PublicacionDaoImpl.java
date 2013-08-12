@@ -11,6 +11,7 @@ import cl.hotoffer.exception.PublicacionException;
 import com.android.database.conector.ConnectionFactory;
 import com.android.database.dao.PublicacionDAO;
 import com.android.model.Publicacion;
+import com.android.model.TipoPublicacion;
 
 /**
  * Clase implementadora de Interfaces PublicacionDAO
@@ -76,6 +77,22 @@ public class PublicacionDaoImpl implements PublicacionDAO {
 			list = session.selectList("Publicacion.buscarPublicaciones", id);
 		} catch (Exception e) {
 			throw new PublicacionException("Error Buscar Publicaciones", e);
+		} finally {
+			session.close();
+		}
+
+		return list;
+	}
+
+	@Override
+	public List<TipoPublicacion> tiposPublicaciones()
+			throws PublicacionException {
+		SqlSession session = sqlSessionFactory.openSession();
+		List<TipoPublicacion> list = null;
+		try {
+			list = session.selectList("Publicacion.getTipoPublicaciones");
+		} catch (Exception e) {
+			throw new PublicacionException(e);
 		} finally {
 			session.close();
 		}
