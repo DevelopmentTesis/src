@@ -5,6 +5,7 @@ import java.util.List;
 import cl.hotoffer.exception.PublicacionException;
 
 import com.android.model.Publicacion;
+import com.android.model.TipoPublicacion;
 
 /**
  * Interface PublicacionDAO, expone metodo que interactuan con la base de datos
@@ -22,7 +23,17 @@ public interface PublicacionDAO {
 	 */
 	public List<Publicacion> getPublicacion() throws PublicacionException;
 
+	/**
+	 * Buscar publicaciones por tipo
+	 * 
+	 * @param id
+	 * @return
+	 * @throws PublicacionException
+	 */
 	public List<Publicacion> buscarPublicaciones(int id)
+			throws PublicacionException;
+
+	public List<TipoPublicacion> tiposPublicaciones()
 			throws PublicacionException;
 
 	/**
