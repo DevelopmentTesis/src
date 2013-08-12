@@ -74,7 +74,7 @@ public class PublicacionClient {
 		for (int i = 0; i < array.length(); i++) {
 
 			publicacion = new Publicacion();
-			
+
 			JSONObject json = array.getJSONObject(i);
 			publicacion.setIdTipoPublicacion(json.getInt("idTipoPublicacion"));
 			publicacion.setComentario(json.getString("comentario"));
@@ -94,5 +94,32 @@ public class PublicacionClient {
 			publi.add(publicacion);
 		}
 		return publi;
+	}
+
+	public List<Publicacion> getTipoPublicaciones() {
+
+		String url = "http://192.168.1.5:8080/WSRestHotOffer/service/publicacion/tipo";
+		HttpClient httpClient = new DefaultHttpClient();
+		HttpGet get = new HttpGet(url);
+		List<Publicacion> list = new ArrayList<Publicacion>();
+		get.setHeader("content-type", "application/json");
+
+		try {
+			HttpResponse resp = httpClient.execute(get);
+			String reString = EntityUtils
+					.toString(resp.getEntity(), HTTP.UTF_8);
+			JSONArray array = new JSONArray(reString);
+			Publicacion pub = new Publicacion();
+			for (int i = 0; i < array.length(); i++) {
+				pub = new Publicacion();
+				JSONObject json = array.getJSONObject(i);
+				pub.setIdTipoPublicacion(json.getInt("idPublicacion"));
+				pub.setDescrTipo(json.getString("descripcion"));
+				list.add(pub);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
 	}
 }
