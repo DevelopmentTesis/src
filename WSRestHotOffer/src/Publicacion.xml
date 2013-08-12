@@ -17,12 +17,22 @@
 		<result property="geolocalizacion.cordLatitud" column="LATITUD" />
 		<result property="geolocalizacion.cordLonguitud" column="LONGUITUD" />
 	</resultMap>
+	
+	<resultMap id="resulTipo" type="TipoPublicacion">
+		<result property="idPublicacion" column="ID_TIPO_PUBLICACION" />
+		<result property="descripcion" column="DESCR_TIPO" />
+	</resultMap>
 
 
 	<select id="getPublicaciones" statementType="CALLABLE"
 		resultMap="result">
 		{call sp_publicaciones()}
 	</select>
+
+	<select id="getTipoPublicaciones" resultMap="resulTipo">
+	SELECT * FROM TIPO_PUBLICACION
+	</select>
+
 
 	<select id="buscarPublicaciones" statementType="CALLABLE"
 		resultMap="result">

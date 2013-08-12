@@ -13,6 +13,7 @@ import cl.hotoffer.exception.PublicacionException;
 import cl.hotoffer.exception.UsuarioException;
 
 import com.android.model.Publicacion;
+import com.android.model.TipoPublicacion;
 import com.android.model.Usuario;
 
 /**
@@ -88,6 +89,19 @@ public interface RestService {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/publicacion/obtener")
 	List<Publicacion> getPublicaciones() throws BusinessException,
+			PublicacionException;
+
+	/**
+	 * Metodo que permite obtener tipo de publicaciones del sistema
+	 * 
+	 * @return List<Publicacion> Estructura JSON
+	 * @throws BusinessException
+	 * @throws PublicacionException
+	 */
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/publicacion/tipo")
+	List<TipoPublicacion> getTipoPublicaciones() throws BusinessException,
 			PublicacionException;
 
 	/**
