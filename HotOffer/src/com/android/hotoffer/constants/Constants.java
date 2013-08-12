@@ -12,5 +12,6 @@ public class Constants {
 
 	public final static String TB_USUARIO = "USUARIO";
 	public final static String TB_RECORDAR = "RECORDAR";
+	public final static String TB_TIPO_PUBLICACION = "TIPO_PUBLICACION";
 
 }
