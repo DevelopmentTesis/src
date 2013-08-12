@@ -16,5 +16,6 @@
     <string name="IN_CLAVE">Contraseña</string>
     <string name="mBuscar">Buscar</string>
     <string name="mPublicar">Publicar</string>
+    <string name="about">About</string>
 
 </resources>
