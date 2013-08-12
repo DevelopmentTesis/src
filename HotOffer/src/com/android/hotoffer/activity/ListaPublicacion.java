@@ -18,6 +18,7 @@ import android.widget.TextView;
 
 import com.android.hotoffer.R;
 import com.android.hotoffer.rest.PublicacionClient;
+import com.android.hotoffer.sqlite.Publicaciones;
 import com.android.hotoffer.to.Publicacion;
 
 public class ListaPublicacion extends Activity {
@@ -88,14 +89,13 @@ public class ListaPublicacion extends Activity {
 	protected Dialog onCreateDialog(int id) {
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		Dialog dialog = new Dialog(this);
+		Publicaciones p = new Publicaciones(this);
 
 		switch (id) {
 		case ID_DIALOG:
 
-			final String[] items = { "Computación", "Vestuario", "Comida",
-					"Literatura" };
 			builder.setTitle("Buscar Publicaciones por :");
-			builder.setSingleChoiceItems(items, -1,
+			builder.setSingleChoiceItems(p.toArray(), -1,
 					new DialogInterface.OnClickListener() {
 						public void onClick(DialogInterface dialog, int item) {
 							int pos = item + 1;
