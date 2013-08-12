@@ -30,5 +30,6 @@
     <string name="mBuscar">Buscar</string>
     <string name="mPublicar">Publicar</string>
     <string name="about">About</string>
+    <string name="Localizacion">Localización</string>
 
 </resources>
