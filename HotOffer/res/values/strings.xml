@@ -25,11 +25,11 @@
     <string name="enviar">Enviar</string>
     <string name="datos">Datos Personales</string>
     <string name="usuario">Usuario</string>
-    <string name="pass">Contraseña</string>
+    <string name="pass">Password</string>
     <string name="servicios">Acepto condiciones de servicio y politicas de seguridad</string>
     <string name="mBuscar">Buscar</string>
     <string name="mPublicar">Publicar</string>
     <string name="about">About</string>
-    <string name="Localizacion">Localización</string>
+    <string name="ingreso">Ingrese Publicacion</string>
 
 </resources>
