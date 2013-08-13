@@ -1,22 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/TableLayout01"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@drawable/fondo_2" >
-
+ 
+    <TableLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:stretchColumns="2" >
+        
+        
 <!-- fila con nombre de formulario -->
-<TableRow android:id="@+id/datos">
+<!-- <TableRow android:id="@+id/datos"> -->
 
        <TextView
            android:id="@+id/datos"
            android:gravity="center"
            android:text="@string/datos"
            android:textColor="@color/Cranberry"
+           android:textSize="@dimen/grande_1"
            android:typeface="sans"
-           android:width="150dp" />
+           android:width="100dp" />
 	
-</TableRow>
+<!-- </TableRow> -->
      
    <!-- fila que indica ingresar nombre -->    
 <TableRow 
@@ -24,14 +31,16 @@
    
     <TextView
         android:id="@+id/nom"
-        android:gravity="center"
+        android:gravity="left"
         android:text="@string/nomb"
+        android:layout_marginLeft="10dp"
         android:textStyle="bold"
-        android:width="100px" />
+         />
 
-    <EditText 
-    	android:id="@+id/nomb" 
-    	android:width="250px" />
+    <EditText
+        android:id="@+id/nomb"
+         />
+
 </TableRow>
 
  <!-- fila que indica ingresar apellido -->  
@@ -40,8 +49,9 @@
 
 	<TextView
 	    android:id="@+id/apel"
-	    android:gravity="center"
+	    android:gravity="left"
 	    android:text="@string/apel"
+	    android:layout_marginLeft="10dp"
 	    android:textStyle="bold" />
 
 	<EditText 
@@ -55,8 +65,9 @@
 
     <TextView
         android:id="@+id/usuario"
-        android:gravity="center"
+        android:gravity="left"
         android:text="@string/usuario"
+        android:layout_marginLeft="10dp"
         android:textStyle="bold" />
 
 	<EditText 
@@ -67,17 +78,19 @@
 <!-- fila que indica ingresar la contraseña -->
 
 <TableRow 
-	    android:id="@+id/contraseña">
+	    android:id="@+id/contrasena">
 
     <TextView
         android:id="@+id/pass"
-        android:gravity="center"
+        android:gravity="left|center"
         android:text="@string/pass"
+        android:layout_marginLeft="10dp"
         android:textStyle="bold" />
 
 	<EditText 
     	android:id="@+id/contras" 
-    	android:width="250px" /> 
+    	android:width="250px" 
+    	android:inputType="textPassword"/> 
 	</TableRow>
 
 <!-- selección de sexo -->
@@ -89,10 +102,11 @@
         <TextView
             android:id="@+id/sexo"
             android:layout_width="match_parent"
-            android:gravity="center"
+            android:gravity="left|center"
             android:text="@string/sex"
+            android:layout_marginLeft="10dp"
             android:textStyle="bold" />
-        
+
         <RadioButton
             android:id="@+id/mujer"
             android:layout_width="match_parent"
@@ -118,13 +132,20 @@
 	         android:id="@+id/btnChangeDate"
 	         android:layout_width="wrap_content"
 	         android:layout_height="wrap_content"
-	         android:gravity="center"
+	         android:gravity="left"
+	         android:layout_marginLeft="10dp"
 	         android:text="Fecha"
 	         android:textStyle="bold" />
-	  
-	 <EditText 
-    	android:id="@+id/muestrafec" 
-    	android:width="250px" /> 
+
+	     <EditText
+	         android:id="@+id/editText1"
+	         android:layout_width="wrap_content"
+	         android:layout_height="wrap_content"
+	         android:ems="10"
+	         android:inputType="date" >
+
+	         <requestFocus />
+	     </EditText>
 	    
 	</TableRow>
 	
@@ -137,8 +158,9 @@
 	      android:id="@+id/ciudad"
 	      android:layout_width="wrap_content"
 	      android:layout_height="wrap_content"
-	      android:gravity="center"
+	      android:gravity="left"
 	      android:text="@string/ciudad"
+	      android:layout_marginLeft="10dp"
 	      android:textStyle="bold" />
 	  
 	 <EditText 
@@ -155,8 +177,9 @@
 	      android:id="@+id/pais"
 	      android:layout_width="10dp"
 	      android:layout_height="wrap_content"
-	      android:gravity="center"
+	      android:gravity="left"
 	      android:text="@string/pais"
+	      android:layout_marginLeft="10dp"
 	      android:textStyle="bold" />
 	  
 	 <EditText 
@@ -165,25 +188,17 @@
 	    
 	</TableRow>
 
-<!-- boton para enviar los datos -->
-
-<TableRow 
-    	android:id="@+id/envio">
-
-</TableRow>
-
 <!-- aceptar condiciones de alicacion -->
 
-<TableRow >
 
-<Button
-    android:id="@+id/enviar"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="@string/enviar"
-    android:width="50px" />
 
-</TableRow>
+    <Button
+        android:id="@+id/enviar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/enviar"
+        android:width="30dp" />
+
 
 <CheckBox
     android:id="@+id/servicios"
@@ -193,3 +208,8 @@
     android:textSize="@dimen/pequeno" />
 
 </TableLayout>
+
+
+</ScrollView>
+
+
