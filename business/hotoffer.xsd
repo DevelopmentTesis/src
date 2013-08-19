@@ -4,7 +4,7 @@
 
 	<complexType name="Usuario">
 		<sequence>
-			<element name="idUsuario" type="integer" nillable="true" />
+			<element name="idUsuario" type="int" nillable="true" />
 			<element name="nombre" minOccurs="1" maxOccurs="1" type="string">
 			</element>
 			<element name="password" type="string" minOccurs="1"
@@ -50,23 +50,26 @@
 			<element name="comentario" type="string" minOccurs="1"
 				maxOccurs="1">
 			</element>
-			<element name="precio" type="string" minOccurs="1" maxOccurs="1">
+			<element name="precio" type="string" minOccurs="1"
+				maxOccurs="1">
 			</element>
-			<element name="tienda" type="string" minOccurs="0" maxOccurs="1">
+			<element name="tienda" type="string" minOccurs="0"
+				maxOccurs="1">
 			</element>
 
 			<element name="Geolocalizacion" type="tns:Geolocalizacion"
 				minOccurs="1" maxOccurs="1">
 			</element>
 			<element name="fechaPublicacion" type="string"></element>
+			<element name="idEstado" type="int"></element>
 		</sequence>
 	</complexType>
 
 	<complexType name="Geolocalizacion">
 		<sequence>
-			<element name="cordLatitud" type="int" minOccurs="1"
+			<element name="cordLatitud" type="string" minOccurs="1"
 				maxOccurs="1"></element>
-			<element name="cordLonguitud" type="int" minOccurs="1"
+			<element name="cordLonguitud" type="string" minOccurs="1"
 				maxOccurs="1"></element>
 		</sequence>
 	</complexType>
