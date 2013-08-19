@@ -93,6 +93,12 @@ public class TestCase {
 	public void getPublicaciones() throws PublicacionException {
 
 		PublicacionDAO dao = new PublicacionDaoImpl();
+
+		List<Publicacion> list = dao.getPublicacion();
+
+		for (Publicacion p : list) {
+			System.out.println(p.getFechaPublicacion());
+		}
 		assertNotNull(dao.getPublicacion());
 
 	}
@@ -117,16 +123,16 @@ public class TestCase {
 		Usuario usuario = new Usuario();
 		usuario.setIdUsuario(new Integer(1));
 		pub.setUsuario(usuario);
-		pub.setIdTipoPublicacion(1);
+		pub.setIdTipoPublicacion(4);
 
 		Geolocalizacion geo = new Geolocalizacion();
-		geo.setCordLatitud(123123);
-		geo.setCordLonguitud(23123123);
+		geo.setCordLatitud("-12312,3123");
+		geo.setCordLonguitud("-12312,3123");
 		pub.setGeolocalizacion(geo);
 
-		pub.setComentario("OFERTA");
-		pub.setPrecio("12312");
-		pub.setTienda("JAJAJAJJAJAJA");
+		pub.setComentario("PRUEBA DE MENSAJE LARGOOOOOOO PRUEBA DE MENSAJE LARGOOOOOOO PRUEBA DE MENSAJE LARGOOOOOOO");
+		pub.setPrecio("12000");
+		pub.setTienda("PELARCO");
 
 		dao.guardarPublicacion(pub);
 
