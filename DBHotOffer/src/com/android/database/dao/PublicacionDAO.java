@@ -33,6 +33,11 @@ public interface PublicacionDAO {
 	public List<Publicacion> buscarPublicaciones(int id)
 			throws PublicacionException;
 
+	/**
+	 * Metodo que permite obtener lista de tipo de publicaciones
+	 * @return
+	 * @throws PublicacionException
+	 */
 	public List<TipoPublicacion> tiposPublicaciones()
 			throws PublicacionException;
 
