@@ -7,6 +7,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -20,6 +21,7 @@ import com.android.hotoffer.R;
 import com.android.hotoffer.rest.PublicacionClient;
 import com.android.hotoffer.sqlite.Publicaciones;
 import com.android.hotoffer.to.Publicacion;
+import com.android.hotoffer.util.Utils;
 
 public class ListaPublicacion extends Activity {
 
@@ -31,6 +33,7 @@ public class ListaPublicacion extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.listado);
+		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
 		lista = (ListView) findViewById(R.id.ListView_listado);
 
@@ -53,33 +56,30 @@ public class ListaPublicacion extends Activity {
 	}
 
 	public void cargarLista(List<Publicacion> p) {
+
 		lista.setAdapter(new ListHandler(this, R.layout.entrada, p) {
 			@Override
 			public void onEntrada(Object entrada, View view) {
+
 				if (entrada != null) {
 					TextView usuario = (TextView) view
 							.findViewById(R.id.usuario);
 					if (usuario != null)
 						usuario.setText(((Publicacion) entrada).getUsuario()
 								.getNombre());
-
-					TextView fecha = (TextView) view.findViewById(R.id.fecha);
-					if (fecha != null)
-						fecha.setText(((Publicacion) entrada)
-								.getFechaPublicacion());
-
 					TextView comentario = (TextView) view
 							.findViewById(R.id.comentario);
 					if (comentario != null)
 						comentario.setText(((Publicacion) entrada)
 								.getComentario());
-					//
-					// ImageView imagen_entrada = (ImageView) view
-					// .findViewById(R.id.imageView_imagen);
-					// if (imagen_entrada != null)
-					// imagen_entrada
-					// .setImageResource(((Lista_entrada) entrada)
-					// .get_idImagen());
+					TextView fecha = (TextView) view.findViewById(R.id.fecha);
+					if (fecha != null)
+						fecha.setText(Utils.getInstance().fecha(
+								((Publicacion) entrada).getFechaPublicacion()));
+					TextView tipo = (TextView) view.findViewById(R.id.tipo);
+					if (tipo != null)
+						tipo.setText(((Publicacion) entrada).getDescrTipo());
+
 				}
 			}
 		});
@@ -113,8 +113,6 @@ public class ListaPublicacion extends Activity {
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// TODO Auto-generated method stub
-
 		getMenuInflater().inflate(R.menu.menu_hotoffer, menu);
 		return true;
 	}

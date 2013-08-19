@@ -31,5 +31,9 @@
     <string name="mPublicar">Publicar</string>
     <string name="about">About</string>
     <string name="ingreso">Ingrese Publicacion</string>
+    <string name="about_message">Aplicación desarrollada para proyecto de Tesis IPCHILE.</string>
+    <string name="cesar">César Araya Acosta</string>
+    <string name="daisy">Daisy Zambrano Garcés</string>
+    <string name="rodrigo">Rodrigo Verdugo</string>
 
 </resources>

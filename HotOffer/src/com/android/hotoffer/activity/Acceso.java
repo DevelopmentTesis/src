@@ -1,11 +1,15 @@
 package com.android.hotoffer.activity;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -97,6 +101,42 @@ public class Acceso extends Activity {
 		// TODO Auto-generated method stub
 		getMenuInflater().inflate(R.menu.about, menu);
 		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+
+		switch (item.getItemId()) {
+		case R.id.mAbout:
+			showDialog(1);
+			break;
+
+		default:
+			break;
+		}
+
+		return super.onOptionsItemSelected(item);
+	}
+
+	@Override
+	protected Dialog onCreateDialog(int id) {
+
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		View view = LayoutInflater.from(this).inflate(R.layout.about, null);
+		builder.setView(view);
+		builder.setCancelable(true);
+
+		switch (id) {
+		case 1:
+			builder.setTitle("About HotOffer");
+
+			break;
+
+		default:
+			break;
+		}
+
+		return builder.create();
 	}
 
 }

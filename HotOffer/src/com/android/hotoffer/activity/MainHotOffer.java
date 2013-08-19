@@ -25,7 +25,7 @@ public class MainHotOffer extends Activity {
 			public void run() {
 				Publicaciones pub = new Publicaciones(MainHotOffer.this);
 				pub.insertTipoPublicaciones(client.getTipoPublicaciones());
-				Intent intent = new Intent(MainHotOffer.this, Acceso.class);
+				Intent intent = new Intent(MainHotOffer.this, ListaPublicacion.class);
 				startActivity(intent);
 				process.onPostExecute("Fin Proceso");
 			}

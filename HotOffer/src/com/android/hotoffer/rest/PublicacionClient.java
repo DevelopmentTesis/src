@@ -19,7 +19,7 @@ import com.android.hotoffer.to.Usuario;
 
 public class PublicacionClient {
 
-	private List<Publicacion> publi = new ArrayList<Publicacion>();
+	private List<Publicacion> publi = null;
 
 	public List<Publicacion> obtenerPublicaciones() {
 
@@ -69,7 +69,8 @@ public class PublicacionClient {
 	public List<Publicacion> lista(JSONArray array) throws JSONException {
 
 		Publicacion publicacion = null;
-		publi.clear();
+		publi = new ArrayList<Publicacion>();
+		// publi.clear();
 
 		for (int i = 0; i < array.length(); i++) {
 
@@ -79,6 +80,7 @@ public class PublicacionClient {
 			publicacion.setIdTipoPublicacion(json.getInt("idTipoPublicacion"));
 			publicacion.setComentario(json.getString("comentario"));
 			publicacion.setDescrTipo(json.getString("descrTipo"));
+			publicacion.setIdEstado(json.getInt("idEstado"));
 			publicacion.setTienda(json.getString("tienda"));
 			publicacion.setPrecio(json.getString("precio"));
 			publicacion.setFechaPublicacion(json.getString("fechaPublicacion"));
@@ -89,7 +91,7 @@ public class PublicacionClient {
 
 			JSONObject geo = json.getJSONObject("geolocalizacion");
 			publicacion.setGeolocalizacion(new Geolocalizacion(geo
-					.getInt("cordLatitud"), geo.getInt("cordLonguitud")));
+					.getString("cordLatitud"), geo.getString("cordLonguitud")));
 
 			publi.add(publicacion);
 		}

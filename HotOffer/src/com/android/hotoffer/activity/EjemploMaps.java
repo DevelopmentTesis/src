@@ -1,16 +1,13 @@
 package com.android.hotoffer.activity;
 
+import android.content.Context;
+import android.location.LocationManager;
+import android.os.Bundle;
+
 import com.android.hotoffer.R;
 import com.google.android.maps.MapActivity;
 import com.google.android.maps.MapController;
 import com.google.android.maps.MapView;
-import com.google.android.maps.MapView.LayoutParams;
-
-import android.content.Context;
-import android.location.LocationManager;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.LinearLayout;
 
 public class EjemploMaps extends MapActivity {
 	private MapView mapView;

@@ -3,6 +3,7 @@ package com.android.hotoffer.to;
 public class Publicacion {
 
 	private int idTipoPublicacion;
+	private int idEstado;
 	private String descrTipo;
 	private Usuario usuario;
 	private String comentario;
@@ -21,6 +22,14 @@ public class Publicacion {
 
 	public void setIdTipoPublicacion(int idTipoPublicacion) {
 		this.idTipoPublicacion = idTipoPublicacion;
+	}
+
+	public int getIdEstado() {
+		return idEstado;
+	}
+
+	public void setIdEstado(int idEstado) {
+		this.idEstado = idEstado;
 	}
 
 	public String getDescrTipo() {
