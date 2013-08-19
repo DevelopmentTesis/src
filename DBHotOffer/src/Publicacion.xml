@@ -14,10 +14,11 @@
 		<result property="precio" column="PRECIO" />
 		<result property="tienda" column="TIENDA" />
 		<result property="fechaPublicacion" column="FECHA_PUBLICACION" />
+		<result property="idEstado" column="idEstado" />
 		<result property="geolocalizacion.cordLatitud" column="LATITUD" />
 		<result property="geolocalizacion.cordLonguitud" column="LONGUITUD" />
 	</resultMap>
-	
+
 	<resultMap id="resulTipo" type="TipoPublicacion">
 		<result property="idPublicacion" column="ID_TIPO_PUBLICACION" />
 		<result property="descripcion" column="DESCR_TIPO" />
@@ -30,7 +31,7 @@
 	</select>
 
 	<select id="getTipoPublicaciones" resultMap="resulTipo">
-	SELECT * FROM TIPO_PUBLICACION
+		SELECT * FROM TIPO_PUBLICACION
 	</select>
 
 
@@ -46,8 +47,8 @@
 		sp_guardarPublicacion(
 		#{usuario.idUsuario,jdbcType=INTEGER,mode=IN},
 		#{idTipoPublicacion,jdbcType=INTEGER, mode=IN},
-		#{geolocalizacion.cordLatitud,jdbcType=INTEGER, mode=IN},
-		#{geolocalizacion.cordLonguitud,jdbcType=INTEGER,mode=IN},
+		#{geolocalizacion.cordLatitud,jdbcType=VARCHAR, mode=IN},
+		#{geolocalizacion.cordLonguitud,jdbcType=VARCHAR,mode=IN},
 		#{comentario,jdbcType=VARCHAR, mode=IN},
 		#{precio,jdbcType=INTEGER,
 		mode=IN},
