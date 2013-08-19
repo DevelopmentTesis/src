@@ -1,44 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal" >
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="72dp"
+    android:gravity="left|right"
+    android:orientation="vertical"
+    android:stretchColumns="2" >
 
-    <ImageView
-        android:id="@+id/imageView_imagen"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:adjustViewBounds="true"
-        android:contentDescription="Descripción del contenido de la imagen"
-        android:scaleType="fitXY"
-        android:src="@android:drawable/ic_menu_gallery" />
+    <TableRow>
 
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="vertical" >
+        <TextView
+            android:id="@+id/tipo"
+            android:layout_height="wrap_content"
+            android:text="tipo"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/gris_1"
+            android:width="80dp" />
 
         <TextView
             android:id="@+id/usuario"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Large Text"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:layout_gravity="left"
+            android:text="usuario"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/gris_1"
+            android:textStyle="italic"
+            android:width="80dp" />
+    </TableRow>
 
-        <TextView
-            android:id="@+id/fecha"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Large Text"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+    <TableRow>
+    </TableRow>
+
+    <TableRow
+        android:layout_width="20dp"
+        android:gravity="left" >
 
         <TextView
             android:id="@+id/comentario"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Small Text"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
-    </LinearLayout>
+            android:layout_width="220dp"
+            android:layout_height="35dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="12dp"
+            android:maxLines="2"
+            android:scrollbars="vertical"
+            android:text="comentario"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/gris"
+            android:textSize="12dp" />
+    </TableRow>
 
-</LinearLayout>
+    <TableRow android:gravity="right" >
+
+        <TextView
+            android:id="@+id/fecha"
+            android:layout_width="10dp"
+            android:layout_height="20dp"
+            android:gravity="right"
+            android:text="fecha"
+            android:textColor="@color/gris_1"
+            android:textSize="11dp" />
+
+    </TableRow>
+     <View
+                android:layout_width="fill_parent"
+                android:layout_height="0.2dp"
+                android:id="@+id/separator"
+                android:visibility="visible"
+                android:background="@color/celeste_2"/>
+</TableLayout>
