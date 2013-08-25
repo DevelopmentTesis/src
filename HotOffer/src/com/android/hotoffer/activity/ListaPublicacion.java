@@ -14,7 +14,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TableLayout;
 import android.widget.TextView;
 
 import com.android.hotoffer.R;
@@ -53,7 +55,7 @@ public class ListaPublicacion extends Activity {
 						.getCordLonguitud());
 				intent.putExtra("lat", elegido.getGeolocalizacion()
 						.getCordLatitud());
-
+				intent.putExtra("comentario", elegido.getComentario());
 				startActivity(intent);
 
 			}
@@ -67,6 +69,7 @@ public class ListaPublicacion extends Activity {
 			public void onEntrada(Object entrada, View view) {
 
 				if (entrada != null) {
+
 					TextView usuario = (TextView) view
 							.findViewById(R.id.usuario);
 					if (usuario != null)
@@ -84,6 +87,31 @@ public class ListaPublicacion extends Activity {
 					TextView tipo = (TextView) view.findViewById(R.id.tipo);
 					if (tipo != null)
 						tipo.setText(((Publicacion) entrada).getDescrTipo());
+
+					ImageView imageEstado = (ImageView) view
+							.findViewById(R.id.estado);
+
+					TableLayout layout = (TableLayout) view
+							.findViewById(R.id.entrada);
+
+					int estado = ((Publicacion) entrada).getIdEstado();
+					switch (estado) {
+					case 1:
+						imageEstado.setImageResource(R.drawable.stat_happy);
+
+						break;
+					case 2:
+						imageEstado.setImageResource(R.drawable.stat_neutral);
+
+						break;
+					case 3:
+						imageEstado.setImageResource(R.drawable.stat_sad);
+						break;
+
+					default:
+						imageEstado.setImageResource(R.drawable.stat_happy);
+						break;
+					}
 
 				}
 			}

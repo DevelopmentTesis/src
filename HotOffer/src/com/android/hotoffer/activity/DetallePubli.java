@@ -1,8 +1,10 @@
 package com.android.hotoffer.activity;
 
 import android.content.pm.ActivityInfo;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.widget.TextView;
 
 import com.android.hotoffer.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -24,8 +26,13 @@ public class DetallePubli extends FragmentActivity {
 		setContentView(R.layout.map);
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
+		TextView comentario = (TextView) findViewById(R.id.comentario);
+		
+
 		Bundle bundle = getIntent().getExtras();
 
+		comentario.setBackgroundColor(Color.TRANSPARENT);
+		comentario.setText(bundle.getString("comentario"));
 		this.latitud = Double.valueOf(bundle.getString("lat"));
 		this.longitud = Double.valueOf(bundle.getString("long"));
 		setUpMapIfNeeded();
