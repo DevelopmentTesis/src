@@ -1,6 +1,7 @@
 package com.android.hotoffer.to;
 
-public class Publicacion {
+
+public final class Publicacion {
 
 	private int idTipoPublicacion;
 	private int idEstado;
