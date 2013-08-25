@@ -28,10 +28,11 @@ public class ListaPublicacion extends Activity {
 	private static final int ID_DIALOG = 1;
 	private PublicacionClient client = new PublicacionClient();
 	private ListView lista;
+	private Publicacion elegido;
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
+	protected void onCreate(Bundle bundle) {
+		super.onCreate(bundle);
 		setContentView(R.layout.listado);
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
@@ -43,12 +44,16 @@ public class ListaPublicacion extends Activity {
 			@Override
 			public void onItemClick(AdapterView<?> pariente, View view,
 					int posicion, long id) {
-				Publicacion elegido = (Publicacion) pariente
-						.getItemAtPosition(posicion);
+				elegido = (Publicacion) pariente.getItemAtPosition(posicion);
 
 				Intent intent = new Intent();
-				intent.setClass(ListaPublicacion.this, DetallePublicidad.class);
-				intent.putExtra("tienda", elegido.getTienda());
+				intent.setClass(ListaPublicacion.this, DetallePubli.class);
+
+				intent.putExtra("long", elegido.getGeolocalizacion()
+						.getCordLonguitud());
+				intent.putExtra("lat", elegido.getGeolocalizacion()
+						.getCordLatitud());
+
 				startActivity(intent);
 
 			}
