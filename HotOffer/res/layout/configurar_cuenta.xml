@@ -3,7 +3,7 @@
     android:id="@+id/TableLayout01"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/fondo_2" >
+    android:background="@color/blanco" >
  
     <TableLayout 
         android:layout_width="fill_parent"
@@ -14,49 +14,36 @@
 <!-- fila con nombre de formulario -->
 <!-- <TableRow android:id="@+id/datos"> -->
 
-       <TextView
-           android:id="@+id/datos"
-           android:gravity="center"
-           android:text="@string/datos"
-           android:textColor="@color/Cranberry"
-           android:textSize="@dimen/grande_1"
-           android:typeface="sans"
-           android:width="100dp" />
+        <TextView
+            android:id="@+id/datos"
+            android:gravity="center"
+            android:text="@string/datos"
+            android:textColor="@color/Cranberry"
+            android:textSize="@dimen/grande_1"
+            android:typeface="sans"
+            android:layout_marginTop="10dp"
+            android:width="100dp" />
 	
-<!-- </TableRow> -->
-     
-   <!-- fila que indica ingresar nombre -->    
-<TableRow 
-    android:id="@+id/nombre">
-   
-    <TextView
-        android:id="@+id/nom"
-        android:gravity="left"
-        android:text="@string/nomb"
-        android:layout_marginLeft="10dp"
-        android:textStyle="bold"
-         />
 
-    <EditText
-        android:id="@+id/nomb"
-         />
-
-</TableRow>
-
+    <EditText 
+        android:id="@+id/nombre" 
+        android:layout_width="15px"
+		android:layout_height="wrap_content" 
+		android:layout_marginTop="20dp"
+		android:layout_marginLeft="8dp"
+		android:layout_marginRight="10dp"
+		android:hint="@string/nomb"/>
+  
  <!-- fila que indica ingresar apellido -->  
-<TableRow 
-    	android:id="@+id/apellido">
-
-	<TextView
-	    android:id="@+id/apel"
-	    android:gravity="left"
-	    android:text="@string/apel"
-	    android:layout_marginLeft="10dp"
-	    android:textStyle="bold" />
 
 	<EditText 
-    	android:id="@+id/apelli" />
-</TableRow>
+        android:id="@+id/apell" 
+        android:layout_width="10px"
+		android:layout_height="wrap_content" 
+		android:layout_marginTop="4dp"
+		android:layout_marginLeft="8dp"
+		android:layout_marginRight="10dp"
+		android:hint="@string/apel"/>
 	
 <!-- 	fila que indica el ingreso de usuario -->
 
@@ -68,10 +55,12 @@
         android:gravity="left"
         android:text="@string/usuario"
         android:layout_marginLeft="10dp"
+        android:layout_marginTop="4dp"
         android:textStyle="bold" />
 
 	<EditText 
     	android:id="@+id/usuario" 
+    	android:layout_marginTop="4dp"
     	android:width="250px" /> 
 	</TableRow>
 
@@ -84,12 +73,14 @@
         android:id="@+id/pass"
         android:gravity="left|center"
         android:text="@string/pass"
+        android:layout_marginTop="4dp"
         android:layout_marginLeft="10dp"
         android:textStyle="bold" />
 
 	<EditText 
     	android:id="@+id/contras" 
     	android:width="250px" 
+    	android:layout_marginTop="4dp"
     	android:inputType="textPassword"/> 
 	</TableRow>
 
@@ -104,6 +95,7 @@
             android:layout_width="match_parent"
             android:gravity="left|center"
             android:text="@string/sex"
+            android:layout_marginTop="4dp"
             android:layout_marginLeft="10dp"
             android:textStyle="bold" />
 
@@ -134,6 +126,7 @@
 	         android:layout_height="wrap_content"
 	         android:gravity="left"
 	         android:layout_marginLeft="10dp"
+	         android:layout_marginTop="4dp"
 	         android:text="Fecha"
 	         android:textStyle="bold" />
 
@@ -142,6 +135,7 @@
 	         android:layout_width="wrap_content"
 	         android:layout_height="wrap_content"
 	         android:ems="10"
+	         android:layout_marginTop="4dp"
 	         android:inputType="date" >
 
 	         <requestFocus />
@@ -161,10 +155,12 @@
 	      android:gravity="left"
 	      android:text="@string/ciudad"
 	      android:layout_marginLeft="10dp"
+	      android:layout_marginTop="4dp"
 	      android:textStyle="bold" />
 	  
 	 <EditText 
     	android:id="@+id/ciudad" 
+    	android:layout_marginTop="4dp"
     	android:width="250px" /> 
 	    
 	</TableRow>
@@ -180,31 +176,36 @@
 	      android:gravity="left"
 	      android:text="@string/pais"
 	      android:layout_marginLeft="10dp"
+	      android:layout_marginTop="4dp"
 	      android:textStyle="bold" />
 	  
 	 <EditText 
     	android:id="@+id/pais" 
+    	android:layout_marginTop="4dp"
     	android:width="250px" /> 
 	    
 	</TableRow>
 
 <!-- aceptar condiciones de alicacion -->
 
-
-
     <Button
         android:id="@+id/enviar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/gris_1"
+        android:ems="10"
         android:text="@string/enviar"
         android:width="30dp" />
-
 
 <CheckBox
     android:id="@+id/servicios"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="@string/servicios"
+    android:layout_marginTop="4dp"
     android:textSize="@dimen/pequeno" />
 
 </TableLayout>

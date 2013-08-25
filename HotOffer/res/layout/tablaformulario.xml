@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/TableLayout01"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/fondo_2" >
+
+<!-- fila con nombre de formulario -->
+<TableRow android:id="@+id/datos">
+
+       <TextView
+           android:id="@+id/datos"
+           android:gravity="center"
+           android:text="@string/datos"
+           android:textColor="@color/Cranberry"
+           android:typeface="sans"
+           android:width="150dp" />
+	
+</TableRow>
+     
+   <!-- fila que indica ingresar nombre -->    
+<TableRow 
+    android:id="@+id/nombre">
+   
+    <TextView
+        android:id="@+id/nom"
+        android:gravity="center"
+        android:text="@string/nomb"
+        android:textStyle="bold"
+        android:width="100px" />
+
+    <EditText 
+    	android:id="@+id/nomb" 
+    	android:width="250px" />
+</TableRow>
+
+ <!-- fila que indica ingresar apellido -->  
+<TableRow 
+    	android:id="@+id/apellido">
+
+	<TextView
+	    android:id="@+id/apel"
+	    android:gravity="center"
+	    android:text="@string/apel"
+	    android:textStyle="bold" />
+
+	<EditText 
+    	android:id="@+id/apelli" />
+</TableRow>
+	
+<!-- 	fila que indica el ingreso de usuario -->
+
+<TableRow 
+	    android:id="@+id/user">"
+
+    <TextView
+        android:id="@+id/usuario"
+        android:gravity="center"
+        android:text="@string/usuario"
+        android:textStyle="bold" />
+
+	<EditText 
+    	android:id="@+id/usuario" 
+    	android:width="250px" /> 
+	</TableRow>
+
+<!-- fila que indica ingresar la contraseña -->
+
+<TableRow 
+	    android:id="@+id/contrasena">
+
+    <TextView
+        android:id="@+id/pass"
+        android:gravity="center"
+        android:text="@string/pass"
+        android:textStyle="bold" />
+
+	<EditText 
+    	android:id="@+id/contras" 
+    	android:width="250px" /> 
+	</TableRow>
+
+<!-- selección de sexo -->
+
+<TableRow >
+    
+    <RadioGroup>
+        
+        <TextView
+            android:id="@+id/sexo"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:text="@string/sex"
+            android:textStyle="bold" />
+        
+        <RadioButton
+            android:id="@+id/mujer"
+            android:layout_width="match_parent"
+            android:gravity="center_vertical|center|start"
+            android:text="@string/mujer"
+            android:textSize="@dimen/medio" />
+            
+        <RadioButton
+            android:id="@+id/hombre"
+            android:layout_width="match_parent"
+            android:text="@string/hombre"
+            android:textSize="@dimen/medio" />
+        
+    </RadioGroup>
+      
+</TableRow>
+
+<!-- seleccion de fecha de nacimiento -->
+
+	<TableRow>
+	    
+	     <TextView
+	         android:id="@+id/btnChangeDate"
+	         android:layout_width="wrap_content"
+	         android:layout_height="wrap_content"
+	         android:gravity="center"
+	         android:text="Fecha"
+	         android:textStyle="bold" />
+	  
+	 <EditText 
+    	android:id="@+id/muestrafec" 
+    	android:width="250px" /> 
+	    
+	</TableRow>
+	
+	
+<!-- seleccion de ciudad -->
+
+<TableRow>
+
+	  <TextView
+	      android:id="@+id/ciudad"
+	      android:layout_width="wrap_content"
+	      android:layout_height="wrap_content"
+	      android:gravity="center"
+	      android:text="@string/ciudad"
+	      android:textStyle="bold" />
+	  
+	 <EditText 
+    	android:id="@+id/ciudad" 
+    	android:width="250px" /> 
+	    
+	</TableRow>
+	
+<!-- seleccion de pais -->
+
+<TableRow>
+
+	  <TextView
+	      android:id="@+id/pais"
+	      android:layout_width="10dp"
+	      android:layout_height="wrap_content"
+	      android:gravity="center"
+	      android:text="@string/pais"
+	      android:textStyle="bold" />
+	  
+	 <EditText 
+    	android:id="@+id/pais" 
+    	android:width="250px" /> 
+	    
+	</TableRow>
+
+<!-- boton para enviar los datos -->
+
+<TableRow 
+    	android:id="@+id/envio">
+
+</TableRow>
+
+<!-- aceptar condiciones de alicacion -->
+
+<TableRow >
+
+<Button
+    android:id="@+id/enviar"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/enviar"
+    android:width="50px" />
+
+</TableRow>
+
+<CheckBox
+    android:id="@+id/servicios"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/servicios"
+    android:textSize="@dimen/pequeno" />
+
+</TableLayout>
