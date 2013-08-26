@@ -22,8 +22,8 @@
     <string name="fechanac">Fecha Nacimiento</string>
     <string name="ciudad">Ciudad</string>
     <string name="pais">País</string>
-    <string name="enviar">Enviar</string>
-    <string name="datos">Datos Personales</string>
+    <string name="enviar">Únete a HotOffer</string>
+    <string name="datos">REGISTRATE</string>
     <string name="usuario">Usuario</string>
     <string name="pass">Password</string>
     <string name="servicios">Acepto condiciones de servicio y politicas de seguridad</string>
@@ -35,5 +35,6 @@
     <string name="cesar">César Araya Acosta</string>
     <string name="daisy">Daisy Zambrano Garcés</string>
     <string name="rodrigo">Rodrigo Verdugo</string>
+    <string name="confirmar">Confirmar</string>
 
 </resources>
