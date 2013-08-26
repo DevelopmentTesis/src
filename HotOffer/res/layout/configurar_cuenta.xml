@@ -5,211 +5,220 @@
     android:layout_height="fill_parent"
     android:background="@color/blanco" >
  
-    <TableLayout 
+    <TableLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:stretchColumns="2" >
-        
-        
-<!-- fila con nombre de formulario -->
-<!-- <TableRow android:id="@+id/datos"> -->
+
+        <!-- fila con nombre de formulario -->
+        <!-- <TableRow android:id="@+id/datos"> -->
 
         <TextView
             android:id="@+id/datos"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="130dp"
+            android:layout_marginTop="10dp"
             android:gravity="center"
             android:text="@string/datos"
-            android:textColor="@color/Cranberry"
-            android:textSize="@dimen/grande_1"
+            android:textColor="@color/gris"
+            android:textSize="@dimen/medio"
+            android:textStyle="bold"
             android:typeface="sans"
+            android:width="50dp" />
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="wrap_content"
+            android:layout_height="21dp"
+            android:layout_marginLeft="210dp"
+            android:layout_marginRight="30dp"
             android:layout_marginTop="10dp"
-            android:width="100dp" />
-	
+            android:src="@drawable/fuego" />
 
-    <EditText 
-        android:id="@+id/nombre" 
-        android:layout_width="15px"
-		android:layout_height="wrap_content" 
-		android:layout_marginTop="20dp"
-		android:layout_marginLeft="8dp"
-		android:layout_marginRight="10dp"
-		android:hint="@string/nomb"/>
-  
- <!-- fila que indica ingresar apellido -->  
+        <EditText
+            android:id="@+id/nombre"
+            android:layout_width="15px"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            android:hint="@string/nomb"
+            android:textSize="@dimen/medio" />
 
-	<EditText 
-        android:id="@+id/apell" 
-        android:layout_width="10px"
-		android:layout_height="wrap_content" 
-		android:layout_marginTop="4dp"
-		android:layout_marginLeft="8dp"
-		android:layout_marginRight="10dp"
-		android:hint="@string/apel"/>
-	
-<!-- 	fila que indica el ingreso de usuario -->
+        <!-- fila que indica ingresar apellido -->
 
-<TableRow 
-	    android:id="@+id/user">"
-
-    <TextView
-        android:id="@+id/usuario"
-        android:gravity="left"
-        android:text="@string/usuario"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="4dp"
-        android:textStyle="bold" />
-
-	<EditText 
-    	android:id="@+id/usuario" 
-    	android:layout_marginTop="4dp"
-    	android:width="250px" /> 
-	</TableRow>
-
-<!-- fila que indica ingresar la contraseña -->
-
-<TableRow 
-	    android:id="@+id/contrasena">
-
-    <TextView
-        android:id="@+id/pass"
-        android:gravity="left|center"
-        android:text="@string/pass"
-        android:layout_marginTop="4dp"
-        android:layout_marginLeft="10dp"
-        android:textStyle="bold" />
-
-	<EditText 
-    	android:id="@+id/contras" 
-    	android:width="250px" 
-    	android:layout_marginTop="4dp"
-    	android:inputType="textPassword"/> 
-	</TableRow>
-
-<!-- selección de sexo -->
-
-<TableRow >
-    
-    <RadioGroup>
-        
-        <TextView
-            android:id="@+id/sexo"
-            android:layout_width="match_parent"
-            android:gravity="left|center"
-            android:text="@string/sex"
+        <EditText
+            android:id="@+id/apell"
+            android:layout_width="10px"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="20dp"
             android:layout_marginTop="4dp"
-            android:layout_marginLeft="10dp"
+            android:hint="@string/apel"
+            android:textSize="@dimen/medio" />
+
+        <!-- fila que indica el ingreso de usuario -->
+
+        <TableRow android:id="@+id/user" >
+
+            <TextView
+                android:id="@+id/usuario"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="4dp"
+                android:gravity="left"
+                android:text="@string/usuario"
+                android:textStyle="normal" />
+
+            <EditText
+                android:id="@+id/usuario"
+                android:layout_marginTop="4dp"
+                android:layout_marginRight="10dp"
+          
+                android:width="250px" />
+        </TableRow>
+
+        <!-- fila que indica ingresar la contraseña -->
+
+        <TableRow android:id="@+id/contrasena" >
+
+            <TextView
+                android:id="@+id/pass"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="4dp"
+                android:gravity="left|center"
+                android:text="@string/pass"
+                android:textStyle="normal" />
+
+            <EditText
+                android:id="@+id/contras"
+                android:layout_marginTop="4dp"
+                android:layout_marginRight="10dp"
+            
+                android:inputType="textPassword"
+                android:width="250px" />
+        </TableRow>
+
+        <!-- selección de sexo -->
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/sex"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="4dp"
+                android:gravity="left"
+                android:text="@string/sex"
+                android:textStyle="normal" />
+
+            <EditText
+                android:id="@+id/sexo"
+                android:layout_marginTop="4dp"
+                android:layout_marginRight="10dp"
+            
+                android:width="250px" />
+        </TableRow>
+
+        <!-- seleccion de fecha de nacimiento -->
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/btnChangeDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="4dp"
+                android:gravity="left"
+                android:text="Fecha"
+                android:textStyle="normal" />
+
+            <EditText
+                android:id="@+id/fecha"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginRight="10dp"
+                android:ems="10"
+                android:inputType="date" >
+
+                <requestFocus />
+            </EditText>
+        </TableRow>
+
+        <!-- seleccion de ciudad -->
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/pais"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="4dp"
+                android:gravity="left"
+                android:text="@string/pais"
+                android:textStyle="normal" />
+
+            <EditText
+                android:id="@+id/nom_pais"
+                android:layout_marginTop="4dp"
+                android:layout_marginRight="10dp"
+                android:width="250px" />
+        </TableRow>
+
+        <!-- seleccion de pais -->
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/ciudad"
+                android:layout_width="10dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="4dp"
+                android:gravity="left"
+                android:text="@string/ciudad"
+                android:textStyle="normal" />
+
+            <EditText
+                android:id="@+id/nom_ciudad"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="4dp"
+                android:ems="10"
+                android:width="250px" />
+
+        </TableRow>
+
+        <!-- aceptar condiciones de alicacion -->
+
+        <Button
+            android:id="@+id/enviar"
+            android:layout_width="232sp"
+            android:layout_height="45dp"
+            android:layout_margin="10dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="5sp"
+            android:background="@color/naranjo"
+            android:gravity="center"
+            android:text="@string/enviar"
+            android:textAlignment="center"
+            android:textColor="@color/gris"
+            android:textColorHint="@color/Cranberry"
+            android:textSize="@dimen/medio"
             android:textStyle="bold" />
 
-        <RadioButton
-            android:id="@+id/mujer"
-            android:layout_width="match_parent"
-            android:gravity="center_vertical|center|start"
-            android:text="@string/mujer"
-            android:textSize="@dimen/medio" />
-            
-        <RadioButton
-            android:id="@+id/hombre"
-            android:layout_width="match_parent"
-            android:text="@string/hombre"
-            android:textSize="@dimen/medio" />
-        
-    </RadioGroup>
-      
-</TableRow>
-
-<!-- seleccion de fecha de nacimiento -->
-
-	<TableRow>
-	    
-	     <TextView
-	         android:id="@+id/btnChangeDate"
-	         android:layout_width="wrap_content"
-	         android:layout_height="wrap_content"
-	         android:gravity="left"
-	         android:layout_marginLeft="10dp"
-	         android:layout_marginTop="4dp"
-	         android:text="Fecha"
-	         android:textStyle="bold" />
-
-	     <EditText
-	         android:id="@+id/editText1"
-	         android:layout_width="wrap_content"
-	         android:layout_height="wrap_content"
-	         android:ems="10"
-	         android:layout_marginTop="4dp"
-	         android:inputType="date" >
-
-	         <requestFocus />
-	     </EditText>
-	    
-	</TableRow>
-	
-	
-<!-- seleccion de ciudad -->
-
-<TableRow>
-
-	  <TextView
-	      android:id="@+id/ciudad"
-	      android:layout_width="wrap_content"
-	      android:layout_height="wrap_content"
-	      android:gravity="left"
-	      android:text="@string/ciudad"
-	      android:layout_marginLeft="10dp"
-	      android:layout_marginTop="4dp"
-	      android:textStyle="bold" />
-	  
-	 <EditText 
-    	android:id="@+id/ciudad" 
-    	android:layout_marginTop="4dp"
-    	android:width="250px" /> 
-	    
-	</TableRow>
-	
-<!-- seleccion de pais -->
-
-<TableRow>
-
-	  <TextView
-	      android:id="@+id/pais"
-	      android:layout_width="10dp"
-	      android:layout_height="wrap_content"
-	      android:gravity="left"
-	      android:text="@string/pais"
-	      android:layout_marginLeft="10dp"
-	      android:layout_marginTop="4dp"
-	      android:textStyle="bold" />
-	  
-	 <EditText 
-    	android:id="@+id/pais" 
-    	android:layout_marginTop="4dp"
-    	android:width="250px" /> 
-	    
-	</TableRow>
-
-<!-- aceptar condiciones de alicacion -->
-
-    <Button
-        android:id="@+id/enviar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="5dp"
-        android:background="@color/gris_1"
-        android:ems="10"
-        android:text="@string/enviar"
-        android:width="30dp" />
-
-<CheckBox
-    android:id="@+id/servicios"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="@string/servicios"
-    android:layout_marginTop="4dp"
-    android:textSize="@dimen/pequeno" />
-
-</TableLayout>
-
+        <CheckBox
+            android:id="@+id/servicios"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@string/servicios"
+            android:textSize="@dimen/pequeno" />
+    </TableLayout>
 
 </ScrollView>
 
