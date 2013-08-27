@@ -2,9 +2,9 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/TableLayout01"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_height="600dp"
     android:background="@color/blanco" >
- 
+
     <TableLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
@@ -29,11 +29,10 @@
 
         <ImageView
             android:id="@+id/imageView1"
-            android:layout_width="wrap_content"
-            android:layout_height="21dp"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
             android:layout_marginLeft="210dp"
             android:layout_marginRight="30dp"
-            android:layout_marginTop="10dp"
             android:src="@drawable/fuego" />
 
         <EditText
@@ -44,7 +43,10 @@
             android:layout_marginRight="20dp"
             android:layout_marginTop="10dp"
             android:hint="@string/nomb"
-            android:textSize="@dimen/medio" />
+            android:textSize="@dimen/medio" >
+
+            <requestFocus />
+        </EditText>
 
         <!-- fila que indica ingresar apellido -->
 
@@ -72,9 +74,8 @@
 
             <EditText
                 android:id="@+id/usuario"
-                android:layout_marginTop="4dp"
                 android:layout_marginRight="10dp"
-          
+                android:layout_marginTop="4dp"
                 android:width="250px" />
         </TableRow>
 
@@ -92,9 +93,8 @@
 
             <EditText
                 android:id="@+id/contras"
-                android:layout_marginTop="4dp"
                 android:layout_marginRight="10dp"
-            
+                android:layout_marginTop="4dp"
                 android:inputType="textPassword"
                 android:width="250px" />
         </TableRow>
@@ -112,13 +112,21 @@
                 android:gravity="left"
                 android:text="@string/sex"
                 android:textStyle="normal" />
-
-            <EditText
+          
+            <TextView
                 android:id="@+id/sexo"
-                android:layout_marginTop="4dp"
+                android:layout_height="35dp"
                 android:layout_marginRight="10dp"
-            
+                android:layout_marginTop="4dp"
+                android:background="@color/gris_2"
+                android:gravity="fill_vertical"
+                android:text="Seleccione"
+                android:textColor="@color/gris_1"
+                android:textSize="@dimen/medio"
+                android:textStyle="italic"
+                android:typeface="normal"
                 android:width="250px" />
+            
         </TableRow>
 
         <!-- seleccion de fecha de nacimiento -->
@@ -135,17 +143,19 @@
                 android:text="Fecha"
                 android:textStyle="normal" />
 
-            <EditText
+             <TextView
                 android:id="@+id/fecha"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
+                android:layout_height="35dp"
                 android:layout_marginRight="10dp"
-                android:ems="10"
-                android:inputType="date" >
-
-                <requestFocus />
-            </EditText>
+                android:layout_marginTop="4dp"
+                android:background="@color/gris_2"
+                android:gravity="fill_vertical"
+                android:text="Seleccione"
+                android:textColor="@color/gris_1"
+                android:textSize="@dimen/medio"
+                android:textStyle="italic"
+                android:typeface="normal"
+                android:width="320px" />
         </TableRow>
 
         <!-- seleccion de ciudad -->
@@ -162,11 +172,19 @@
                 android:text="@string/pais"
                 android:textStyle="normal" />
 
-            <EditText
+             <TextView
                 android:id="@+id/nom_pais"
-                android:layout_marginTop="4dp"
+                android:layout_height="35dp"
                 android:layout_marginRight="10dp"
-                android:width="250px" />
+                android:layout_marginTop="4dp"
+                android:background="@color/gris_2"
+                android:gravity="fill_vertical"
+                android:text="Seleccione"
+                android:textColor="@color/gris_1"
+                android:textSize="@dimen/medio"
+                android:textStyle="italic"
+                android:typeface="normal"
+                android:width="320px" />
         </TableRow>
 
         <!-- seleccion de pais -->
@@ -183,13 +201,19 @@
                 android:text="@string/ciudad"
                 android:textStyle="normal" />
 
-            <EditText
+             <TextView
                 android:id="@+id/nom_ciudad"
+                android:layout_height="35dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="4dp"
-                android:ems="10"
-                android:width="250px" />
-
+                android:background="@color/gris_2"
+                android:gravity="fill_vertical"
+                android:text="Seleccione"
+                android:textColor="@color/gris_1"
+                android:textSize="@dimen/medio"
+                android:textStyle="italic"
+                android:typeface="normal"
+                android:width="320px" />
         </TableRow>
 
         <!-- aceptar condiciones de alicacion -->
@@ -218,8 +242,15 @@
             android:layout_marginTop="4dp"
             android:text="@string/servicios"
             android:textSize="@dimen/pequeno" />
+
+        <DatePicker
+            android:id="@+id/dpResult"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/button1"
+            android:layout_alignLeft="@+id/btnChangeDate"
+            android:layout_marginBottom="41dp"
+            android:visibility="invisible" />
     </TableLayout>
 
 </ScrollView>
-
-
