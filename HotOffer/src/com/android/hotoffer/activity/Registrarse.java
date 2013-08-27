@@ -2,25 +2,26 @@ package com.android.hotoffer.activity;
 
 import java.util.Calendar;
 
-import com.android.hotoffer.R;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.provider.CallLog.Calls;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.android.hotoffer.R;
 
 public class Registrarse extends Activity {
 
-	private EditText editText;
+	private TextView tvFecha;
+
+	private TextView tvDisplayDate;
+	private DatePicker dpResult;
 	private int anio;
 	private int mes;
 	private int dia;
@@ -29,64 +30,55 @@ public class Registrarse extends Activity {
 	static final int SX_DIALOG_ID = 111;
 	static final int PAIS_DIALOG_ID = 222;
 	static final int CIUDAD_DIALOG_ID = 333;
-	
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.configurar_cuenta);
-
-		editText = (EditText) findViewById(R.id.fecha);
-		editText.setOnClickListener(new OnClickListener() {
+		setCurrentDateOnView();
+		tvFecha = (TextView) findViewById(R.id.fecha);
+		tvFecha.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
-
 				showDialog(DATE_DIALOG_ID);
+
 			}
 		});
-		
-		
-		EditText sexo = (EditText) findViewById(R.id.sexo);
+
+		TextView sexo = (TextView) findViewById(R.id.sexo);
 		sexo.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
-
 				showDialog(SX_DIALOG_ID);
 
 			}
 		});
 
-	
-	
-	EditText pais = (EditText) findViewById(R.id.nom_pais);
-	pais.setOnClickListener(new OnClickListener() {
+		TextView pais = (TextView) findViewById(R.id.nom_pais);
+		pais.setOnClickListener(new OnClickListener() {
 
-		@Override
-		public void onClick(View v) {
-			// TODO Auto-generated method stub
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
 
-			showDialog(PAIS_DIALOG_ID);
+				showDialog(PAIS_DIALOG_ID);
 
-		}
-	});
-	
-	EditText ciudad = (EditText) findViewById(R.id.nom_ciudad);
-	ciudad.setOnClickListener(new OnClickListener() {
+			}
+		});
 
-		@Override
-		public void onClick(View v) {
-			// TODO Auto-generated method stub
+		TextView ciudad = (TextView) findViewById(R.id.nom_ciudad);
+		ciudad.setOnClickListener(new OnClickListener() {
 
-			showDialog(CIUDAD_DIALOG_ID);
+			@Override
+			public void onClick(View v) {
+				showDialog(CIUDAD_DIALOG_ID);
 
-		}
-	});
+			}
+		});
 
-}
+	}
 
 	@Override
 	protected Dialog onCreateDialog(int id) {
@@ -95,24 +87,23 @@ public class Registrarse extends Activity {
 		switch (id) {
 		case DATE_DIALOG_ID:
 
-			LinearLayout layout = (LinearLayout) findViewById(R.id.calendarioLayout);
-			View child = layout.inflate(this, R.layout.calendario, null);
-
-			builder.setTitle("Fecha Nacimiento");
-			builder.setView(child);
-
-			dialog = builder.create();
-			break;
+			return new DatePickerDialog(this, mDateSetListener, anio, mes, dia);
 
 		case SX_DIALOG_ID:
 
 			builder.setTitle("Sexo");
-			String sexo[] = { "Mujer", "Hombre", "Otro" };
+			final String sexo[] = { "Mujer", "Hombre", "Otro" };
+			final TextView sexTextView = (TextView) findViewById(R.id.sexo);
 
 			builder.setSingleChoiceItems(sexo, -1,
 					new DialogInterface.OnClickListener() {
 						public void onClick(DialogInterface dialog, int item) {
-							int pos = item + 1;
+
+							for (int i = 0; i < sexo.length; i++) {
+								if (i == item) {
+									sexTextView.setText(sexo[item]);
+								}
+							}
 
 							dialog.dismiss();
 						}
@@ -125,12 +116,20 @@ public class Registrarse extends Activity {
 		case PAIS_DIALOG_ID:
 
 			builder.setTitle("Pais");
-			String pais[] = { "Chile"};
+			final String pais[] = { "Chile" };
+			final TextView paisTextView = (TextView) findViewById(R.id.nom_pais);
 
 			builder.setSingleChoiceItems(pais, -1,
 					new DialogInterface.OnClickListener() {
 						public void onClick(DialogInterface dialog, int item) {
-							int pos = item + 1;
+
+							for (int i = 0; i < pais.length; i++) {
+								if (i == item) {
+									paisTextView.setText(pais[item]);
+
+								}
+
+							}
 
 							dialog.dismiss();
 						}
@@ -139,16 +138,22 @@ public class Registrarse extends Activity {
 			dialog = builder.create();
 
 			break;
-			
+
 		case CIUDAD_DIALOG_ID:
 
 			builder.setTitle("Ciudad");
-			String ciudad[] = { "Santiago","Valparaiso","Viña del Mar"};
+			final String ciudad[] = { "Santiago", "Valparaiso", "Viña del Mar" };
+			final TextView ciudadTextView = (TextView) findViewById(R.id.nom_ciudad);
 
 			builder.setSingleChoiceItems(ciudad, -1,
 					new DialogInterface.OnClickListener() {
 						public void onClick(DialogInterface dialog, int item) {
-							int pos = item + 1;
+
+							for (int i = 0; i < ciudad.length; i++) {
+								if (i == item) {
+									ciudadTextView.setText(ciudad[item]);
+								}
+							}
 
 							dialog.dismiss();
 						}
@@ -159,6 +164,7 @@ public class Registrarse extends Activity {
 			break;
 
 		}
+
 		return dialog;
 	}
 
@@ -170,8 +176,33 @@ public class Registrarse extends Activity {
 			anio = fec_anio;
 			mes = fec_mes;
 			dia = fec_dia;
+
+			StringBuffer buffer = new StringBuffer();
+
+			tvDisplayDate.setText(new StringBuilder()
+					// Month is 0 based, just add 1
+					.append(mes + 1).append("-").append(dia).append("-")
+					.append(anio).append(" "));
+
 		}
 
 	};
+
+	public void setCurrentDateOnView() {
+
+		tvDisplayDate = (TextView) findViewById(R.id.fecha);
+		dpResult = (DatePicker) findViewById(R.id.dpResult);
+
+		final Calendar c = Calendar.getInstance();
+		anio = c.get(Calendar.YEAR);
+		mes = c.get(Calendar.MONTH);
+		dia = c.get(Calendar.DAY_OF_MONTH);
+
+		tvDisplayDate.setText(new StringBuilder().append(mes + 1).append("-")
+				.append(dia).append("-").append(anio).append(" "));
+
+		dpResult.init(anio, mes, dia, null);
+
+	}
 
 }
