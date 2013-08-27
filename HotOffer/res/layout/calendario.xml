@@ -13,5 +13,33 @@
         android:layout_alignLeft="@+id/btnChangeDate"
         android:layout_marginBottom="41dp" 
         />
+    
+     <TextView
+        android:id="@+id/lblDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Current Date (M-D-YYYY): "
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+     
+     <TextView
+        android:id="@+id/tvDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+    
+<!--      <Button -->
+<!--          android:id="@+id/confirmar" -->
+<!--          android:layout_width="232sp" -->
+<!--          android:layout_height="34dp" -->
+<!--          android:layout_margin="10dp" -->
+<!--          android:layout_marginTop="5sp" -->
+<!--          android:background="@color/celeste_2" -->
+<!--          android:gravity="center" -->
+<!--          android:text="@string/confirmar" -->
+<!--          android:textAlignment="center" -->
+<!--          android:textColor="@color/gris" -->
+<!--          android:textColorHint="@color/Cranberry" -->
+<!--          android:textSize="@dimen/medio" /> -->
 
 </LinearLayout>
