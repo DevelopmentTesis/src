@@ -77,6 +77,7 @@ public class PublicacionClient {
 			publicacion = new Publicacion();
 
 			JSONObject json = array.getJSONObject(i);
+			publicacion.setIdPublicacion(json.getInt("idPublicacion"));
 			publicacion.setIdTipoPublicacion(json.getInt("idTipoPublicacion"));
 			publicacion.setComentario(json.getString("comentario"));
 			publicacion.setDescrTipo(json.getString("descrTipo"));
@@ -123,5 +124,41 @@ public class PublicacionClient {
 			e.printStackTrace();
 		}
 		return list;
+	}
+
+	public List<Publicacion> comentariosPublicacion(int id) {
+
+		HttpClient httpClient = new DefaultHttpClient();
+		String url = "http://192.168.1.5:8080/WSRestHotOffer/service/publicacion/comentarios?id="
+				+ id;
+
+		List<Publicacion> comentarios = new ArrayList<Publicacion>();
+		Publicacion publicacion;
+
+		HttpGet get = new HttpGet(url);
+
+		get.setHeader("content-type", "application/json");
+		HttpResponse resp;
+		try {
+			resp = httpClient.execute(get);
+			String reString = EntityUtils
+					.toString(resp.getEntity(), HTTP.UTF_8);
+
+			JSONArray array = new JSONArray(reString);
+
+			for (int i = 0; i < array.length(); i++) {
+				publicacion = new Publicacion();
+				JSONObject json = array.getJSONObject(i);
+				publicacion.setComentario(json.getString("comentario"));
+				publicacion.setUsuario(new Usuario(json.getString("usuario"),
+						(String) null));
+
+				comentarios.add(publicacion);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return comentarios;
 	}
 }
