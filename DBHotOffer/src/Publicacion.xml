@@ -6,6 +6,7 @@
 <mapper namespace="Publicacion">
 
 	<resultMap id="result" type="Publicacion">
+		<result property="idPublicacion" column="ID_PUBLICACION" />
 		<result property="idTipoPublicacion" column="ID_TIPO_PUBLICACION" />
 		<result property="descrTipo" column="DESCR_TIPO" />
 		<result property="usuario.idUsuario" column="ID_USUARIO" />
@@ -24,6 +25,11 @@
 		<result property="descripcion" column="DESCR_TIPO" />
 	</resultMap>
 
+	<resultMap id="resulComentario" type="Comentarios">
+		<result property="idComentario" column="ID_COMENTARIO" />
+		<result property="comentario" column="COMENTARIOS" />
+		<result property="usuario" column="NOMBRE" />
+	</resultMap>
 
 	<select id="getPublicaciones" statementType="CALLABLE"
 		resultMap="result">
@@ -31,7 +37,17 @@
 	</select>
 
 	<select id="getTipoPublicaciones" resultMap="resulTipo">
-		SELECT * FROM TIPO_PUBLICACION
+		SELECT * FROM
+		TIPO_PUBLICACION
+	</select>
+
+	<select id="buscarComentarios" resultMap="resulComentario"
+		parameterType="int">
+		select C.ID_COMENTARIO,C.COMENTARIOS , A.NOMBRE from
+		COMENTARIOS AS C INNER JOIN PUBLICACION AS P
+		ON C.ID_PUBLICACION=P.ID_PUBLICACION INNER JOIN USUARIO AS A
+		ON P.ID_USUARIO=A.ID_USUARIO
+		where P.ID_PUBLICACION=#{id}
 	</select>
 
 
@@ -40,7 +56,6 @@
 		{call
 		sp_buscarPublicaciones(#{id,jdbcType=INTEGER,mode=IN})}
 	</select>
-
 
 	<insert id="guardarPublicacion" statementType="CALLABLE">
 		{call
