@@ -8,16 +8,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
-import com.android.hotoffer.to.Publicacion;
-
 public abstract class ListHandler extends BaseAdapter {
 
-	private List<Publicacion> entradas;
+	private List<?> entradas;
 	private int R_layout_IdView;
 	private Context contexto;
 
 	public ListHandler(Context contexto, int R_layout_IdView,
-			List<Publicacion> list) {
+			List<?> list) {
 		super();
 		this.contexto = contexto;
 		this.entradas = list;

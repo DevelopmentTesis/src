@@ -16,7 +16,6 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.TableLayout;
 import android.widget.TextView;
 
 import com.android.hotoffer.R;
@@ -50,12 +49,14 @@ public class ListaPublicacion extends Activity {
 
 				Intent intent = new Intent();
 				intent.setClass(ListaPublicacion.this, DetallePubli.class);
-
-				intent.putExtra("long", elegido.getGeolocalizacion()
-						.getCordLonguitud());
-				intent.putExtra("lat", elegido.getGeolocalizacion()
-						.getCordLatitud());
+				intent.putExtra("idPub", elegido.getIdPublicacion());
+				intent.putExtra("long", elegido.getGeolocalizacion().getCordLonguitud());
+				intent.putExtra("lat", elegido.getGeolocalizacion().getCordLatitud());
 				intent.putExtra("comentario", elegido.getComentario());
+				intent.putExtra("tienda", elegido.getTienda());
+				intent.putExtra("tipoPub", elegido.getDescrTipo());
+				intent.putExtra("precio", elegido.getPrecio());
+				
 				startActivity(intent);
 
 			}
@@ -69,7 +70,6 @@ public class ListaPublicacion extends Activity {
 			public void onEntrada(Object entrada, View view) {
 
 				if (entrada != null) {
-
 					TextView usuario = (TextView) view
 							.findViewById(R.id.usuario);
 					if (usuario != null)
@@ -88,28 +88,22 @@ public class ListaPublicacion extends Activity {
 					if (tipo != null)
 						tipo.setText(((Publicacion) entrada).getDescrTipo());
 
-					ImageView imageEstado = (ImageView) view
+					ImageView status = (ImageView) view
 							.findViewById(R.id.estado);
 
-					TableLayout layout = (TableLayout) view
-							.findViewById(R.id.entrada);
+					int idEstado = ((Publicacion) entrada).getIdEstado();
 
-					int estado = ((Publicacion) entrada).getIdEstado();
-					switch (estado) {
-					case 1:
-						imageEstado.setImageResource(R.drawable.stat_happy);
-
+					switch (idEstado) {				case 1:
+						status.setImageResource(R.drawable.stat_happy);
 						break;
 					case 2:
-						imageEstado.setImageResource(R.drawable.stat_neutral);
-
+						status.setImageResource(R.drawable.stat_neutral);
 						break;
 					case 3:
-						imageEstado.setImageResource(R.drawable.stat_sad);
+						status.setImageResource(R.drawable.stat_sad);
 						break;
-
 					default:
-						imageEstado.setImageResource(R.drawable.stat_happy);
+						status.setImageResource(R.drawable.stat_happy);
 						break;
 					}
 
