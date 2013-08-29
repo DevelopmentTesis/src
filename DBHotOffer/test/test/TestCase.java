@@ -16,6 +16,7 @@ import com.android.database.dao.PublicacionDAO;
 import com.android.database.dao.UsuarioDAO;
 import com.android.database.dao.impl.PublicacionDaoImpl;
 import com.android.database.dao.impl.UsuarioDaoImpl;
+import com.android.model.Comentario;
 import com.android.model.Geolocalizacion;
 import com.android.model.Persona;
 import com.android.model.Publicacion;
@@ -123,14 +124,14 @@ public class TestCase {
 		Usuario usuario = new Usuario();
 		usuario.setIdUsuario(new Integer(1));
 		pub.setUsuario(usuario);
-		pub.setIdTipoPublicacion(4);
+		pub.setIdTipoPublicacion(2);
 
 		Geolocalizacion geo = new Geolocalizacion();
-		geo.setCordLatitud("-12312,3123");
-		geo.setCordLonguitud("-12312,3123");
+		geo.setCordLatitud("-33.4360476");
+		geo.setCordLonguitud("-70.6780484");
 		pub.setGeolocalizacion(geo);
 
-		pub.setComentario("PRUEBA DE MENSAJE LARGOOOOOOO PRUEBA DE MENSAJE LARGOOOOOOO PRUEBA DE MENSAJE LARGOOOOOOO");
+		pub.setComentario("YA ESTAMOS CASI LISTO CON LA APLICACION HOTOFFER OJALA SEA DE SU AGRADO, PARA PODER TITULARME DE INGENIERIA EN INFORMATICA");
 		pub.setPrecio("12000");
 		pub.setTienda("PELARCO");
 
@@ -148,6 +149,18 @@ public class TestCase {
 		} catch (PublicacionException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+
+	}
+
+	@Test
+	public void buscarComentarios() throws PublicacionException {
+
+		PublicacionDAO dao = new PublicacionDaoImpl();
+		assertNotNull(dao.comentariosPublicacion(1));
+
+		for (Comentario it : dao.comentariosPublicacion(1)) {
+			System.out.println(it.getUsuario());
 		}
 
 	}

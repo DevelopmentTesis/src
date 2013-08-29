@@ -10,6 +10,7 @@ import cl.hotoffer.exception.PublicacionException;
 
 import com.android.database.conector.ConnectionFactory;
 import com.android.database.dao.PublicacionDAO;
+import com.android.model.Comentario;
 import com.android.model.Publicacion;
 import com.android.model.TipoPublicacion;
 
@@ -100,4 +101,19 @@ public class PublicacionDaoImpl implements PublicacionDAO {
 		return list;
 	}
 
+	@Override
+	public List<Comentario> comentariosPublicacion(int idPublicacion)
+			throws PublicacionException {
+		SqlSession session = sqlSessionFactory.openSession();
+		List<Comentario> list = null;
+		try {
+			list = session.selectList("Publicacion.buscarComentarios",
+					idPublicacion);
+		} catch (Exception e) {
+			throw new PublicacionException(e);
+		} finally {
+			session.close();
+		}
+		return list;
+	}
 }

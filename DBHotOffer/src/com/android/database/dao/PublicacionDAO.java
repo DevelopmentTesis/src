@@ -4,6 +4,7 @@ import java.util.List;
 
 import cl.hotoffer.exception.PublicacionException;
 
+import com.android.model.Comentario;
 import com.android.model.Publicacion;
 import com.android.model.TipoPublicacion;
 
@@ -35,6 +36,7 @@ public interface PublicacionDAO {
 
 	/**
 	 * Metodo que permite obtener lista de tipo de publicaciones
+	 * 
 	 * @return
 	 * @throws PublicacionException
 	 */
@@ -48,6 +50,16 @@ public interface PublicacionDAO {
 	 * @throws PublicacionException
 	 */
 	public void guardarPublicacion(Publicacion publicacion)
+			throws PublicacionException;
+
+	/**
+	 * Metodo que permite buscar comentarios por publicacion
+	 * 
+	 * @param idPublicacion
+	 * @return
+	 * @throws PublicacionException
+	 */
+	public List<Comentario> comentariosPublicacion(int idPublicacion)
 			throws PublicacionException;
 
 }
