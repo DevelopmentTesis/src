@@ -49,7 +49,7 @@
         </activity>
         <activity android:name=".activity.DetallePublicidad" >
         </activity>
-        <activity android:name=".activity.ListaPublicacion" >
+        <activity android:name=".activity.ListaPublicacion" android:theme="@style/AppTheme">
         </activity>
         <activity android:name="com.android.hotoffer.activity.DetallePubli" >
         </activity>
