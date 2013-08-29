@@ -40,6 +40,7 @@
 
 	<complexType name="Publicacion">
 		<sequence>
+			<element name="idPublicacion" type="int"></element>
 			<element name="idTipoPublicacion" type="int" minOccurs="1"
 				maxOccurs="1">
 			</element>
@@ -86,4 +87,12 @@
 	</complexType>
 
 	<element name="TipoPublicacion" type="tns:TipoPublicacion"></element>
+
+	<complexType name="Comentario">
+		<sequence>
+			<element name="idComentario" type="int"></element>
+			<element name="comentario" type="string"></element>
+			<element name="usuario" type="string"></element>
+		</sequence>
+	</complexType>
 </schema>
