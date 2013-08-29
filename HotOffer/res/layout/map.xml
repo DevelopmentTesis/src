@@ -8,19 +8,36 @@
         android:id="@+id/mapsGo"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="310dp"
-        android:layout_height="200dp"
-        android:layout_marginTop="15dp"
+        android:layout_height="150dp"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
+        android:layout_marginTop="15dp"
         android:clickable="true" />
 
     <TextView
         android:id="@+id/comentario"
+        style="@style/BodyText"
         android:layout_width="310dp"
         android:layout_height="50dp"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:layout_marginTop="5dp"
         android:text="Comentario" />
+
+    <Button
+        android:id="@+id/detalle"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/naranjo_2"
+        android:text="Detalle" />
+
+    <ListView
+        android:id="@+id/comentarios_usuario"
+        style="@android:color/secondary_text_light"
+        android:layout_width="match_parent"
+        android:layout_height="200dp" >
+    </ListView>
 
 </LinearLayout>

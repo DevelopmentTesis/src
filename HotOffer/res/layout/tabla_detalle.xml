@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:id="@+id/Tabla_detalle"
+    android:layout_height="wrap_content"
+    android:visibility="invisible" >
+
+    <!-- Fila 1 -->
+
+    <TableRow
+        android:id="@+id/rowTipoPub"
+        style="@style/BodyRow" >
+
+        <TableRow android:id="@+id/titTipoPub" >
+
+            <TextView
+                style="@style/BodyText"
+                android:text="Tipo" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/dataTipoPub"
+            style="@style/BodyRow" >
+
+            <TextView
+                android:id="@+id/textTipPub"
+                style="@style/BodyText"
+                android:text="Tipo Publicación" />
+        </TableRow>
+    </TableRow>
+    <!-- Fila 2 -->
+
+    <TableRow
+        android:id="@+id/titTienda"
+        style="@style/BodyRow" >
+
+        <TableRow android:id="@+id/rowTienda" >
+
+            <TextView
+                style="@style/BodyText"
+                android:text="Tienda" />
+        </TableRow>
+
+        <TableRow android:id="@+id/dataTienda" >
+
+            <TextView
+                android:id="@+id/textTienda"
+                style="@style/BodyText"
+                android:text="tienda" />
+        </TableRow>
+    </TableRow>
+    <!-- Fila 3 -->
+
+    <TableRow
+        android:id="@+id/titPrecio"
+        style="@style/BodyRow" >
+
+        <TableRow android:id="@+id/rowPrecio" >
+
+            <TextView
+                style="@style/BodyText"
+                android:text="Precio" />
+        </TableRow>
+
+        <TableRow android:id="@+id/dataPrecio" >
+
+            <TextView
+                android:id="@+id/textPrecio"
+                style="@style/BodyText"
+                android:text="Precio" />
+        </TableRow>
+    </TableRow>
+
+</TableLayout>
