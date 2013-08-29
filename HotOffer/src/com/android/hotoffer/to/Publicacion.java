@@ -1,8 +1,8 @@
 package com.android.hotoffer.to;
 
-
 public final class Publicacion {
 
+	private int idPublicacion;
 	private int idTipoPublicacion;
 	private int idEstado;
 	private String descrTipo;
@@ -15,6 +15,14 @@ public final class Publicacion {
 
 	public Publicacion() {
 		// TODO Auto-generated constructor stub
+	}
+
+	public int getIdPublicacion() {
+		return idPublicacion;
+	}
+
+	public void setIdPublicacion(int idPublicacion) {
+		this.idPublicacion = idPublicacion;
 	}
 
 	public int getIdTipoPublicacion() {
