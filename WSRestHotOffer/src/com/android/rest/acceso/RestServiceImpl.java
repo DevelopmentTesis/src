@@ -12,6 +12,7 @@ import com.android.database.dao.PublicacionDAO;
 import com.android.database.dao.UsuarioDAO;
 import com.android.database.dao.impl.PublicacionDaoImpl;
 import com.android.database.dao.impl.UsuarioDaoImpl;
+import com.android.model.Comentario;
 import com.android.model.Persona;
 import com.android.model.Publicacion;
 import com.android.model.TipoPublicacion;
@@ -83,6 +84,14 @@ public class RestServiceImpl implements RestService {
 			throws BusinessException, PublicacionException {
 		PublicacionDAO dao = new PublicacionDaoImpl();
 		return dao.tiposPublicaciones();
+	}
+
+	public List<Comentario> comentariosPublicacion(int id)
+			throws BusinessException, PublicacionException {
+
+		PublicacionDAO dao = new PublicacionDaoImpl();
+
+		return dao.comentariosPublicacion(id);
 	}
 
 }

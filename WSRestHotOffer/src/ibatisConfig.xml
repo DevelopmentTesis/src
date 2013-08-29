@@ -9,7 +9,8 @@
 		<typeAlias alias="Usuario" type="com.android.model.Usuario" />
 		<typeAlias alias="Persona" type="com.android.model.Persona" />
 		<typeAlias alias="Publicacion" type="com.android.model.Publicacion" />		
-		<typeAlias alias="TipoPublicacion" type="com.android.model.TipoPublicacion" />	
+		<typeAlias alias="TipoPublicacion" type="com.android.model.TipoPublicacion" />
+		<typeAlias alias="Comentarios" type="com.android.model.Comentario" />	
 	</typeAliases>
 
 	<environments default="development">

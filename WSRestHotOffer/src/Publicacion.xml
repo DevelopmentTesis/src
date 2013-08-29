@@ -6,6 +6,7 @@
 <mapper namespace="Publicacion">
 
 	<resultMap id="result" type="Publicacion">
+		<result property="idPublicacion" column="ID_PUBLICACION" />
 		<result property="idTipoPublicacion" column="ID_TIPO_PUBLICACION" />
 		<result property="descrTipo" column="DESCR_TIPO" />
 		<result property="usuario.idUsuario" column="ID_USUARIO" />
@@ -14,15 +15,21 @@
 		<result property="precio" column="PRECIO" />
 		<result property="tienda" column="TIENDA" />
 		<result property="fechaPublicacion" column="FECHA_PUBLICACION" />
+		<result property="idEstado" column="idEstado" />
 		<result property="geolocalizacion.cordLatitud" column="LATITUD" />
 		<result property="geolocalizacion.cordLonguitud" column="LONGUITUD" />
 	</resultMap>
-	
+
 	<resultMap id="resulTipo" type="TipoPublicacion">
 		<result property="idPublicacion" column="ID_TIPO_PUBLICACION" />
 		<result property="descripcion" column="DESCR_TIPO" />
 	</resultMap>
 
+	<resultMap id="resulComentario" type="Comentarios">
+		<result property="idComentario" column="ID_COMENTARIO" />
+		<result property="comentario" column="COMENTARIOS" />
+		<result property="usuario" column="NOMBRE" />
+	</resultMap>
 
 	<select id="getPublicaciones" statementType="CALLABLE"
 		resultMap="result">
@@ -30,7 +37,17 @@
 	</select>
 
 	<select id="getTipoPublicaciones" resultMap="resulTipo">
-	SELECT * FROM TIPO_PUBLICACION
+		SELECT * FROM
+		TIPO_PUBLICACION
+	</select>
+
+	<select id="buscarComentarios" resultMap="resulComentario"
+		parameterType="int">
+		select C.ID_COMENTARIO,C.COMENTARIOS , A.NOMBRE from
+		COMENTARIOS AS C INNER JOIN PUBLICACION AS P
+		ON C.ID_PUBLICACION=P.ID_PUBLICACION INNER JOIN USUARIO AS A
+		ON P.ID_USUARIO=A.ID_USUARIO
+		where P.ID_PUBLICACION=#{id}
 	</select>
 
 
@@ -40,14 +57,13 @@
 		sp_buscarPublicaciones(#{id,jdbcType=INTEGER,mode=IN})}
 	</select>
 
-
 	<insert id="guardarPublicacion" statementType="CALLABLE">
 		{call
 		sp_guardarPublicacion(
 		#{usuario.idUsuario,jdbcType=INTEGER,mode=IN},
 		#{idTipoPublicacion,jdbcType=INTEGER, mode=IN},
-		#{geolocalizacion.cordLatitud,jdbcType=INTEGER, mode=IN},
-		#{geolocalizacion.cordLonguitud,jdbcType=INTEGER,mode=IN},
+		#{geolocalizacion.cordLatitud,jdbcType=VARCHAR, mode=IN},
+		#{geolocalizacion.cordLonguitud,jdbcType=VARCHAR,mode=IN},
 		#{comentario,jdbcType=VARCHAR, mode=IN},
 		#{precio,jdbcType=INTEGER,
 		mode=IN},

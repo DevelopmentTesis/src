@@ -12,6 +12,7 @@ import cl.hotoffer.exception.BusinessException;
 import cl.hotoffer.exception.PublicacionException;
 import cl.hotoffer.exception.UsuarioException;
 
+import com.android.model.Comentario;
 import com.android.model.Publicacion;
 import com.android.model.TipoPublicacion;
 import com.android.model.Usuario;
@@ -114,6 +115,12 @@ public interface RestService {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/publicacion/buscar")
 	List<Publicacion> buscarPublicaciones(@QueryParam("id") int id)
+			throws BusinessException, PublicacionException;
+
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/publicacion/comentarios")
+	List<Comentario> comentariosPublicacion(@QueryParam("id") int id)
 			throws BusinessException, PublicacionException;
 
 }
