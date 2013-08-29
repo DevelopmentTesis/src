@@ -15,17 +15,18 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for Geolocalizacion complex type.
+ * <p>Java class for Comentario complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="Geolocalizacion">
+ * &lt;complexType name="Comentario">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="cordLatitud" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="cordLonguitud" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="idComentario" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="comentario" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="usuario" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -35,63 +36,81 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Geolocalizacion", propOrder = {
-    "cordLatitud",
-    "cordLonguitud"
+@XmlType(name = "Comentario", propOrder = {
+    "idComentario",
+    "comentario",
+    "usuario"
 })
-public class Geolocalizacion {
+public class Comentario {
 
+    protected int idComentario;
     @XmlElement(required = true)
-    protected String cordLatitud;
+    protected String comentario;
     @XmlElement(required = true)
-    protected String cordLonguitud;
+    protected String usuario;
 
     /**
-     * Gets the value of the cordLatitud property.
+     * Gets the value of the idComentario property.
+     * 
+     */
+    public int getIdComentario() {
+        return idComentario;
+    }
+
+    /**
+     * Sets the value of the idComentario property.
+     * 
+     */
+    public void setIdComentario(int value) {
+        this.idComentario = value;
+    }
+
+    /**
+     * Gets the value of the comentario property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getCordLatitud() {
-        return cordLatitud;
+    public String getComentario() {
+        return comentario;
     }
 
     /**
-     * Sets the value of the cordLatitud property.
+     * Sets the value of the comentario property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setCordLatitud(String value) {
-        this.cordLatitud = value;
+    public void setComentario(String value) {
+        this.comentario = value;
     }
 
     /**
-     * Gets the value of the cordLonguitud property.
+     * Gets the value of the usuario property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getCordLonguitud() {
-        return cordLonguitud;
+    public String getUsuario() {
+        return usuario;
     }
 
     /**
-     * Sets the value of the cordLonguitud property.
+     * Sets the value of the usuario property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setCordLonguitud(String value) {
-        this.cordLonguitud = value;
+    public void setUsuario(String value) {
+        this.usuario = value;
     }
 
 }
