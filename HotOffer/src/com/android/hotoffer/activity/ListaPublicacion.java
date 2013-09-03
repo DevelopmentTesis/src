@@ -50,13 +50,15 @@ public class ListaPublicacion extends Activity {
 				Intent intent = new Intent();
 				intent.setClass(ListaPublicacion.this, DetallePubli.class);
 				intent.putExtra("idPub", elegido.getIdPublicacion());
-				intent.putExtra("long", elegido.getGeolocalizacion().getCordLonguitud());
-				intent.putExtra("lat", elegido.getGeolocalizacion().getCordLatitud());
+				intent.putExtra("long", elegido.getGeolocalizacion()
+						.getCordLonguitud());
+				intent.putExtra("lat", elegido.getGeolocalizacion()
+						.getCordLatitud());
 				intent.putExtra("comentario", elegido.getComentario());
 				intent.putExtra("tienda", elegido.getTienda());
 				intent.putExtra("tipoPub", elegido.getDescrTipo());
 				intent.putExtra("precio", elegido.getPrecio());
-				
+
 				startActivity(intent);
 
 			}
@@ -93,7 +95,8 @@ public class ListaPublicacion extends Activity {
 
 					int idEstado = ((Publicacion) entrada).getIdEstado();
 
-					switch (idEstado) {				case 1:
+					switch (idEstado) {
+					case 1:
 						status.setImageResource(R.drawable.stat_happy);
 						break;
 					case 2:
