@@ -1,57 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@+id/RelativeLayout01"
-android:layout_width="fill_parent" android:layout_height="fill_parent"
-xmlns:android="http://schemas.android.com/apk/res/android">
-<EditText android:id="@+id/EditText02" android:layout_width="220px"
-android:layout_height="wrap_content"
-android:layout_below="@+id/EditText01"
-android:layout_alignLeft="@+id/EditText01" />
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout01"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/blanco" >
 
-<Button
-    android:id="@+id/Button02"
-    android:layout_width="100px"
-    android:layout_height="wrap_content"
-    android:layout_alignRight="@+id/EditText02"
-    android:layout_below="@+id/EditText02"
-    android:layout_marginRight="38dp"
-    android:layout_marginTop="88dp"
-    android:text="Reset" />
+    <TableLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:stretchColumns="2" >
 
-<Button
-    android:id="@+id/Button01"
-    android:layout_width="100px"
-    android:layout_height="wrap_content"
-    android:layout_alignBaseline="@+id/Button02"
-    android:layout_alignBottom="@+id/Button02"
-    android:layout_toLeftOf="@+id/EditText02"
-    android:text="Submit" />
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="210dp"
+            android:layout_marginRight="30dp"
+            android:src="@drawable/fuego" />
 
-<EditText
-    android:id="@+id/EditText01"
-    android:layout_width="220px"
-    android:layout_height="wrap_content"
-    android:layout_alignParentRight="true"
-    android:layout_alignTop="@+id/TextView01"
-    android:layout_marginRight="32dp"
-    android:ems="10" />
+        <EditText
+            android:id="@+id/precio"
+            android:layout_width="15px"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            android:hint="Precio"
+            android:textSize="@dimen/medio" >
 
-<TextView
-    android:id="@+id/TextView02"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_alignTop="@+id/EditText02"
-    android:layout_toLeftOf="@+id/Button01"
-    android:text="Second Name:"
-    android:width="100px" />
+            <requestFocus />
+        </EditText>
 
-<TextView
-    android:id="@+id/TextView01"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_alignLeft="@+id/TextView02"
-    android:layout_alignParentTop="true"
-    android:layout_marginTop="40dp"
-    android:text="First Name:"
-    android:width="100px" />
+        <EditText
+            android:id="@+id/tienda"
+            android:layout_width="10px"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="4dp"
+            android:hint="Tienda"
+            android:textSize="@dimen/medio" />
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/segmento"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="4dp"
+                android:gravity="left"
+                android:text="Segmento"
+                android:textStyle="normal" />
+
+            <TextView
+                android:id="@+id/segmento"
+                android:layout_height="35dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="4dp"
+                android:background="@color/gris_2"
+                android:gravity="fill_vertical"
+                android:text="Seleccione"
+                android:textColor="@color/gris_1"
+                android:textSize="@dimen/medio"
+                android:textStyle="italic"
+                android:typeface="normal"
+                android:width="320px" />
+        </TableRow>
+
+        <EditText
+            android:id="@+id/editText1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.78"
+            android:ems="10"
+            android:inputType="textMultiLine" />
+
+        <Button
+            android:id="@+id/enviar"
+            android:layout_width="232sp"
+            android:layout_height="45dp"
+            android:layout_margin="10dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="5sp"
+            android:background="@color/naranjo"
+            android:gravity="center"
+            android:text="@string/enviar"
+            android:textAlignment="center"
+            android:textColor="@color/gris"
+            android:textColorHint="@color/Cranberry"
+            android:textSize="@dimen/medio"
+            android:textStyle="bold" />
+    </TableLayout>
 
 </RelativeLayout>
