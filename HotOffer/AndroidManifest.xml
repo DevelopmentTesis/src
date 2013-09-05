@@ -59,6 +59,7 @@
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="AIzaSyCRj5F_cy38SGop_4bJDz26qDjQNJ3Lfew" />
+        <activity android:name=".activity.ComentarioPublicacion"></activity>
     </application>
 
 </manifest>
