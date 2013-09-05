@@ -12,7 +12,7 @@ public class ValidaAccesoClient {
 
 	public Boolean valida(Usuario usuario) {
 
-		String url = "http://192.168.1.5:8080/WSRestHotOffer/service/valida/acceso?nombre="
+		String url = "http://192.168.2.107:8080/WSRestHotOffer/service/valida/acceso?nombre="
 				+ usuario.getNombre() + "&password=" + usuario.getPassword();
 
 		String result = null;

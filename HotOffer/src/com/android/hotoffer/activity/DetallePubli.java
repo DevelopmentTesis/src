@@ -6,11 +6,13 @@ import java.util.List;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -30,6 +32,7 @@ public class DetallePubli extends FragmentActivity {
 	private GoogleMap mMap;
 	private Publicacion publicacion;
 	private PublicacionClient client = new PublicacionClient();
+	private ListView listView;
 	static final int DETALLE_DIALOG = 666;
 
 	@Override
@@ -38,7 +41,7 @@ public class DetallePubli extends FragmentActivity {
 		setContentView(R.layout.map);
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-		ListView listView = (ListView) findViewById(R.id.comentarios_usuario);
+		listView = (ListView) findViewById(R.id.comentarios_usuario);
 
 		List<Publicacion> comentarios = new ArrayList<Publicacion>();
 
@@ -151,6 +154,27 @@ public class DetallePubli extends FragmentActivity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.detalle_comentar, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+
+		switch (item.getItemId()) {
+		case R.id.comentar:
+
+			Intent intent = new Intent();
+			intent.setClass(DetallePubli.this, ComentarioPublicacion.class);
+			intent.putExtra("idPub", publicacion.getIdPublicacion());
+			this.startActivity(intent);
+
+			break;
+
+		default:
+			return super.onOptionsItemSelected(item);
+
+		}
+
 		return true;
 	}
 
