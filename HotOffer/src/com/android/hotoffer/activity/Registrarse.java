@@ -2,6 +2,8 @@ package com.android.hotoffer.activity;
 
 import java.util.Calendar;
 
+import android.R.integer;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
@@ -10,12 +12,15 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import com.android.hotoffer.R;
+import com.android.hotoffer.rest.ValidaAccesoClient;
 
+@SuppressLint("CutPasteId")
 public class Registrarse extends Activity {
 
 	private TextView tvFecha;
@@ -31,6 +36,9 @@ public class Registrarse extends Activity {
 	static final int PAIS_DIALOG_ID = 222;
 	static final int CIUDAD_DIALOG_ID = 333;
 
+	private ValidaAccesoClient client = new ValidaAccesoClient();
+
+	@SuppressLint("CutPasteId")
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -75,6 +83,30 @@ public class Registrarse extends Activity {
 			public void onClick(View v) {
 				showDialog(CIUDAD_DIALOG_ID);
 
+			}
+		});
+
+		Button registrarse = (Button) findViewById(R.id.enviar);
+
+		registrarse.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				EditText nombre = (EditText) findViewById(R.id.nombre);
+				EditText apellido = (EditText) findViewById(R.id.apell);
+				TextView fechaN = (TextView) findViewById(R.id.fecha);
+				TextView sex = (TextView) findViewById(R.id.sexo);
+				TextView paissel = (TextView) findViewById(R.id.nom_pais);
+				TextView ciuda = (TextView) findViewById(R.id.nom_ciudad);
+				EditText user = (EditText) findViewById(R.id.usuario);
+				EditText pass = (EditText) findViewById(R.id.contras);
+				client.crearAcceso(nombre.getText().toString(), apellido
+						.getText().toString(), fechaN.getText().toString(), sex
+						.getText().toString(), Integer.valueOf(paissel
+						.getText().toString()), Integer.valueOf(ciuda.getText()
+						.toString()), user.getText().toString(), pass.getText()
+						.toString());
 			}
 		});
 
