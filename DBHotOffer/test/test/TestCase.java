@@ -165,4 +165,10 @@ public class TestCase {
 
 	}
 
+	@Test
+	public void comentar() throws PublicacionException {
+		PublicacionDAO dao = new PublicacionDaoImpl();
+
+	}
+
 }
