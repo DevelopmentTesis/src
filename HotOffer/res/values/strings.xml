@@ -34,7 +34,9 @@
     <string name="about_message">Aplicación desarrollada para proyecto de Tesis IPCHILE.</string>
     <string name="cesar">César Araya Acosta</string>
     <string name="daisy">Daisy Zambrano Garcés</string>
-    <string name="rodrigo">Rodrigo Verdugo</string>
+    <string name="rodrigo">Rodrigo Verdugo Reyes</string>
+    <string name="Localizacion">Localización</string>
+    <string name="datosPublica">Datos Publicación</string>
     <string name="comentar">Comentar</string>
     <string name="confirmar">Confirmar</string>
 
