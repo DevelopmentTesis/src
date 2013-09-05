@@ -37,7 +37,9 @@
         android:id="@+id/comentarios_usuario"
         style="@android:color/secondary_text_light"
         android:layout_width="match_parent"
-        android:layout_height="200dp" >
+        android:layout_height="84dp"
+        android:layout_weight="0.25"
+        android:visibility="visible" >
     </ListView>
 
 </LinearLayout>
