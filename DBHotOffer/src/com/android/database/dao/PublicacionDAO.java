@@ -62,4 +62,7 @@ public interface PublicacionDAO {
 	public List<Comentario> comentariosPublicacion(int idPublicacion)
 			throws PublicacionException;
 
+	public boolean comentarPublicacion(String idPub, String usuario,
+			String comentario) throws PublicacionException;
+
 }

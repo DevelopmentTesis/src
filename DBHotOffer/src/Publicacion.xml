@@ -45,8 +45,10 @@
 		parameterType="int">
 		select C.ID_COMENTARIO,C.COMENTARIOS , A.NOMBRE from
 		COMENTARIOS AS C INNER JOIN PUBLICACION AS P
-		ON C.ID_PUBLICACION=P.ID_PUBLICACION INNER JOIN USUARIO AS A
-		ON P.ID_USUARIO=A.ID_USUARIO
+		ON
+		C.ID_PUBLICACION=P.ID_PUBLICACION INNER JOIN USUARIO AS A
+		ON
+		C.ID_USUARIO=A.ID_USUARIO
 		where P.ID_PUBLICACION=#{id}
 	</select>
 
@@ -56,6 +58,13 @@
 		{call
 		sp_buscarPublicaciones(#{id,jdbcType=INTEGER,mode=IN})}
 	</select>
+
+	<insert id="comentar">
+		insert into
+		COMENTARIOS(ID_PUBLICACION,COMENTARIOS,ID_USUARIO)
+		values (#{idPub},
+		#{comentario},#{idUsuario})
+	</insert>
 
 	<insert id="guardarPublicacion" statementType="CALLABLE">
 		{call
