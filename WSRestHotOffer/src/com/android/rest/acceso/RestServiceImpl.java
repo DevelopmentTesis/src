@@ -2,6 +2,11 @@ package com.android.rest.acceso;
 
 import java.util.List;
 
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
+
 import org.apache.log4j.Logger;
 
 import cl.hotoffer.exception.BusinessException;
@@ -92,6 +97,14 @@ public class RestServiceImpl implements RestService {
 		PublicacionDAO dao = new PublicacionDaoImpl();
 
 		return dao.comentariosPublicacion(id);
+	}
+
+	public boolean comentarPublicacion(String idPub, String comentario,
+			String idUser) throws BusinessException, PublicacionException {
+
+		PublicacionDAO dao = new PublicacionDaoImpl();
+
+		return dao.comentarPublicacion(idPub, idUser, comentario);
 	}
 
 }

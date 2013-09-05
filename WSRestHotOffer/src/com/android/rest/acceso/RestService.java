@@ -123,4 +123,11 @@ public interface RestService {
 	List<Comentario> comentariosPublicacion(@QueryParam("id") int id)
 			throws BusinessException, PublicacionException;
 
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/publicacion/comentar")
+	boolean comentarPublicacion(@QueryParam("idPub") String idPub,
+			@QueryParam("comentario") String comentario,
+			@QueryParam("idUser") String idUser) throws BusinessException,
+			PublicacionException;
 }
