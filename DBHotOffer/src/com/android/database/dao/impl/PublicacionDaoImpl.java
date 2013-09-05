@@ -1,6 +1,8 @@
 package com.android.database.dao.impl;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -115,5 +117,27 @@ public class PublicacionDaoImpl implements PublicacionDAO {
 			session.close();
 		}
 		return list;
+	}
+
+	@Override
+	public boolean comentarPublicacion(String idPub, String usuario,
+			String comentario) throws PublicacionException {
+		SqlSession session = sqlSessionFactory.openSession();
+
+		try {
+
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("idPub", idPub);
+			map.put("comentario", comentario);
+			map.put("idUsuario", usuario);
+
+			session.selectOne("Publicacion.comentar", map);
+			return true;
+		} catch (Exception e) {
+			throw new PublicacionException(e);
+		} finally {
+			session.close();
+		}
+
 	}
 }
