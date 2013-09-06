@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:text="@string/Localizacion" />
+         />
 
     <com.google.android.maps.MapView
         android:id="@+id/mapView"
@@ -53,7 +53,7 @@
         android:layout_alignLeft="@+id/textView2"
         android:layout_below="@+id/textView2"
         android:layout_marginTop="18dp"
-        android:text="@string/comentarios" />
+         />
 
     <TextView
         android:id="@+id/textView4"
