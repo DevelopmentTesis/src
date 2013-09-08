@@ -38,7 +38,7 @@ public interface RestService {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/valida/acceso")
-	boolean validaAcceso(@QueryParam("nombre") String nombre,
+	Integer validaAcceso(@QueryParam("nombre") String nombre,
 			@QueryParam("password") String password) throws UsuarioException,
 			BusinessException;
 
@@ -58,7 +58,7 @@ public interface RestService {
 	 */
 	@GET
 	@Path("/crear/acceso")
-	void crearAcceso(@QueryParam("nom") String nombre,
+	Integer crearAcceso(@QueryParam("nom") String nombre,
 			@QueryParam("ape") String apellido,
 			@QueryParam("fNac") String fechaN, @QueryParam("sx") String sexo,
 			@QueryParam("idPais") Integer pais,

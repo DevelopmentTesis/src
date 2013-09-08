@@ -2,11 +2,6 @@ package com.android.rest.acceso;
 
 import java.util.List;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
-
 import org.apache.log4j.Logger;
 
 import cl.hotoffer.exception.BusinessException;
@@ -30,7 +25,7 @@ public class RestServiceImpl implements RestService {
 
 	private UsuarioDAO acceso = new UsuarioDaoImpl();
 
-	public boolean validaAcceso(String nombre, String password)
+	public Integer validaAcceso(String nombre, String password)
 			throws UsuarioException, BusinessException {
 
 		LOGGER.info("[::CALL WSRestValidaAcceso::]");
@@ -41,7 +36,7 @@ public class RestServiceImpl implements RestService {
 		return acceso.validaAcceso(usuario);
 	}
 
-	public void crearAcceso(String nombre, String apellido, String fechaN,
+	public Integer crearAcceso(String nombre, String apellido, String fechaN,
 			String sexo, Integer pais, Integer ciudad, String user, String pass)
 			throws UsuarioException, BusinessException {
 
@@ -60,7 +55,7 @@ public class RestServiceImpl implements RestService {
 
 		persona.setUsuario(usuario);
 
-		acceso.insert(persona);
+		return acceso.insert(persona);
 	}
 
 	public List<Publicacion> getPublicaciones() throws BusinessException,
