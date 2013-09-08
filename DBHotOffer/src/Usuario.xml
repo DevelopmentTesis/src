@@ -44,12 +44,12 @@
 
 	<!-- Call Procedure -->
 	<select id="spValidaUsuario" statementType="CALLABLE"
-		resultType="boolean">
+		resultType="int">
 		{call
 		sp_validaUsuario(
 		#{nombre,jdbcType=VARCHAR,mode=IN},
 		#{password,jdbcType=VARCHAR,mode=IN},
-		#{resultado,jdbcType=BOOLEAN,mode=OUT}
+		#{resultado,jdbcType=INTEGER,mode=OUT}
 		)}
 	</select>
 
