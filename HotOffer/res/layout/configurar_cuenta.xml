@@ -73,7 +73,7 @@
                 android:textStyle="normal" />
 
             <EditText
-                android:id="@+id/usuario"
+                android:id="@+id/var_usuario"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="4dp"
                 android:width="250px" />
