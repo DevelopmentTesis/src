@@ -7,11 +7,13 @@ import android.os.Bundle;
 import com.android.hotoffer.R;
 import com.android.hotoffer.rest.PublicacionClient;
 import com.android.hotoffer.sqlite.Publicaciones;
+import com.android.hotoffer.sqlite.RecordarAcceso;
 import com.android.hotoffer.util.ProcessActivity;
 
 public class MainHotOffer extends Activity {
 
 	private PublicacionClient client = new PublicacionClient();
+	public static Integer isUser;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -23,11 +25,23 @@ public class MainHotOffer extends Activity {
 
 		new Thread(new Runnable() {
 			public void run() {
+
+				RecordarAcceso acceso = new RecordarAcceso(MainHotOffer.this);
+				Intent intent;
+				isUser = acceso.selRecordar();
 				Publicaciones pub = new Publicaciones(MainHotOffer.this);
 				pub.insertTipoPublicaciones(client.getTipoPublicaciones());
-				Intent intent = new Intent(MainHotOffer.this, Acceso.class);
-				startActivity(intent);
-				process.onPostExecute("Fin Proceso");
+				if (isUser != null) {
+					intent = new Intent(MainHotOffer.this,
+							ListaPublicacion.class);
+					startActivity(intent);
+					process.onPostExecute("Fin Proceso");
+
+				} else {
+					intent = new Intent(MainHotOffer.this, Acceso.class);
+					startActivity(intent);
+					process.onPostExecute("Fin Proceso");
+				}
 			}
 		}).start();
 

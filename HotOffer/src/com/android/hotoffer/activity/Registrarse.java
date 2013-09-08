@@ -2,13 +2,13 @@ package com.android.hotoffer.activity;
 
 import java.util.Calendar;
 
-import android.R.integer;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -16,11 +16,11 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.hotoffer.R;
 import com.android.hotoffer.rest.ValidaAccesoClient;
 
-@SuppressLint("CutPasteId")
 public class Registrarse extends Activity {
 
 	private TextView tvFecha;
@@ -93,21 +93,33 @@ public class Registrarse extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				EditText nombre = (EditText) findViewById(R.id.nombre);
-				EditText apellido = (EditText) findViewById(R.id.apell);
-				TextView fechaN = (TextView) findViewById(R.id.fecha);
-				TextView sex = (TextView) findViewById(R.id.sexo);
-				TextView paissel = (TextView) findViewById(R.id.nom_pais);
-				TextView ciuda = (TextView) findViewById(R.id.nom_ciudad);
-				EditText user = (EditText) findViewById(R.id.usuario);
-				EditText pass = (EditText) findViewById(R.id.contras);
-				client.crearAcceso(nombre.getText().toString(), apellido
+				final EditText nombre = (EditText) findViewById(R.id.nombre);
+				final EditText apellido = (EditText) findViewById(R.id.apell);
+				final TextView fechaN = (TextView) findViewById(R.id.fecha);
+				final TextView sex = (TextView) findViewById(R.id.sexo);
+				final TextView paissel = (TextView) findViewById(R.id.nom_pais);
+				final TextView ciuda = (TextView) findViewById(R.id.nom_ciudad);
+				final EditText user = (EditText) findViewById(R.id.var_usuario);
+				final EditText pass = (EditText) findViewById(R.id.contras);
+
+				final Toast toast = Toast.makeText(Registrarse.this,
+						"Error al crear acceso", Toast.LENGTH_LONG);
+
+				Intent intent = new Intent(Registrarse.this, Acceso.class);
+				String id;
+
+				id = client.crearAcceso(nombre.getText().toString(), apellido
 						.getText().toString(), fechaN.getText().toString(), sex
-						.getText().toString(), Integer.valueOf(paissel
-						.getText().toString()), Integer.valueOf(ciuda.getText()
-						.toString()), user.getText().toString(), pass.getText()
+						.getText().toString(), Integer.valueOf(1), Integer
+						.valueOf(1), user.getText().toString(), pass.getText()
 						.toString());
+				if ("".equals(id) || id == null) {
+					toast.show();
+				} else {
+					startActivity(intent);
+				}
 			}
+
 		});
 
 	}
@@ -174,7 +186,7 @@ public class Registrarse extends Activity {
 		case CIUDAD_DIALOG_ID:
 
 			builder.setTitle("Ciudad");
-			final String ciudad[] = { "Santiago", "Valparaiso", "Viña del Mar" };
+			final String ciudad[] = { "Santiago", "Valparaiso", "ViÃ±a del Mar" };
 			final TextView ciudadTextView = (TextView) findViewById(R.id.nom_ciudad);
 
 			builder.setSingleChoiceItems(ciudad, -1,
@@ -209,12 +221,8 @@ public class Registrarse extends Activity {
 			mes = fec_mes;
 			dia = fec_dia;
 
-			StringBuffer buffer = new StringBuffer();
-
-			tvDisplayDate.setText(new StringBuilder()
-					// Month is 0 based, just add 1
-					.append(mes + 1).append("-").append(dia).append("-")
-					.append(anio).append(" "));
+			tvDisplayDate.setText(new StringBuilder().append(anio).append("-")
+					.append(mes + 1).append("-").append(dia));
 
 		}
 
@@ -227,11 +235,11 @@ public class Registrarse extends Activity {
 
 		final Calendar c = Calendar.getInstance();
 		anio = c.get(Calendar.YEAR);
-		mes = c.get(Calendar.MONTH);
+		mes = c.get(Calendar.MONTH) + 1;
 		dia = c.get(Calendar.DAY_OF_MONTH);
 
-		tvDisplayDate.setText(new StringBuilder().append(mes + 1).append("-")
-				.append(dia).append("-").append(anio).append(" "));
+		tvDisplayDate.setText(new StringBuilder().append(anio).append("-")
+				.append(mes).append("-").append(dia));
 
 		dpResult.init(anio, mes, dia, null);
 

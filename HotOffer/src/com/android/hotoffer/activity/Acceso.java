@@ -50,14 +50,17 @@ public class Acceso extends Activity {
 					new Thread(new Runnable() {
 						public void run() {
 							ValidaAccesoClient client = new ValidaAccesoClient();
-							boolean isOK = client.valida(new Usuario(user
+							Integer idAcceso = client.valida(new Usuario(user
 									.getText().toString(), pass.getText()
 									.toString()));
-							if (isOK) {
+							if (idAcceso != null) {
+								save(idAcceso);
 								i.setClass(Acceso.this, ListaPublicacion.class);
 								startActivity(i);
 								process.onPostExecute("Fin Proceso");
 							} else {
+								i.setClass(Acceso.this, MainHotOffer.class);
+								startActivity(i);
 								process.onPostExecute("Fin Proceso");
 							}
 						}
@@ -86,12 +89,11 @@ public class Acceso extends Activity {
 
 	}
 
-	public boolean save(EditText user, EditText pass) {
+	public boolean save(Integer idAcceso) {
 		RecordarAcceso lite = new RecordarAcceso(Acceso.this);
 		boolean status = false;
-		if (user != null && pass != null) {
-			status = lite.saveData(user.getText().toString(), pass.getText()
-					.toString());
+		if (idAcceso != null) {
+			status = lite.saveData(idAcceso);
 		}
 		return status;
 	}
