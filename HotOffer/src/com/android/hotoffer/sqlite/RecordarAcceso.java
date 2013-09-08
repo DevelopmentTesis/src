@@ -12,7 +12,7 @@ import com.android.hotoffer.util.SQLUtils;
 
 public class RecordarAcceso extends SQLiteOpenHelper {
 
-	private static final String CREATE_TB_ACCESO = "CREATE TABLE RECORDAR (user  TEXT, pass TEXT)";
+	private static final String CREATE_TB_ACCESO = "CREATE TABLE RECORDAR (idAcceso INTEGER)";
 	private final static String DROP_TB_ACCESO = "DROP TABLE IF EXISTS RECORDAR";
 
 	public RecordarAcceso(Context context) {
@@ -32,13 +32,12 @@ public class RecordarAcceso extends SQLiteOpenHelper {
 		onCreate(db);
 	}
 
-	public boolean saveData(String user, String pass) {
+	public boolean saveData(Integer idAcceso) {
 		SQLiteDatabase db = this.getWritableDatabase();
 		try {
 
 			ContentValues values = new ContentValues();
-			values.put("user", user);
-			values.put("pass", pass);
+			values.put("idAcceso", idAcceso);
 
 			if (SQLUtils.isExistTable(db, Constants.TB_RECORDAR)) {
 				db.insert(Constants.TB_RECORDAR, null, values);
@@ -56,7 +55,7 @@ public class RecordarAcceso extends SQLiteOpenHelper {
 		return false;
 	}
 
-	public boolean selRecordar() {
+	public Integer selRecordar() {
 
 		SQLiteDatabase db = this.getReadableDatabase();
 
@@ -67,7 +66,7 @@ public class RecordarAcceso extends SQLiteOpenHelper {
 
 			if (cursor.moveToFirst()) {
 				while (cursor.moveToNext()) {
-					return true;
+					return cursor.getInt(0);
 				}
 			}
 		} catch (Exception e) {
@@ -75,6 +74,7 @@ public class RecordarAcceso extends SQLiteOpenHelper {
 		} finally {
 			db.close();
 		}
-		return false;
+		return null;
+
 	}
 }

@@ -6,11 +6,13 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.DefaultHttpClient;
 
+import android.util.Log;
+
 import com.android.hotoffer.to.Usuario;
 
 public class ValidaAccesoClient {
 
-	public Boolean valida(Usuario usuario) {
+	public Integer valida(Usuario usuario) {
 
 		String url = "http://192.168.1.5:8080/WSRestHotOffer/service/valida/acceso?nombre="
 				+ usuario.getNombre() + "&password=" + usuario.getPassword();
@@ -25,14 +27,14 @@ public class ValidaAccesoClient {
 			result = httpclient.execute(request, handler);
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			Log.w("Exception :", e);
 		}
 
-		return Boolean.valueOf(result);
+		return Integer.valueOf(result);
 
 	}
 
-	public void crearAcceso(String nombre, String apellido, String fechaN,
+	public String crearAcceso(String nombre, String apellido, String fechaN,
 			String sexo, Integer pais, Integer ciudad, String user, String pass) {
 
 		String url = "http://192.168.1.5:8080/WSRestHotOffer/service/crear/acceso?nom="
@@ -60,11 +62,9 @@ public class ValidaAccesoClient {
 			result = httpclient.execute(request, handler);
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			Log.w("Excetion :", e.getLocalizedMessage());
 		}
-
-		
+		return result;
 	}
-	
-	
+
 }
