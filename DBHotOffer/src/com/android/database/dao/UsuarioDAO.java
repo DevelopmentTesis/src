@@ -22,7 +22,7 @@ public interface UsuarioDAO {
 	 * @return
 	 * @throws UsuarioException
 	 */
-	boolean validaAcceso(Usuario usuario) throws UsuarioException;
+	Integer validaAcceso(Usuario usuario) throws UsuarioException;
 
 	/**
 	 * Metodo que permite seleccionar todos los usuario registrados

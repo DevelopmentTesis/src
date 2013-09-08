@@ -118,7 +118,7 @@ public class UsuarioDaoImpl implements UsuarioDAO {
 	}
 
 	@Override
-	public boolean validaAcceso(Usuario usuario) throws UsuarioException {
+	public Integer validaAcceso(Usuario usuario) throws UsuarioException {
 
 		LOGGER.info("VALIDA ACCESO USUARIO");
 		SqlSession session = sqlSessionFactory.openSession();
@@ -129,7 +129,7 @@ public class UsuarioDaoImpl implements UsuarioDAO {
 			map.put("password", usuario.getPassword());
 			LOGGER.info("[CALL Usuario.spValidaUsuario]");
 			session.selectOne("Usuario.spValidaUsuario", map);
-			return (Boolean) map.get("resultado");
+			return (Integer) map.get("resultado");
 
 		} catch (Exception e) {
 			LOGGER.error(e);
