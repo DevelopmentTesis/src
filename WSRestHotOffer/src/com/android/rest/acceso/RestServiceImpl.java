@@ -13,6 +13,7 @@ import com.android.database.dao.UsuarioDAO;
 import com.android.database.dao.impl.PublicacionDaoImpl;
 import com.android.database.dao.impl.UsuarioDaoImpl;
 import com.android.model.Comentario;
+import com.android.model.Geolocalizacion;
 import com.android.model.Persona;
 import com.android.model.Publicacion;
 import com.android.model.TipoPublicacion;
@@ -100,6 +101,32 @@ public class RestServiceImpl implements RestService {
 		PublicacionDAO dao = new PublicacionDaoImpl();
 
 		return dao.comentarPublicacion(idPub, idUser, comentario);
+	}
+
+	public boolean publicar(Integer idUsuario, Integer tipoPub, String latitud,
+			String longitud, String precio, String tienda, String comentario)
+			throws BusinessException, PublicacionException {
+
+		PublicacionDAO dao = new PublicacionDaoImpl();
+		Publicacion publicacion = new Publicacion();
+
+		Usuario usuario = new Usuario();
+		usuario.setIdUsuario(idUsuario);
+		publicacion.setUsuario(usuario);
+		publicacion.setIdTipoPublicacion(tipoPub);
+
+		Geolocalizacion geo = new Geolocalizacion();
+		geo.setCordLatitud(latitud);
+		geo.setCordLonguitud(longitud);
+		publicacion.setGeolocalizacion(geo);
+
+		publicacion.setPrecio(precio);
+		publicacion.setTienda(tienda);
+		publicacion.setComentario(comentario);
+
+		dao.guardarPublicacion(publicacion);
+
+		return true;
 	}
 
 }

@@ -130,4 +130,17 @@ public interface RestService {
 			@QueryParam("comentario") String comentario,
 			@QueryParam("idUser") String idUser) throws BusinessException,
 			PublicacionException;
+
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/publicacion/publicar")
+	boolean publicar(@QueryParam("idUsuario") Integer idUsuario,
+			@QueryParam("tipoPub") Integer tipoPub,
+			@QueryParam("latitud") String latitud,
+			@QueryParam("longitud") String longitud,
+			@QueryParam("precio") String precio,
+			@QueryParam("tienda") String tienda,
+			@QueryParam("comentario") String comentario)
+			throws BusinessException, PublicacionException;
+
 }
