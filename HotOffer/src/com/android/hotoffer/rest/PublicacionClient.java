@@ -7,7 +7,6 @@ import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.ResponseHandler;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.protocol.HTTP;
@@ -16,6 +15,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.android.hotoffer.constants.Constants;
 import com.android.hotoffer.to.Geolocalizacion;
 import com.android.hotoffer.to.Publicacion;
 import com.android.hotoffer.to.Usuario;
@@ -27,7 +27,8 @@ public class PublicacionClient {
 	public List<Publicacion> obtenerPublicaciones() {
 
 		HttpClient httpClient = new DefaultHttpClient();
-		String url = "http://192.168.1.5:8080/WSRestHotOffer/service/publicacion/obtener/";
+		String url = "http://" + Constants.IP_SERVER
+				+ ":8080/WSRestHotOffer/service/publicacion/obtener/";
 		HttpGet get = new HttpGet(url);
 
 		get.setHeader("content-type", "application/json");
@@ -49,8 +50,8 @@ public class PublicacionClient {
 
 	public List<Publicacion> buscarPublicaciones(String tipo) {
 		HttpClient httpClient = new DefaultHttpClient();
-		String url = "http://192.168.1.5:8080/WSRestHotOffer/service/publicacion/buscar?id="
-				+ tipo;
+		String url = "http://" + Constants.IP_SERVER
+				+ ":8080/WSRestHotOffer/service/publicacion/buscar?id=" + tipo;
 		HttpGet get = new HttpGet(url);
 		get.setHeader("content-type", "application/json");
 		HttpResponse resp;
@@ -104,7 +105,8 @@ public class PublicacionClient {
 
 	public List<Publicacion> getTipoPublicaciones() {
 
-		String url = "http://192.168.1.5:8080/WSRestHotOffer/service/publicacion/tipo";
+		String url = "http://" + Constants.IP_SERVER
+				+ ":8080/WSRestHotOffer/service/publicacion/tipo";
 		HttpClient httpClient = new DefaultHttpClient();
 		HttpGet get = new HttpGet(url);
 		List<Publicacion> list = new ArrayList<Publicacion>();
@@ -132,7 +134,8 @@ public class PublicacionClient {
 	public List<Publicacion> comentariosPublicacion(int id) {
 
 		HttpClient httpClient = new DefaultHttpClient();
-		String url = "http://192.168.1.5:8080/WSRestHotOffer/service/publicacion/comentarios?id="
+		String url = "http://" + Constants.IP_SERVER
+				+ ":8080/WSRestHotOffer/service/publicacion/comentarios?id="
 				+ id;
 
 		List<Publicacion> comentarios = new ArrayList<Publicacion>();
@@ -167,10 +170,9 @@ public class PublicacionClient {
 
 	public Boolean comentar(Integer idPub, String comentario, Integer idUser) {
 
-		String url = "http://192.168.1.5:8080/WSRestHotOffer/service/publicacion/comentar?idPub="
-				+ idPub
-				+ "&comentario="
-				+ comentario.replace(" ", "%20")
+		String url = "http://" + Constants.IP_SERVER
+				+ ":8080/WSRestHotOffer/service/publicacion/comentar?idPub="
+				+ idPub + "&comentario=" + comentario.replace(" ", "%20")
 				+ "&idUser=" + idUser;
 
 		String result = null;
