@@ -27,6 +27,7 @@ import com.android.hotoffer.util.Utils;
 public class ListaPublicacion extends Activity {
 
 	private static final int ID_DIALOG = 1;
+
 	private PublicacionClient client = new PublicacionClient();
 	private ListView lista;
 	private Publicacion elegido;
@@ -157,6 +158,9 @@ public class ListaPublicacion extends Activity {
 			break;
 		case R.id.Publicar:
 
+			Intent intent = new Intent();
+			intent.setClass(ListaPublicacion.this, Publicar.class);
+			startActivity(intent);
 			break;
 
 		default:

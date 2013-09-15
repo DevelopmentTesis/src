@@ -15,6 +15,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.android.hotoffer.activity.MainHotOffer;
 import com.android.hotoffer.constants.Constants;
 import com.android.hotoffer.to.Geolocalizacion;
 import com.android.hotoffer.to.Publicacion;
@@ -28,7 +29,7 @@ public class PublicacionClient {
 
 		HttpClient httpClient = new DefaultHttpClient();
 		String url = "http://" + Constants.IP_SERVER
-				+ ":8080/WSRestHotOffer/service/publicacion/obtener/";
+				+ "/WSRestHotOffer/service/publicacion/obtener/";
 		HttpGet get = new HttpGet(url);
 
 		get.setHeader("content-type", "application/json");
@@ -51,7 +52,7 @@ public class PublicacionClient {
 	public List<Publicacion> buscarPublicaciones(String tipo) {
 		HttpClient httpClient = new DefaultHttpClient();
 		String url = "http://" + Constants.IP_SERVER
-				+ ":8080/WSRestHotOffer/service/publicacion/buscar?id=" + tipo;
+				+ "/WSRestHotOffer/service/publicacion/buscar?id=" + tipo;
 		HttpGet get = new HttpGet(url);
 		get.setHeader("content-type", "application/json");
 		HttpResponse resp;
@@ -74,7 +75,7 @@ public class PublicacionClient {
 
 		Publicacion publicacion = null;
 		publi = new ArrayList<Publicacion>();
-		// publi.clear();
+		publi.clear();
 
 		for (int i = 0; i < array.length(); i++) {
 
@@ -106,7 +107,7 @@ public class PublicacionClient {
 	public List<Publicacion> getTipoPublicaciones() {
 
 		String url = "http://" + Constants.IP_SERVER
-				+ ":8080/WSRestHotOffer/service/publicacion/tipo";
+				+ "/WSRestHotOffer/service/publicacion/tipo";
 		HttpClient httpClient = new DefaultHttpClient();
 		HttpGet get = new HttpGet(url);
 		List<Publicacion> list = new ArrayList<Publicacion>();
@@ -135,8 +136,7 @@ public class PublicacionClient {
 
 		HttpClient httpClient = new DefaultHttpClient();
 		String url = "http://" + Constants.IP_SERVER
-				+ ":8080/WSRestHotOffer/service/publicacion/comentarios?id="
-				+ id;
+				+ "/WSRestHotOffer/service/publicacion/comentarios?id=" + id;
 
 		List<Publicacion> comentarios = new ArrayList<Publicacion>();
 		Publicacion publicacion;
@@ -171,9 +171,9 @@ public class PublicacionClient {
 	public Boolean comentar(Integer idPub, String comentario, Integer idUser) {
 
 		String url = "http://" + Constants.IP_SERVER
-				+ ":8080/WSRestHotOffer/service/publicacion/comentar?idPub="
-				+ idPub + "&comentario=" + comentario.replace(" ", "%20")
-				+ "&idUser=" + idUser;
+				+ "/WSRestHotOffer/service/publicacion/comentar?idPub=" + idPub
+				+ "&comentario=" + comentario.replace(" ", "%20") + "&idUser="
+				+ idUser;
 
 		String result = null;
 		HttpClient httpclient = new DefaultHttpClient();
@@ -190,6 +190,35 @@ public class PublicacionClient {
 
 		return Boolean.valueOf(result);
 
+	}
+
+	public boolean publicar(Publicacion publicacion) {
+
+		String url = "http://" + Constants.IP_SERVER
+				+ "/WSRestHotOffer/service/publicacion/publicar?idUsuario="
+				+ MainHotOffer.isUser + "&tipoPub="
+				+ publicacion.getIdTipoPublicacion() + "&latitud="
+				+ publicacion.getGeolocalizacion().getCordLatitud()
+				+ "&longitud="
+				+ publicacion.getGeolocalizacion().getCordLonguitud()
+				+ "&precio=" + publicacion.getPrecio() + "&tienda="
+				+ publicacion.getTienda().replace(" ", "%20") + "&comentario="
+				+ publicacion.getComentario().replace(" ", "%20");
+
+		String result = null;
+		HttpClient httpclient = new DefaultHttpClient();
+		HttpGet request = new HttpGet(url);
+
+		try {
+			ResponseHandler<String> handler = new BasicResponseHandler();
+
+			result = httpclient.execute(request, handler);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return Boolean.valueOf(result);
 	}
 
 }

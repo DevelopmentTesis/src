@@ -16,7 +16,7 @@ public class ValidaAccesoClient {
 	public Integer valida(Usuario usuario) {
 
 		String url = "http://" + Constants.IP_SERVER
-				+ ":8080/WSRestHotOffer/service/valida/acceso?nombre="
+				+ "/WSRestHotOffer/service/valida/acceso?nombre="
 				+ usuario.getNombre() + "&password=" + usuario.getPassword();
 
 		String result = null;
@@ -40,7 +40,7 @@ public class ValidaAccesoClient {
 			String sexo, Integer pais, Integer ciudad, String user, String pass) {
 
 		String url = "http://" + Constants.IP_SERVER
-				+ ":8080/WSRestHotOffer/service/crear/acceso?nom=" + nombre
+				+ "/WSRestHotOffer/service/crear/acceso?nom=" + nombre
 				+ "&ape=" + apellido + "&fNac=" + fechaN + "&sx=" + sexo
 				+ "&idPais=" + pais + "&idCiudad=" + ciudad + "&user=" + user
 				+ "&pass=" + pass;

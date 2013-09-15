@@ -2,7 +2,7 @@ package com.android.hotoffer.constants;
 
 public class Constants {
 
-	public final static String IP_SERVER = "192.168.1.8";
+	public final static String IP_SERVER = "192.168.1.2:8002";
 
 	public final static String NAME_DB = "HotOfferBD";
 	public final static Integer VERSION = 1;
