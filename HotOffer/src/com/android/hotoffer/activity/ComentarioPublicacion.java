@@ -1,15 +1,15 @@
 package com.android.hotoffer.activity;
 
-import com.android.hotoffer.R;
-import com.android.hotoffer.rest.PublicacionClient;
-import com.android.hotoffer.util.ProcessActivity;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
+import com.android.hotoffer.R;
+import com.android.hotoffer.rest.PublicacionClient;
+import com.android.hotoffer.util.ProcessActivity;
 
 public class ComentarioPublicacion extends Activity {
 
