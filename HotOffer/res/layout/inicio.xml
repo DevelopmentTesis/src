@@ -10,7 +10,7 @@
         android:id="@+id/imageView1"
         android:layout_width="254dp"
         android:layout_height="100dp"
-        android:src="@drawable/hotoffer" />
+        android:src="@drawable/ImagenHotOffer" />
 
     <EditText
         android:id="@+id/nom"
